@@ -1,0 +1,113 @@
+* {
+    transition: all ease-in-out 0.5s;
+}
+
+.navMenu {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    margin-top: 0;
+    margin-left: 0.47%;
+}
+
+
+.navMenuTest {
+    width: 40%;
+    height: 60%;
+    position: fixed;
+    margin-top: 0;
+    margin-left: 0.47%;
+
+}
+
+.navBox {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    border-radius: 0 0 10px 0;
+
+
+
+}
+
+
+
+.navBox::before {
+    position: absolute;
+    content: "";
+    width: 30px;
+    height: 30px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='31' viewBox='0 0 10 11' fill='none'%3E%3Cpath d='M0 0.655334H9.90187C9.90187 0.655334 5.12166 0.655334 2.56083 3.21616C0 5.77699 0 10.5572 0 10.5572V0.655334Z' fill='white'/%3E%3C/svg%3E");
+    bottom: -27px;
+    left: -1px;
+    margin: 0;
+}
+
+.navBox::after {
+    position: absolute;
+    content: "";
+    width: 30px;
+    height: 30px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='31' viewBox='0 0 10 11' fill='none'%3E%3Cpath d='M0 10.3406L0 0.438767C0 0.438767 0 5.21898 2.56083 7.77981C5.12166 10.3406 9.90187 10.3406 9.90187 10.3406H0Z' fill='white'/%3E%3C/svg%3E");
+    top: -1px;
+    right: -29px;
+    transform: rotate(90deg);
+    margin: 0;
+
+}
+
+
+
+.design {
+    width: 100%;
+    height: 1px;
+    background: black;
+
+}
+
+
+
+
+
+
+
+
+
+.button {
+    background: none;
+    border: none;
+    position: absolute;
+
+    z-index: 10;
+    right: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.buttonRight {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 5%;
+    top: 10%;
+    z-index: 10;
+}
+
+
+@media screen and (max-width: 600px) {
+    .navMenu {
+        width: 80px;
+        height: 80px;
+    }
+    .navMenuTest {
+        width: 60%;
+        height: 40%;
+        position: fixed;
+        margin-top: 0;
+        margin-left: 0.47%;
+    
+    }
+    
+}

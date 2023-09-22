@@ -1,0 +1,60 @@
+*{
+    transition: all ease-in-out 1 ;
+    margin: 0;
+    padding: 0;
+}
+.list li{
+    list-style: none;
+    color: rgb(0, 0, 0);
+    font-size: 2em;
+    font-family:Audiowide ;
+    text-align: center;
+}
+
+.list li:hover h1{
+    width: 250px; /* Width of the SVG */
+    height: 147px; /* Height of the SVG */
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="147" viewBox="0 0 417 147" fill="none"><path d="M0 147H369.5L417 107.5V0H206.5H0V147Z" fill="%23C0FB50"/></svg>');
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-size: contain; /* You can adjust the size as needed */
+    background-repeat: no-repeat;
+  
+}
+
+
+.list{
+    position: absolute;
+    width:90%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow: hidden;
+    margin-left: 10px;
+    border-radius: 20px;
+    
+
+}
+
+@media screen and (max-width: 600px) {
+    .list li h1{
+   font-size: 1em;
+    }
+    
+    .list li:hover h1{
+        width: 150px; /* Width of the SVG */
+        height: 70px; /* Height of the SVG */
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="147" viewBox="0 0 417 147" fill="none"><path d="M0 147H369.5L417 107.5V0H206.5H0V147Z" fill="%23C0FB50"/></svg>');
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background-size: contain; /* You can adjust the size as needed */
+        background-repeat: no-repeat;
+      
+    }
+}
+
