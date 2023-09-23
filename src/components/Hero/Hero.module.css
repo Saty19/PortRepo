@@ -1,3 +1,17 @@
+/* fonts.css */
+
+@font-face {
+  font-family: 'Outward';
+  src: url('outward-block-webfont.eot');
+  src: url('outward-block-webfont.eot?#iefix') format('embedded-opentype'),
+       url('outward-block-webfont.woff2') format('woff2'),
+       url('outward-block-webfont.woff') format('woff'),
+       url('outward-block-webfont.ttf') format('truetype'),
+       url('outward-block-webfont.svg#outwardblock') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   font-family: Audiowide;
 }
@@ -19,19 +33,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.5;
+  opacity: 0.3;
   filter: saturate(0);
 }
 
-.Cardh1 {
-  color: #fff;
-  font-family: Audiowide;
-  font-size: 60px;
-  font-style: normal;
-  position: absolute;
-  top: 0;
-  left: -60px;
-}
+
 .prospective {
   width: 100%;
   position: relative;
@@ -46,14 +52,7 @@
   padding-left: 5%;
 }
 
-.MainContent {
-  position: relative;
-  width: 45%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 .rightTopContent {
   width: 100%;
@@ -82,36 +81,38 @@
   justify-content: space-around;
   flex-direction: column;
 }
-
-
-.card {
+.MainContent {
   position: relative;
-  width: 50%;
-  height: 60%;
-  margin: auto;
-  box-shadow: 0 0 100px#ffffff62;
-  background: rgba(39, 39, 39, 0.363);
-  border-radius: 20px;
-  backdrop-filter: blur(8px);
-  transform-style: preserve-3d;
-  transition: transform 0.05s linear;
+  width: 45%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 800px; /* Add perspective to the .MainContent container */
 }
+.card {
+    width: 50%;
+    height: 60%;
+    margin: auto;
+    box-shadow: 0 0 63px #ffffff60;
+    border-radius: 15px;
+    background: rgba(49, 49, 49, 0.5); 
+    transform-style: preserve-3d;
+    transition: transform .05s linear;
+}
+
 .thumb {
-  background-size: cover;
   background: url(./satya.png);
+  background-size: cover;
   background-position: center;
-  position: absolute;
-  background-repeat: no-repeat;
-  background-size: contain;
-  transform-style: preserve-3d;
-  transform: translateZ(150px) scale(3);
   height: 100%;
   width: 100%;
-  border-radius: 15px;
+  transform: translateZ(120px);
+  border-radius: 15px; /* Move along the Z-axis and scale */
 }
 .thumb:after {
   background: inherit;
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   left: -60px;
@@ -121,23 +122,34 @@
   z-index: -1;
   filter: blur(55px);
 }
-span {
+.span {
   position: absolute;
   bottom: 40px;
-  right: -280px;
-  font-size: 37px;
+  right: 100px;
+  font-size: 2em;
+  -webkit-text-stroke: 0.001px white;
+  color: transparent;
   font-weight: 600;
-  transform: translateZ(35px);
+  transform: translateZ(180px);/* Move along the Z-axis */
 }
 
+.Cardh1 {
+  position: absolute;
+  top: 0;
+  left: -60px;
+  font-size: 4em;
+  font-weight: 100;
+  transform: translateZ(30px); /* Move along the Z-axis */
+}
 .leftH1 {
   font-size: 4em;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Outward'; /* Use the custom 'Outward' font */
   display: flex;
   align-items: center;
   -webkit-text-stroke: 1px white;
   color: transparent;
 }
+
 
 @media screen and (max-width: 1200px) {
   .card {
@@ -159,6 +171,12 @@ span {
     font-size: 3vw;
     bottom: 10px;
     left: 30%;
+  }
+  .Cardh1{
+    font-size: 3em;
+  }
+  .span{
+    font-size: 1em;
   }
   .rightContent {
     width: 40%;
