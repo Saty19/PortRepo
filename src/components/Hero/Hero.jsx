@@ -40,6 +40,7 @@ const Hero = () => {
 
   return (
     <div className={`can ${styles.container}`}>
+      
       <video loop autoPlay muted className={styles.video}>
         <source src={video} type="video/webm" />
       </video>

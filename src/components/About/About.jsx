@@ -1,10 +1,18 @@
-import React from 'react'
+
+import { OrbitControls } from "@react-three/drei"
 import style from "./About.module.css"
+import { BoxGeometry, Mesh, MeshNormalMaterial } from 'three'
+
 const About = () => {
   return (
-    <div className={style.container}>
-      About
-    </div>
+    <>
+    <OrbitControls/>
+    <directionalLight position={[2,3,4]} intensity={2} />
+     <mesh>
+     <boxGeometry/>
+     <meshStandardMaterial/>
+     </mesh>
+    </>
   )
 }
 
