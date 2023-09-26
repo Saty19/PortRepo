@@ -3,6 +3,11 @@ import { Suspense, useRef, useState, useEffect } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Preload, ScrollControls, Scroll, useScroll, Image as ImageImpl } from '@react-three/drei'
 import style from "./About.module.css"
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+
+
 
 function Image({ c = new THREE.Color(), ...props }) {
   const ref = useRef()
@@ -44,9 +49,8 @@ export default function About() {
 
 
 
-
   return (
-    <div className={style.container}>
+    <div  className={style.container}>
       <Canvas gl={{ antialias: false }} dpr={[1, 1.5]}>
         <Suspense fallback={null}>
         
