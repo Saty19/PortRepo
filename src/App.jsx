@@ -7,7 +7,7 @@ import "./App.css";
 import SectionSecond from "./components/Section2/SectionSecond";
 import About from "./components/About/About";
 import PhysicsDemo from "./components/Product/PhysicsDemo";
-import { Canvas } from "@react-three/fiber";
+
 const App = () => {
   return (
     <div>
@@ -23,11 +23,11 @@ const App = () => {
         <Hero />
         <SectionSecond /> {/* SectionSecond is loaded and ready to use */}
         <PhysicsDemo/>
-        <div className="container">
-        <Canvas style={{width:"100%",height:"100%"}}>
+  
+
           <About/>
-        </Canvas>
-        </div>
+        
+        
       </div>
     </div>
   );
