@@ -25,7 +25,7 @@ const App = () => {
         <PhysicsDemo/>
   
 
-   
+          <About/>
         
         
       </div>

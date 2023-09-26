@@ -28,13 +28,13 @@ function Images() {
   })
   return (
     <group ref={group}>
-      <Image position={[-2, 0, 0]} scale={[4, height, 1]} url="/img.jpg" />
-      <Image position={[2, 0, 1]} scale={3} url="/img.jpg" />
-      <Image position={[-2.3, -height, 2]} scale={[1, 3, 1]} url="/img.jpg" />
-      <Image position={[-0.6, -height, 3]} scale={[1, 2, 1]} url="/img.jpg" />
-      <Image position={[0.75, -height, 3.5]} scale={1.5} url="/img.jpg" />
-      <Image position={[0, -height * 1.5, 2.5]} scale={[1.5, 3, 1]} url="/img.jpg" />
-      <Image position={[0, -height * 2 - height / 6, 1.5]} scale={[width / 1.5, height / 5, 1]} url="/img.jpg" />
+      <Image position={[-2, 0, 0]} scale={[4, height, 1]} url="./img.jpg" />
+      <Image position={[2, 0, 1]} scale={3} url="./img.jpg" />
+      <Image position={[-2.3, -height, 2]} scale={[1, 3, 1]} url="./img.jpg" />
+      <Image position={[-0.6, -height, 3]} scale={[1, 2, 1]} url="./img.jpg" />
+      <Image position={[0.75, -height, 3.5]} scale={1.5} url="./img.jpg" />
+      <Image position={[0, -height * 1.5, 2.5]} scale={[1.5, 3, 1]} url="./img.jpg" />
+      <Image position={[0, -height * 2 - height / 6, 1.5]} scale={[width / 1.5, height / 5, 1]} url="./img.jpg" />
     </group>
   )
 }
