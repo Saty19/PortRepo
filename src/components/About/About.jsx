@@ -33,7 +33,7 @@ function Images() {
     group.current.children[6].material.zoom = 1 + (1 - data.range(2 / 3, 1 / 3)) / 3
   })
   return (
-    <group ref={group}>
+    <group ref={group} >
       <Image position={[-2, 0, 0]} scale={[4, height, 1]} url="./img.jpg" />
       <Image position={[2, 0, 1]} scale={3} url="./img.jpg" />
       <Image position={[-2.3, -height, 2]} scale={[1, 3, 1]} url="./img.jpg" />
@@ -51,7 +51,7 @@ export default function About() {
 
   return (
     <div  className={style.container}>
-      <Canvas gl={{ antialias: false }} dpr={[1, 1.5]}>
+      <Canvas gl={{ antialias: false }} dpr={[1, 1.5]}  className={style.scroll} >
         <Suspense fallback={null}>
         
             <ScrollControls damping={1} pages={3}>

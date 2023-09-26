@@ -77,7 +77,7 @@ function PhysicsDemo() {
       },
     });
     tl.to(".box", {
-      width: screenWidth ? "50%" : "40%",
+      width: screenWidth ? "90%" : "40%",
       duration: 3,
       ease: "power2.out", // Apply an easing function for smoother animation
     }, 1);

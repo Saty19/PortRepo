@@ -9,7 +9,7 @@ import Home from "./components/Home/Home";
 
 const App = () => {
   return (
-    <div>
+    <div style={{scrollSnapType:"y mandatory"}}>
       <div
         style={{
           position: "fixed",
@@ -41,7 +41,7 @@ const App = () => {
         <Hero />
         <SectionSecond />
         <PhysicsDemo />
-        <About />
+        <About/>
         <Home />
       </div>
     </div>
