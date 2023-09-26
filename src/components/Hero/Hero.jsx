@@ -63,9 +63,9 @@ const Hero = () => {
       </div>
 
       <div className={styles.linkTag}>
-        <FaFacebookSquare color={screenWidth>840?"white":"black"}/>
-        <AiFillGithub color={screenWidth>840?"white":"black"}/>
-        <AiFillInstagram color={screenWidth>840?"white":"black"}/>
+        <FaFacebookSquare size={screenWidth>840?"40":"10"} color={screenWidth>840?"white":"black"}/>
+        <AiFillGithub size={screenWidth>840?"40":"10"}  color={screenWidth>840?"white":"black"}/>
+        <AiFillInstagram size={screenWidth>840?"40":"10"}   color={screenWidth>840?"white":"black"}/>
         
         </div>
     </div>
