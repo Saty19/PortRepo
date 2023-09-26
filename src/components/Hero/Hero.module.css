@@ -90,7 +90,7 @@
 }
 
 .thumb {
-  background: url(./satya.png);
+  /* background: url(./satya.png); */
   background-size: cover;
   background-position: center;
   height: 100%;
@@ -130,10 +130,11 @@
   transform: translateZ(30px); /* Move along the Z-axis */
 }
 .leftH1 {
-  font-size: 5em;
+  font-size: 4em;
+  /* letter-spacing: 5px; */
+  /* font-family: 'Outward'; Use the custom 'Outward' font */
   display: flex;
   align-items: center;
-  font-family: Arial, Helvetica, sans-serif;
   /* -webkit-text-stroke: 1px white; */
   color: white;
 }

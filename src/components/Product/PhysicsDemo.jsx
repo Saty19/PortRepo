@@ -1,4 +1,4 @@
-import { useEffect, useRef ,useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./PhysicsDemo.css";
@@ -19,7 +19,8 @@ function PhysicsDemo() {
   };
 
   useEffect(() => {
-    function animation_text_1(element) {
+    // Animation function
+    function animateText(element) {
       const newText = [];
       const theText = textRef.current;
 
@@ -42,7 +43,7 @@ function PhysicsDemo() {
       });
 
       gsap.fromTo(
-        `${element} div`,
+        `${element} > div`, // Use a single selector string
         {
           opacity: 0,
           y: 30,
@@ -52,54 +53,82 @@ function PhysicsDemo() {
           opacity: 1,
           y: 0,
           stagger: 0.02,
-          // ease: 'elastic(1.2, 0.5)',
+          ease: "power2.out", // Apply an easing function for smoother animation
           scrollTrigger: {
             trigger: element,
             start: "top 70%",
             toggleActions: "play pause none none",
-            end:"90% 70%",
+            end: "90% 70%",
             pinSpacing: true,
-            scrub:0.5
+            scrub: 2,
           },
         },
         -1
       );
     }
+
+    // Main timeline
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
         start: "10% 80%",
-        // markers: true,
         end: "90% 70%",
         scrub: 0.8,
       },
     });
-    tl.to(".box", { width: `${screenWidth?"95%":"40%"}`, duration: 1 }, 0.5);
-    tl.fromTo(".BoxWrapperContent",{opacity:0,x:0},{opacity:1,x:`${screenWidth?"0":"100"}`,duration:1},0.8)
-    // Call the animation function with your target element
-    animation_text_1("#text-anim");
+    tl.to(".box", {
+      width: screenWidth ? "50%" : "40%",
+      duration: 3,
+      ease: "power2.out", // Apply an easing function for smoother animation
+    }, 1);
+    tl.fromTo(
+      ".BoxWrapperContent",
+      { opacity: 0, x: 0 },
+      {
+        opacity: 1,
+        x: screenWidth ? 0 : "80%",
+        duration: 3,
+        ease: "power2.out", // Apply an easing function for smoother animation
+      },
+      2
+    );
 
-    window.addEventListener('resize', updateScreenWidth);
+    // Initialize text animation
+    animateText("#text-anim");
+
+    // Event listener for window resize
+    window.addEventListener("resize", updateScreenWidth);
+
     return () => {
-      window.removeEventListener('resize', updateScreenWidth);
+      // Remove the event listener on unmount
+      window.removeEventListener("resize", updateScreenWidth);
     };
-
-  }, []);
+  }, [screenWidth]);
 
   return (
     <div className="container" ref={container}>
       <h1 ref={textRef} id="text-anim">
         NOW I AM JUST USING THIS FOR TESTING
       </h1>
-      <div style={{width: "80%",height: "1px",background: "black",float: "right",marginTop: "10%",marginLeft: "auto",}}/>
+      <div
+        style={{
+          width: "80%",
+          height: "1px",
+          background: "black",
+          float: "right",
+          marginTop: "10%",
+          marginLeft: "auto",
+        }}
+      />
       <div className="BoxWrapper">
         <div className="BoxWrapperContent">
+        <h2>TEST</h2>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem iusto
           nulla pariatur sunt suscipit non sit fugiat, optio repellendus
           commodi?
         </div>
         <div className="box">
-          <img src={img} className="img"/>
+          <img src={img} className="img" alt="Demo" />
         </div>
       </div>
     </div>

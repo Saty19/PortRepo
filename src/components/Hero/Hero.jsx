@@ -1,14 +1,10 @@
-import  { useEffect, useState } from 'react';
-import { AiFillGithub, AiFillInstagram } from "react-icons/ai";
+import React, { useEffect, useState } from 'react';
+import { AiFillGithub, AiFillInstagram } from 'react-icons/ai';
 import { FaFacebookSquare } from 'react-icons/fa';
-import gsap from 'gsap';
-import styles from './Hero.module.css'; // Import your CSS module here
+import styles from './Hero.module.css';
 import video from './video.webm';
 
 const Hero = () => {
-
-
-
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   // Function to update screen width when the window is resized
@@ -18,25 +14,23 @@ const Hero = () => {
 
   useEffect(() => {
     const card = document.querySelector(`.${styles.card}`);
-    const topSection = document.querySelector(".can");
+    const topSection = document.querySelector('.can');
 
-    topSection.addEventListener('mousemove', (event) => {
+    const handleMouseMove = (event) => {
       const mouseX = -((window.innerWidth / 2) - event.pageX) / 60;
       const mouseY = ((window.innerHeight / 2) - event.pageY) / 60;
 
-      gsap.to(card, {
-        duration: 0.5,
-        rotationY: mouseX,
-        rotationX: mouseY,
-        ease: 'power2.out',
-      });
-    });
+      card.style.transform = `rotateY(${mouseX}deg) rotateX(${mouseY}deg)`;
+    };
+
+    topSection.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('resize', updateScreenWidth);
+
     return () => {
+      topSection.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', updateScreenWidth);
     };
   }, []);
-
 
   return (
     <div className={`can ${styles.container}`}>
@@ -52,22 +46,20 @@ const Hero = () => {
       </div>
 
       <div className={styles.MainContent}>
-
-      <div className={`${styles.card} card`}>
-        <div className={`${styles.thumb} thumb`}></div>
-        <h2 className={`${styles.Cardh1} Cardh1`}>SATYA</h2>
-        <span className={`${styles.span} span`}>CREATIVE THE WAY YOU KNOW!</span>
-      </div>
-      
-      
-      </div>
-
-      <div className={styles.linkTag}>
-        <FaFacebookSquare size={screenWidth>840?"40":"10"} color={screenWidth>840?"white":"black"}/>
-        <AiFillGithub size={screenWidth>840?"40":"10"}  color={screenWidth>840?"white":"black"}/>
-        <AiFillInstagram size={screenWidth>840?"40":"10"}   color={screenWidth>840?"white":"black"}/>
-        
+        <div className={`${styles.card} card`}>
+          <div className={`${styles.thumb} thumb`}></div>
+          <h2 className={`${styles.Cardh1} Cardh1`}>SATYA</h2>
+          <span className={`${styles.span} span`}>CREATIVE THE WAY YOU KNOW!</span>
         </div>
+      </div>
+
+      {screenWidth > 840 && (
+        <div className={styles.linkTag}>
+          <FaFacebookSquare size={40} color="white" />
+          <AiFillGithub size={40} color="white" />
+          <AiFillInstagram size={40} color="white" />
+        </div>
+      )}
     </div>
   );
 };

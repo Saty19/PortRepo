@@ -9,7 +9,7 @@
 #text-anim{
   width: 100%;
   display: flex;
-  font-size: 4em;
+  font-size: 3em;
   color: #ffbf00;
 }
 .BoxWrapper{
@@ -23,9 +23,8 @@
 .BoxWrapperContent{
     width: 40%;
     height: 100%;
-    display: grid;
-    place-items: center;
-    font-size: 3em;
+   
+    font-size: 2em;
     transition: none;
     margin-left: 50px;
   }
@@ -35,7 +34,8 @@
   margin-top: 30px;
   position: relative;
   right: 0;
-  /* transition: none; */
+  /* background-color: #ffbf00; */
+  transition: none;
   overflow: hidden;
 }
 .img{
@@ -58,11 +58,11 @@
     flex-direction: column;
   }
   .BoxWrapperContent{
-    font-size: 30px;
+    font-size: 20px;
     padding-right: 20px;
     width: 100%;
     margin-left: 20px;
-    word-wrap: break-word;
+
   }
   .box{
     height: 80%;
