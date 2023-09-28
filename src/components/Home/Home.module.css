@@ -3,23 +3,31 @@
     height: 100vh;
     border-radius: 10px;
     position: relative;
-    align-items: center;
-    background: #121212;
     overflow: hidden;
     margin: 10px auto;
     color: white;
     display: flex;
   }
+  .video{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
   .mainContent{
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    height: 100%;
+    height: 70%;
+    background-color: rgb(46, 46, 46);
+    backdrop-filter: blur(2px);
+    mix-blend-mode:multiply ;
   }
   .middleContent{
     font-size: 10em;
+    font-weight: 600;
   }
   .topContent{
     align-self: flex-start;

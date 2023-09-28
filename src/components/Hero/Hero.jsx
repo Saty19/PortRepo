@@ -61,9 +61,9 @@ const Hero = () => {
         </div>
       ):(
         <div className={styles.linkTag}>
-        <FaFacebookSquare size={40} color="black" />
-        <AiFillGithub size={40} color="black" />
-        <AiFillInstagram size={40} color="black" />
+        <FaFacebookSquare size={20} color="black" />
+        <AiFillGithub size={20} color="black" />
+        <AiFillInstagram size={20} color="black" />
       </div>
       )}
     </div>

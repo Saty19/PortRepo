@@ -1,10 +1,7 @@
-/* Enable scroll snapping on the container */
-body {
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-    height: 100vh;
-  }
+
   
   /* Define the scroll snap points for each section */
 
-  
+*{
+    scroll-behavior: smooth;
+  }
