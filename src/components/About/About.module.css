@@ -13,6 +13,3 @@ div::-webkit-scrollbar{
   color: white;
   display: flex;
 }
-h1{
-  mix-blend-mode: difference;
-}

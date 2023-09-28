@@ -77,10 +77,10 @@ function PhysicsDemo() {
       },
     });
     tl.to(".box", {
-      width: screenWidth ? "90%" : "40%",
-      duration: 5,
-      ease: "power2.out", // Apply an easing function for smoother animation
-    });
+      width: screenWidth<840 ? "90%" : "50%",
+      duration: 3,
+      ease: "ease", // Apply an easing function for smoother animation
+    }, 1);
     tl.fromTo(
       ".BoxWrapperContent",
       { opacity: 0},
@@ -113,7 +113,6 @@ function PhysicsDemo() {
       <div
         style={{
           width: "80%",
-       
           float: "right",
           marginTop: "10%",
           marginLeft: "auto",

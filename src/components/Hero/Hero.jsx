@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AiFillGithub, AiFillInstagram } from 'react-icons/ai';
 import { FaFacebookSquare } from 'react-icons/fa';
 import styles from './Hero.module.css';
@@ -53,12 +53,18 @@ const Hero = () => {
         </div>
       </div>
 
-      {screenWidth > 840 && (
+      {screenWidth > 840 ? (
         <div className={styles.linkTag}>
           <FaFacebookSquare size={40} color="white" />
           <AiFillGithub size={40} color="white" />
           <AiFillInstagram size={40} color="white" />
         </div>
+      ):(
+        <div className={styles.linkTag}>
+        <FaFacebookSquare size={40} color="black" />
+        <AiFillGithub size={40} color="black" />
+        <AiFillInstagram size={40} color="black" />
+      </div>
       )}
     </div>
   );
