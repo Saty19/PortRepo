@@ -30,17 +30,17 @@ function Images() {
     group.current.children[4].material.zoom = 1 + data.range(1.25 / 3, 1 / 3) / 1
     group.current.children[5].material.zoom = 1 + data.range(1.8 / 3, 1 / 3) / 3
     group.current.children[5].material.grayscale = 1 - data.range(1.6 / 3, 1 / 3)
-    group.current.children[6].material.zoom = 1 + (1 - data.range(2 / 3, 1 / 3)) / 3
+    group.current.children[6].material.zoom = 2 + (1 - data.range(2 / 3, 1 / 3)) / 3
   })
   return (
     <group ref={group} >
-      <Image position={[-2, 0, 0]} scale={[4, height, 1]} url="./img.jpg" />
-      <Image position={[2, 0, 1]} scale={3} url="./img.jpg" />
-      <Image position={[-2.3, -height, 2]} scale={[1, 3, 1]} url="./img.jpg" />
-      <Image position={[-0.6, -height, 3]} scale={[1, 2, 1]} url="./img.jpg" />
-      <Image position={[0.75, -height, 3.5]} scale={1.5} url="./img.jpg" />
-      <Image position={[0, -height * 1.5, 2.5]} scale={[1.5, 3, 1]} url="./img.jpg" />
-      <Image position={[0, -height * 2 - height / 6, 1.5]} scale={[width / 1.5, height / 5, 1]} url="./img.jpg" />
+      <Image position={[-2, 0, 0]} scale={[4, height, 1]} url="https://images.unsplash.com/photo-1519408469771-2586093c3f14?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z3JhcGhpYyUyMGRlc2lnbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" />
+      <Image position={[2, 0, 1]} scale={3} url="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGdyYXBoaWMlMjBkZXNpZ258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" />
+      <Image position={[-2.3, -height, 2]} scale={[1, 3, 1]} url="https://images.unsplash.com/photo-1512295767273-ac109ac3acfa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z3JhcGhpYyUyMGRlc2lnbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" />
+      <Image position={[-0.6, -height, 3]} scale={[1, 2, 1]} url="https://images.unsplash.com/photo-1534669740902-e09e38a6a29f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGdyYXBoaWMlMjBkZXNpZ258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" />
+      <Image position={[0.75, -height, 3.5]} scale={1.5} url="https://images.unsplash.com/photo-1512295767273-ac109ac3acfa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z3JhcGhpYyUyMGRlc2lnbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" />
+      <Image position={[0, -height * 1.5, 2.5]} scale={[1.5, 3, 1]} url="https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Z3JhcGhpYyUyMGRlc2lnbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" />
+      <Image position={[0, -height * 2 - height / 6, 1.5]} scale={[width / 1.5, height / 5, 1]} url="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JhcGhpYyUyMGRlc2lnbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60 " />
     </group>
   )
 }
