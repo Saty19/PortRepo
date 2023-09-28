@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./PhysicsDemo.css";
@@ -73,20 +73,20 @@ function PhysicsDemo() {
         trigger: container.current,
         start: "10% 80%",
         end: "90% 70%",
-        scrub: 0.8,
+        scrub: 2,
       },
     });
     tl.to(".box", {
       width: screenWidth ? "90%" : "40%",
-      duration: 3,
+      duration: 5,
       ease: "power2.out", // Apply an easing function for smoother animation
-    }, 1);
+    });
     tl.fromTo(
       ".BoxWrapperContent",
-      { opacity: 0, x: 0 },
+      { opacity: 0},
       {
         opacity: 1,
-        x: screenWidth ? 0 : "80%",
+       
         duration: 3,
         ease: "power2.out", // Apply an easing function for smoother animation
       },
@@ -113,8 +113,7 @@ function PhysicsDemo() {
       <div
         style={{
           width: "80%",
-          height: "1px",
-          background: "black",
+       
           float: "right",
           marginTop: "10%",
           marginLeft: "auto",
