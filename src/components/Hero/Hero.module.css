@@ -14,6 +14,7 @@
   margin: 10px auto;
   color: white;
   display: flex;
+  transition: none;
 }
 
 .video {
@@ -25,11 +26,6 @@
   filter: saturate(0);
 }
 
-
-.prospective {
-  width: 100%;
-  position: relative;
-}
 .leftContent {
   position: relative;
   width: 55%;
@@ -38,26 +34,6 @@
   justify-content: center;
   flex-direction: column;
   padding-left: 5%;
-}
-
-
-
-.rightTopContent {
-  width: 100%;
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-
-  height: 70%;
-}
-
-.rightBottomContent {
-  height: 30%;
-  width: 100%;
-  margin: 10px auto;
-  padding: 20px;
-  position: relative;
 }
 
 .linkTag {
@@ -78,73 +54,10 @@
   justify-content: center;
   perspective: 800px; /* Add perspective to the .MainContent container */
 }
-.card {
-    width: 50%;
-    height: 60%;
-    margin: auto;
-    box-shadow: 0 0 63px #ffffff60;
-    border-radius: 15px;
-    background: rgba(49, 49, 49, 0.5); 
-    transform-style: preserve-3d;
-    transition: transform .05s linear;
-}
-
-.thumb {
-  /* background: url(./satya.png); */
-  background-size: cover;
-  background-position: center;
-  height: 100%;
-  width: 100%;
-  transform: translateZ(120px);
-  border-radius: 15px; /* Move along the Z-axis and scale */
-}
-.thumb:after {
-  background: inherit;
-  content: '';
-  display: block;
-  position: absolute;
-  left: -60px;
-  top: 40px;
-  width: 100%;
-  height: 108%;
-  z-index: -1;
-  filter: blur(55px);
-}
-.span {
-  position: absolute;
-  bottom: 40px;
-  right: 100px;
-  font-size: 2em;
-  -webkit-text-stroke: 0.001px white;
-  color: transparent;
-  font-weight: 600;
-  transform: translateZ(180px);/* Move along the Z-axis */
-}
-
-.Cardh1 {
-  position: absolute;
-  top: 0;
-  left: -60px;
-  font-size: 4em;
-  font-weight: 100;
-  transform: translateZ(30px); /* Move along the Z-axis */
-}
-.leftH1 {
-  font-size: 4em;
-  /* letter-spacing: 5px; */
-  /* font-family: 'Outward'; Use the custom 'Outward' font */
-  display: flex;
-  align-items: center;
-  /* -webkit-text-stroke: 1px white; */
-  color: white;
-}
 
 
 @media screen and (max-width: 1200px) {
-  .card {
-    width: 60%;
-    height: 50%;
-  }
+
   .leftContent {
     width: 30%;
   }
@@ -161,42 +74,7 @@
     bottom: 10px;
     left: 30%;
   }
-  .Cardh1{
-    font-size: 3em;
-  }
-  .span{
-    font-size: 1em;
-  }
-  .rightContent {
-    width: 40%;
-  }
-  .rightTopContent {
-    width: 100%;
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid white;
-    height: 60%;
-  }
-
-  .rightBottomContent {
-    height: 40%;
-    width: 100%;
-    border-bottom: 1px solid white;
-  }
-
-  .Cardh1 {
-    font-size: 2.5em;
-  }
-  .imageBacktext {
-    position: absolute;
-    font-size: 0.8em;
-    left: 55%;
-  }
-  .imageFrontTest {
-    font-size: 1.1em;
-  }
+  
 }
 @media screen and (max-width: 820px) {
   .container {
@@ -219,28 +97,10 @@
     width: 100%;
     height: 85%;
   }
-  .card {
-    height: 60%;
-    width: 50%;
-  }
-  span {
-    right: 0;
-  }
-  .container h1 {
-    font-size: 5vw;
-  }
-  .imageBacktext {
-    font-size: 2vw;
-    top: 10%;
-  }
-  .imageFrontTest {
-    font-size: 3vw;
-    bottom: 10px;
-    left: 100px;
-  }
+  
   .linkTag {
     position: fixed;
-    right: 10px;
+    right: 1px;
     top: 40%;
     z-index: 20;
     justify-content: space-around;
@@ -281,22 +141,7 @@
     height: 65%;
   }
 
-  .card {
-    height: 60%;
-    width: 50%;
-  }
-  span {
-    right: 0;
-  }
-  .leftContent {
-    height: 20%;
-    padding-top: 30%;
-  }
-  .leftH1 {
-    font-size: 3.5em;
-    display: flex;
-    align-items: center;
-  }
+  
   .linkTag {
     position: fixed;
     right: -10%;

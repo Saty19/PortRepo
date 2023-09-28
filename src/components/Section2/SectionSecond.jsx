@@ -35,7 +35,7 @@ const SectionSecond = () => {
     tl.to(rec3.current, { y: "100%", direction: 1 }, 3);
     tl.to(rec4.current, { y: "100%", direction: 1 }, 3.5);
     tl.to(parra.current, { opacity: 1, duration: 1 }, 3);
-    tl.to(ThreeContent.current, { width: "90%", top: isMobile ? "60%" : "85%", borderRadius: 10, duration: 2 }, 4);
+    tl.to(ThreeContent.current, { width: "90%", top: isMobile ? "70%" : "85%", height: isMobile && "70%",borderRadius: 10, duration: 2 }, 4);
     tl.to(rightContent.current, {
       opacity: 1,
       duration: 0.8,

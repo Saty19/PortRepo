@@ -1,6 +1,6 @@
 .container {
   width: 99%;
-
+  transition: none;
   height: 100vh;
   margin: 10px auto;
   color: white;

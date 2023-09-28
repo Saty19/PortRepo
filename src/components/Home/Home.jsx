@@ -1,39 +1,51 @@
-
-
-import style from "./Home.module.css"
+import style from "./Home.module.css";
 import gsap from 'gsap';
-import {ScrollTrigger} from 'gsap/ScrollTrigger'
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useRef } from 'react';
 
 const Home = () => {
-  const videoUrl = 'https://player.vimeo.com/progressive_redirect/playback/824814926/rendition/540p/file.mp4?loc=external&oauth2_token_id=57447761&signature=92f350bb5b4d1455f72954041a05499d90724afb4ded1763b0e860ea7e84c3dc';
+  const videoUrl = 'https://player.vimeo.com/progressive_redirect/playback/854031911/rendition/360p/file.mp4?loc=external&oauth2_token_id=57447761&signature=90d4b4600372b76e164c12dc94c7873997133f3923079a02e7451e10c521a386';
   const elementRef = useRef(null);
+  const video = useRef(null);
   const mainContent = useRef(null);
-  
-  useEffect(()=>{
 
-    gsap.registerPlugin(ScrollTrigger)
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
     const element = elementRef.current;
+    const videoElement = video.current;
 
-    if (element) {
-    const tl = gsap.timeline({
-      scrollTrigger:{
-        trigger:element,
-        start:"top top"
-      }
-    });
-      tl.fromTo(element, { opacity: 0 },{opacity: 1, duration: 1, ease: 'power3.out'});
-      
-    return ()=>{
-      tl.kill()
+    if (element && videoElement) {
+      // Main content animation (unchanged)
+      const tl = gsap.timeline({
+        scrollTrigger:{
+          trigger:element,
+          start:"50% 30%",
+          end:"50% 30%",
+          markers:false,
+          toggleActions:"play none reverse  none"
+        }
+      });
+        tl.to(mainContent.current,{opacity: 1, duration: 2, ease: 'power2.out'});
+        tl.to(mainContent.current,{height:"0%",duration: 2, ease: 'power2.out'},"-=2");
+
+      // Video parallax animation
+      gsap.to(videoElement, {
+        y: '50%', // Adjust this value as needed
+        ease: 'ease',
+        scrollTrigger: {
+          trigger: element,
+          start: "top top",
+          end: "bottom top",
+          scrub: true, // Enable scrubbing for parallax effect
+        }
+      });
     }
-  }
-  },[])
+  }, []);
 
   return (
     <div ref={elementRef} className={style.container}>
-      <video loop autoPlay muted className={style.video}>
+      <video ref={video} loop autoPlay muted className={`${style.video} video`}>
         <source src={videoUrl} type="video/mp4" />
       </video>
 
@@ -43,12 +55,9 @@ const Home = () => {
           ENIGMA TECH
         </h1>
         <h2 className={style.bottomContent}>VISION</h2>
-
       </div>
-
-
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

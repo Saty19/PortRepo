@@ -46,11 +46,26 @@ function Images() {
 }
 
 export default function About() {
+  const snap =useRef(null)
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    ScrollTrigger.create({
+      start: "center center",
+      end: "center top",
+      toggleActions: "play none reverse none",
+      onEnter: () => {
+      
+        console.log("Scroll reached 50% of the viewport");
+       
+      },
+    });
+  }, []);
 
 
 
   return (
-    <div  className={style.container}>
+    <div ref={snap}  className={style.container}>
       <Canvas gl={{ antialias: false }} dpr={[1, 1.5]}  className={style.scroll} >
         <Suspense fallback={null}>
         

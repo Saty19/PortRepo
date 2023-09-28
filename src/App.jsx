@@ -1,6 +1,5 @@
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
-
 import "./App.css";
 import SectionSecond from "./components/Section2/SectionSecond";
 import About from "./components/About/About";
@@ -9,7 +8,7 @@ import Home from "./components/Home/Home";
 
 const App = () => {
   return (
-    <div style={{scrollSnapType:"y mandatory"}}>
+    <div>
       <div
         style={{
           position: "fixed",
@@ -38,11 +37,11 @@ const App = () => {
       </div>
       <div>
         <Navbar />
-        <Hero />
+        <Home />
         <SectionSecond />
         <PhysicsDemo />
-        <About/>
-        <Home />
+        <About />
+        <Hero />
       </div>
     </div>
   );
