@@ -15,6 +15,7 @@
   color: white;
   display: flex;
   transition: none;
+  margin-bottom: 0;
 }
 
 .video {

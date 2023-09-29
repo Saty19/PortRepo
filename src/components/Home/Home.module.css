@@ -7,6 +7,7 @@
     margin: 10px auto;
     color: white;
     display: flex;
+    margin-bottom: 0;
   }
   .video{
     position: absolute;

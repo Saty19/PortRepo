@@ -56,7 +56,7 @@ export default function About() {
       toggleActions: "play none reverse none",
       onEnter: () => {
       
-        console.log("Scroll reached 50% of the viewport");
+        console.log("hello");
        
       },
     });

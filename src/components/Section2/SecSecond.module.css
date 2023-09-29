@@ -9,6 +9,7 @@
   position: relative;
   transition: none;
   background: #121212;
+  margin-bottom: 0;
   overflow: hidden;
 }
 .container img {

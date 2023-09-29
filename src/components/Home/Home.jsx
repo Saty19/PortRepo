@@ -52,7 +52,7 @@ const Home = () => {
       <div ref={mainContent} className={style.mainContent}>
         <h2 className={style.topContent}>YOUR VISION OUR RESPONSIBILITY</h2>
         <h1 className={style.middleContent}>
-          ENIGMA TECH
+        Hello Test
         </h1>
         <h2 className={style.bottomContent}>VISION</h2>
       </div>
