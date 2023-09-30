@@ -2,7 +2,7 @@ import Navbar from "./components/Navbar/Navbar";
 // import Hero from "./components/Hero/Hero";
 import "./App.css";
 import SectionSecond from "./components/Section2/SectionSecond";
-import Service from "./components/Product/Service";
+import Service from "./components/Service/Service";
 import Home from "./components/Home/Home";
 
 const App = () => {

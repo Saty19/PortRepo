@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import  { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import style from "./Service.module.css";
 import img from "/service.jpg";
-import back from "/serviceBack.jpg"
+import back from "/serviceBack.jpg";
 
 // Initialize ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -44,7 +44,7 @@ function Service() {
       });
 
       gsap.fromTo(
-        `${element} > div`, // Use a single selector string
+        `${element} > div`,
         {
           opacity: 0,
           y: 30,
@@ -54,7 +54,7 @@ function Service() {
           opacity: 1,
           y: 0,
           stagger: 0.02,
-          ease: "power2.out", // Apply an easing function for smoother animation
+          ease: "power2.out",
           scrollTrigger: {
             trigger: element,
             start: "top 70%",
@@ -67,6 +67,7 @@ function Service() {
         -1
       );
     }
+
     gsap.fromTo(
       ".img",
       {
@@ -75,8 +76,6 @@ function Service() {
         scrollTrigger: {
           trigger: ".img",
           start: "top top",
-
-          // Enable scrubbing for a smoother effect
         },
       },
       { opacity: 1, duration: 4 }
@@ -96,7 +95,7 @@ function Service() {
       {
         width: screenWidth < 840 ? "90%" : "50%",
         duration: 3,
-        ease: "ease", // Apply an easing function for smoother animation
+        ease: "ease",
       },
       1
     );
@@ -105,9 +104,8 @@ function Service() {
       { opacity: 0 },
       {
         opacity: 1,
-
         duration: 3,
-        ease: "power2.out", // Apply an easing function for smoother animation
+        ease: "power2.out",
       },
       2
     );
@@ -123,10 +121,10 @@ function Service() {
       window.removeEventListener("resize", updateScreenWidth);
     };
   }, [screenWidth]);
-
+  const imageUrl ="https://images.unsplash.com/photo-1695883701435-7bd88f796e05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
   return (
     <div className={`${style.container}`} ref={container}>
-      {<img src={back} className={`${style.serviceImg}`}/>}
+      <img src={imageUrl} className={`${style.serviceImg}`} alt="Service Background" />
       <h1 ref={textRef} id="textanim" className={style.textpup}>
         NOW I AM JUST USING THIS FOR TESTING
       </h1>
@@ -144,7 +142,7 @@ function Service() {
           style={{ color: "white" }}
           className={`BoxWrapperContent ${style.BoxWrapperContent}`}
         >
-          <h2 style={{ color: "white" ,fontSize:"4em" }}>TEST</h2>
+          <h2 style={{ color: "white", fontSize: "4em" }}>TEST</h2>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem iusto
           nulla pariatur sunt suscipit non sit fugiat, optio repellendus
           commodi?

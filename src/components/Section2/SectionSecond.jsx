@@ -69,10 +69,10 @@ const SectionSecond = () => {
       });
     };
   }, []);
-
+  const imageUrl ="https://images.unsplash.com/photo-1695670277545-919ece6eddb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60"
   return (
     <div className={`section ${style.container}`} >
-    <img src={image} ref={imgPrlx} className={style.secimage} style={{objectFit:"cover"}}/>
+    <img src={imageUrl} ref={imgPrlx} className={style.secimage} style={{objectFit:"cover"}}/>
       <div className={style.leftContent} ref={leftContent}>
         <div style={{ width: "100%" }} ref={leftTop}>
           {["JAVA", "JAVASCRIPT", "REACT", "THREE"].map((text, index) => (
