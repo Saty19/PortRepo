@@ -2,13 +2,16 @@ import  { useEffect, useRef } from "react";
 import style from "./SecSecond.module.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
-import ThreeElement from "../ThreeElement/ThreeElement";
+import image from "/SecImage.jpg"
+// import ThreeElement from "../ThreeElement/ThreeElement";
 
 const SectionSecond = () => {
   const rec1 = useRef(null);
   const rec2 = useRef(null);
   const rec3 = useRef(null);
   const rec4 = useRef(null);
+  const imgPrlx = useRef(null);
+
   const rightContent = useRef(null);
   const leftContent = useRef(null);
   const parra = useRef(null);
@@ -34,8 +37,8 @@ const SectionSecond = () => {
     tl.to(rec2.current, { y: "100%", direction: 1 }, 2.5);
     tl.to(rec3.current, { y: "100%", direction: 1 }, 3);
     tl.to(rec4.current, { y: "100%", direction: 1 }, 3.5);
-    tl.to(parra.current, { opacity: 1, duration: 1 }, 3);
-    tl.to(ThreeContent.current, { width: "90%", top: isMobile ? "70%" : "80%", height: isMobile && "70%",borderRadius: 10, duration: 2 }, 4);
+    tl.to(parra.current, { opacity: 1, duration: 3,position:isMobile && "absolute" ,zIndex:isMobile && 2}, 3);
+    tl.to(ThreeContent.current, { width: "70%", top: isMobile ? "70%" : "80%", height: isMobile && "70%",borderRadius: 10, duration: 2 }, 4);
     tl.to(rightContent.current, {
       opacity: 1,
       duration: 0.8,
@@ -47,6 +50,18 @@ const SectionSecond = () => {
       ease: "none",
     }, 0);
 
+    gsap.to(imgPrlx.current, {
+      y:   0.8 * imgPrlx.current.parentNode.offsetHeight, // Adjust this value as needed
+      ease: 'none',
+      scrollTrigger: {
+        trigger: imgPrlx.current,
+        start: "top top",
+        markers:false,
+        end: "bottom top ",
+        scrub: 0, // Enable scrubbing for parallax effect
+      }
+    });
+
     return () => {
       tl.kill(); // Kill the timeline to prevent memory leaks
       ScrollTrigger.getAll().forEach((trigger) => {
@@ -56,7 +71,8 @@ const SectionSecond = () => {
   }, []);
 
   return (
-    <div className={`section ${style.container}`}>
+    <div className={`section ${style.container}`} >
+    <img src={image} ref={imgPrlx} className={style.secimage} style={{objectFit:"cover"}}/>
       <div className={style.leftContent} ref={leftContent}>
         <div style={{ width: "100%" }} ref={leftTop}>
           {["JAVA", "JAVASCRIPT", "REACT", "THREE"].map((text, index) => (
@@ -78,7 +94,9 @@ const SectionSecond = () => {
           NO LIMIT TO SHOW <br />
           YOUR 3D CONTENT
         </div>
-        <ThreeElement />
+          <div className={style.animatedContent}>
+          BLOW MIND
+          </div>
       </div>
     </div>
   );

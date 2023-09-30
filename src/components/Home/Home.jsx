@@ -31,13 +31,14 @@ const Home = () => {
 
       // Video parallax animation
       gsap.to(videoElement, {
-        y: '50%', // Adjust this value as needed
-        ease: 'ease',
+        y:   0.5 * video.current.parentNode.offsetHeight, // Adjust this value as needed
+        ease: 'none',
         scrollTrigger: {
           trigger: element,
           start: "top top",
-          end: "bottom top",
-          scrub: true, // Enable scrubbing for parallax effect
+          markers:false,
+          end: "bottom top ",
+          scrub: 4, // Enable scrubbing for parallax effect
         }
       });
     }

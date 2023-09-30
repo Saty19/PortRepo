@@ -1,9 +1,8 @@
 import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
+// import Hero from "./components/Hero/Hero";
 import "./App.css";
 import SectionSecond from "./components/Section2/SectionSecond";
-import About from "./components/About/About";
-import PhysicsDemo from "./components/Product/PhysicsDemo";
+import Service from "./components/Product/Service";
 import Home from "./components/Home/Home";
 
 const App = () => {
@@ -39,9 +38,8 @@ const App = () => {
         <Navbar />
         <Home />
         <SectionSecond />
-        <PhysicsDemo />
-        <About />
-        <Hero />
+        <Service />
+      
       </div>
     </div>
   );

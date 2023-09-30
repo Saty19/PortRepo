@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { AiFillGithub, AiFillInstagram } from 'react-icons/ai';
 import { FaFacebookSquare } from 'react-icons/fa';
 import styles from './Hero.module.css';
+import ThreeElement from '../ThreeElement/ThreeElement';
 
 
 const Hero = () => {
@@ -43,13 +44,9 @@ const Hero = () => {
     <div className={`can ${styles.container}`}>
       
 
-      <div className={styles.leftContent}>
-      
-      </div>
+    
 
-      <div className={styles.MainContent}>
-
-      </div>
+<ThreeElement/>
 
       {screenWidth > 840 ? (
         <div className={styles.linkTag}>
