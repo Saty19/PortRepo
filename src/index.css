@@ -3,3 +3,6 @@
 *{
   font-family: Audiowide;
 }
+body {
+  touch-action: pan-x pan-y;
+}
