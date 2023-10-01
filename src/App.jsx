@@ -5,10 +5,12 @@ import SectionSecond from "./components/Section2/SectionSecond";
 import Service from "./components/Service/Service";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
+import Hero from "./components/Hero/Hero";
 
 const App = () => {
   return (
     <div>
+    
       <div
         style={{
           position: "fixed",
@@ -41,6 +43,7 @@ const App = () => {
         <SectionSecond />
         <Service />
         <About/>
+        <Hero/>
       </div>
     </div>
   );

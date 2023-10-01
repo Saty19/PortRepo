@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useRef } from 'react';
 
 const Home = () => {
-  const videoUrl = 'https://player.vimeo.com/progressive_redirect/playback/854031911/rendition/360p/file.mp4?loc=external&oauth2_token_id=57447761&signature=90d4b4600372b76e164c12dc94c7873997133f3923079a02e7451e10c521a386';
+  const videoUrl = 'https://player.vimeo.com/external/489633226.sd.mp4?s=a500a3f029e29953f06c8ada1ffbb3a2b36b5225&profile_id=164&oauth2_token_id=57447761';
   const elementRef = useRef(null);
   const video = useRef(null);
   const mainContent = useRef(null);
