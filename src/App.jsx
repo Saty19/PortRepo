@@ -4,6 +4,7 @@ import "./App.css";
 import SectionSecond from "./components/Section2/SectionSecond";
 import Service from "./components/Service/Service";
 import Home from "./components/Home/Home";
+import About from "./components/About/About";
 
 const App = () => {
   return (
@@ -39,7 +40,7 @@ const App = () => {
         <Home />
         <SectionSecond />
         <Service />
-      
+        <About/>
       </div>
     </div>
   );

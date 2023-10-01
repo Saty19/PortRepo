@@ -20,53 +20,53 @@ function Service() {
   };
 
   useEffect(() => {
-    // Animation function
-    function animateText(element) {
-      const newText = [];
-      const theText = textRef.current;
+    // // Animation function
+    // function animateText(element) {
+    //   const newText = [];
+    //   const theText = textRef.current;
 
-      for (let i = 0; i < theText.innerText.length; i++) {
-        const newChar = document.createElement("div");
+    //   for (let i = 0; i < theText.innerText.length; i++) {
+    //     const newChar = document.createElement("div");
 
-        if (theText.innerText[i] === " ") {
-          newChar.innerHTML = "&nbsp;";
-        } else {
-          newChar.textContent = theText.innerText[i];
-        }
+    //     if (theText.innerText[i] === " ") {
+    //       newChar.innerHTML = "&nbsp;";
+    //     } else {
+    //       newChar.textContent = theText.innerText[i];
+    //     }
 
-        newText.push(newChar);
-      }
+    //     newText.push(newChar);
+    //   }
 
-      theText.innerHTML = "";
+    //   theText.innerHTML = "";
 
-      newText.forEach((char) => {
-        theText.appendChild(char);
-      });
+    //   newText.forEach((char) => {
+    //     theText.appendChild(char);
+    //   });
 
-      gsap.fromTo(
-        `${element} > div`,
-        {
-          opacity: 0,
-          y: 30,
-        },
-        {
-          duration: 1,
-          opacity: 1,
-          y: 0,
-          stagger: 0.02,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: element,
-            start: "top 70%",
-            toggleActions: "play pause none none",
-            end: "90% 70%",
-            pinSpacing: true,
-            scrub: 2,
-          },
-        },
-        -1
-      );
-    }
+    //   gsap.fromTo(
+    //     `${element} > div`,
+    //     {
+    //       opacity: 0,
+    //       y: 30,
+    //     },
+    //     {
+    //       duration: 1,
+    //       opacity: 1,
+    //       y: 0,
+    //       stagger: 0.02,
+    //       ease: "power2.out",
+    //       scrollTrigger: {
+    //         trigger: element,
+    //         start: "top 70%",
+    //         toggleActions: "play pause none none",
+    //         end: "90% 70%",
+    //         pinSpacing: true,
+    //         scrub: 2,
+    //       },
+    //     },
+    //     -1
+    //   );
+    // }
 
     gsap.fromTo(
       ".img",
@@ -110,8 +110,22 @@ function Service() {
       2
     );
 
+
+    gsap.to(textRef.current, {
+      scrollTrigger: {
+        trigger: container.current,
+        start: `${ screenWidth < 840 ?"10%":"top"} 80%`,
+        end: `${ screenWidth < 840 ?"80%":"bottom"} top`,
+        markers:false,
+        toggleActions: "play none none none",
+        scrub: 5, // Increase the scrub value to slow down the animation
+      },
+      x: "-50%",
+      duration: 3 , // Increase the duration for a smoother effect
+    });
+    
     // Initialize text animation
-    animateText(`#textanim`);
+    // animateText(`#textanim`);
 
     // Event listener for window resize
     window.addEventListener("resize", updateScreenWidth);
