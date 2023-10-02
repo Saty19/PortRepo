@@ -4,13 +4,22 @@ div::-webkit-scrollbar{
 .container{
     width: 99%;
   height: 100vh;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   position: relative;
   align-items: center;
-  background:#ffffff;
+  background:#121212;
   overflow: hidden;
-  margin: 10px auto;
+  margin: 0 auto;
   color: white;
+  display: block;
   display: flex;
-  transition: none;
+  justify-content: center;
+  align-items: center;
+  /* transition: none; */
+}
+.snap{
+  position: absolute;
+
+  height: 100%;
+  width: 100%;
 }

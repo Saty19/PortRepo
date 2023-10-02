@@ -60,11 +60,23 @@ export default function About() {
        
       },
     });
+    const tl =gsap.timeline({
+      scrollTrigger:{
+        trigger:snap.current,
+        start:"top top",
+        end:"+=130%",
+        pin:true,
+        pinSpacing:true
+
+      }
+    })
+    tl.to(snap.current,{background:"white",color:"black",duration:2},0)
   }, []);
 
 
 
   return (
+    
     <div ref={snap}  className={style.container}>
       <Canvas gl={{ antialias: false }} dpr={[1, 1.5]}  className={style.scroll} >
         <Suspense fallback={null}>
@@ -74,9 +86,9 @@ export default function About() {
                 <Images />
               </Scroll>
               <Scroll html>
-                <h1 style={{ position: 'absolute', top: '50vh', left: '80vw' ,fontSize:"4em",transition:"none" ,color:"black",mixBlendMode: "difference"}}>CREATE</h1>
-                <h1 style={{ position: 'absolute', top: '80vh', left: '10vw' ,fontSize:"4em" ,transition:"none",color:"black",mixBlendMode: "difference"}}>TEST</h1>
-                <h1 style={{ position: 'absolute', top: '40vh', left: 'vw', fontSize: '5em',transition:"none" ,color:"black",mixBlendMode: "difference"}}>HELLO</h1>
+                <h1 style={{ position: 'absolute', top: '50vh', left: '80vw' ,fontSize:"4em",transition:"none" ,mixBlendMode: "difference"}}>CREATE</h1>
+                <h1 style={{ position: 'absolute', top: '80vh', left: '10vw' ,fontSize:"4em" ,transition:"none",mixBlendMode: "difference"}}>TEST</h1>
+                <h1 style={{ position: 'absolute', top: '40vh', left: 'vw', fontSize: '5em',transition:"none" ,mixBlendMode: "difference"}}>HELLO</h1>
               </Scroll>
             </ScrollControls>
 
