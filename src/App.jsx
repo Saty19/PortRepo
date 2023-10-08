@@ -6,8 +6,26 @@ import Service from "./components/Service/Service";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Hero from "./components/Hero/Hero";
+import { useEffect } from "react";
 
 const App = () => {
+
+    useEffect(() => {
+      const handleWheelEvent = (e) => {
+        if (e.ctrlKey || e.metaKey) {
+          // Prevent zooming with Ctrl (Windows/Linux) or Command (Mac) + Scroll
+          e.preventDefault();
+        }
+      };
+  
+      // Attach the event listener when the component mounts
+      window.addEventListener("wheel", handleWheelEvent, { passive: false });
+  
+      // Remove the event listener when the component unmounts
+      return () => {
+        window.removeEventListener("wheel", handleWheelEvent);
+      };
+    }, []);
   return (
     <div>
     

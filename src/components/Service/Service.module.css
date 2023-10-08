@@ -47,7 +47,7 @@
   z-index: 2;
   transform: translate(50%, 0%);
   color: transparent;
-  -webkit-text-stroke: 0.01px white;
+  -webkit-text-stroke: 1px white;
   transition: none;
 }
 .BoxWrapper {
