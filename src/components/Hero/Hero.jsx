@@ -4,7 +4,6 @@ import { FaFacebookSquare } from 'react-icons/fa';
 import styles from './Hero.module.css';
 import ThreeElement from '../ThreeElement/ThreeElement';
 
-
 const Hero = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [scrollY, setScrollY] = useState(0);
@@ -38,15 +37,10 @@ const Hero = () => {
     // Show the linkTag when scrolling reaches 60%
     setShowLinkTag(scrollPercentage >= 10);
   }, [scrollY]);
-  
 
   return (
     <div className={`can ${styles.container}`}>
-      
-
-    
-
-<ThreeElement/>
+      <ThreeElement />
 
       {screenWidth > 840 ? (
         <div className={styles.linkTag}>
@@ -54,12 +48,14 @@ const Hero = () => {
           <AiFillGithub size={40} color="white" />
           <AiFillInstagram size={40} color="white" />
         </div>
-      ):showLinkTag && (
-        <div className={styles.linkTag}>
-        <FaFacebookSquare size={20} color="black" />
-        <AiFillGithub size={20} color="black" />
-        <AiFillInstagram size={20} color="black" />
-      </div>
+      ) : (
+        <div
+          className={`${styles.linkTag} ${showLinkTag ? styles.show : ''}`}
+        >
+          <FaFacebookSquare size={20} color="black" />
+          <AiFillGithub size={20} color="black" />
+          <AiFillInstagram size={20} color="black" />
+        </div>
       )}
     </div>
   );

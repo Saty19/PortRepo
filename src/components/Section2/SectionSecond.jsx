@@ -69,7 +69,7 @@ const SectionSecond = () => {
       });
     };
   }, []);
-  const imageUrl ="https://images.unsplash.com/photo-1695670277545-919ece6eddb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60"
+  const imageUrl ="https://plus.unsplash.com/premium_photo-1674740443999-3d67127b5389?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fDNkfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
   return (
     <div className={`section ${style.container}`} >
     <img src={imageUrl} ref={imgPrlx} className={style.secimage} style={{objectFit:"cover"}}/>
@@ -84,9 +84,9 @@ const SectionSecond = () => {
           ))}
         </div>
 
-        <p ref={parra} className={style.Parragraph}>
+       { /*<p ref={parra} className={style.Parragraph}>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis laborum molestiae placeat voluptatum animi at ex quos doloribus mollitia adipisci?
-        </p>
+          </p>*/}
       </div>
 
       <div className={style.rightContent} ref={rightContent}>
@@ -94,10 +94,10 @@ const SectionSecond = () => {
           NO LIMIT TO SHOW <br />
           YOUR 3D CONTENT
         </div>
-          <div className={style.animatedContent}>
-          BLOW MIND
-          </div>
-      </div>
+        </div>
+        <div className={style.animatedContent}>
+        BLOW MIND
+        </div>
     </div>
   );
 };

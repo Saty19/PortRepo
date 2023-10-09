@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import style from "./About.module.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import saty from "/saty.png"; // Adjust the path to your image
+import saty from "/satya.png"; // Adjust the path to your image
 
 const About = () => {
   // Create a ref for the container element

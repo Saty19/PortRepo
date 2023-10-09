@@ -6,7 +6,7 @@
 .container {
   width: 99%;
   height: 100vh;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   position: relative;
   align-items: center;
   background: #121212;
@@ -142,6 +142,12 @@
     height: 65%;
   }
 
+
+  
+  .linkTag.show {
+    opacity: 1;
+  }
+  
   
   .linkTag {
     position: fixed;
@@ -151,9 +157,13 @@
     align-items: center;
     gap: 30px;
     right: -35px;
+    opacity: 0;
+    transition: right opacity 0.5s ease;
+   
   }
   .linkTag:hover {
     right: 0;
+   
   }
   .linkTag::after {
     position: absolute;

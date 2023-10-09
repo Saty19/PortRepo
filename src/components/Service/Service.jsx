@@ -18,55 +18,20 @@ function Service() {
   const updateScreenWidth = () => {
     setScreenWidth(window.innerWidth);
   };
-
+ 
   useEffect(() => {
-    // // Animation function
-    // function animateText(element) {
-    //   const newText = [];
-    //   const theText = textRef.current;
-
-    //   for (let i = 0; i < theText.innerText.length; i++) {
-    //     const newChar = document.createElement("div");
-
-    //     if (theText.innerText[i] === " ") {
-    //       newChar.innerHTML = "&nbsp;";
-    //     } else {
-    //       newChar.textContent = theText.innerText[i];
-    //     }
-
-    //     newText.push(newChar);
-    //   }
-
-    //   theText.innerHTML = "";
-
-    //   newText.forEach((char) => {
-    //     theText.appendChild(char);
-    //   });
-
-    //   gsap.fromTo(
-    //     `${element} > div`,
-    //     {
-    //       opacity: 0,
-    //       y: 30,
-    //     },
-    //     {
-    //       duration: 1,
-    //       opacity: 1,
-    //       y: 0,
-    //       stagger: 0.02,
-    //       ease: "power2.out",
-    //       scrollTrigger: {
-    //         trigger: element,
-    //         start: "top 70%",
-    //         toggleActions: "play pause none none",
-    //         end: "90% 70%",
-    //         pinSpacing: true,
-    //         scrub: 2,
-    //       },
-    //     },
-    //     -1
-    //   );
-    // }
+    
+    gsap.to(container.current, {
+      y:   0.05 * container.current.parentNode.offsetHeight, // Adjust this value as needed
+      ease: 'none',
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top top",
+        markers:false,
+        end: "bottom top ",
+        scrub: 0, // Enable scrubbing for parallax effect
+      }
+    })
 
     gsap.fromTo(
       ".img",
@@ -120,7 +85,7 @@ function Service() {
         toggleActions: "play none none none",
         scrub: 10, // Increase the scrub value to slow down the animation
       },
-      xPercent:-100,
+      xPercent:`${ screenWidth < 840 ?-250:-150}`,
       duration: 5 , 
       ease:"linear"// Increase the duration for a smoother effect
     });
@@ -158,7 +123,7 @@ function Service() {
           style={{ color: "white" }}
           className={`BoxWrapperContent ${style.BoxWrapperContent}`}
         >
-          <h2 style={{ color: "white", fontSize: "4em" }}>TEST</h2>
+          <h2 style={{ color: "white", fontSize: "4vw" }}>TEST</h2>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem iusto
           nulla pariatur sunt suscipit non sit fugiat, optio repellendus
           commodi?
