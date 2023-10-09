@@ -7,81 +7,27 @@ import saty from "/saty.png"; // Adjust the path to your image
 const About = () => {
   // Create a ref for the container element
   const containerRef = useRef(null);
-
-  useEffect(() => {
-    // Ensure that GSAP's ScrollTrigger is used
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Animation timeline
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top center",
-        end: "bottom center",
-        scrub: true, // Adjust this option for the desired effect
-      },
-    });
-
-    // Define animations using gsap methods
-    tl.fromTo(
-      ".frontTextWrapper",
-      { opacity: 0, x: 100 },
-      { opacity: 1, x: 0, duration: 1 }
-    );
-
-    tl.fromTo(
-      ".backText",
-      { opacity: 0, y: -100 },
-      { opacity: 1, y: 0, duration: 1 },
-      "-=0.5"
-    );
-
-    tl.fromTo(
-      ".aboutText",
-      { opacity: 0 },
-      { opacity: 1, duration: 1 },
-      "-=0.5"
-    );
-
-    tl.fromTo(
-      ".satyaImg",
-      { opacity: 0, scale: 0.5 },
-      { opacity: 1, scale: 1, duration: 1 },
-      "-=0.5"
-    );
-  }, []);
-
+  const demoImg="https://assets.website-files.com/62cfb3313a1a61a7d399c600/62cfba001eea8f0afa9f0d48_man_hero_cropped-min-p-800.png"
   return (
     <div className={style.container} ref={containerRef}>
-      <div className={style.backText}>
-        <h1 className={style.name}>
-          SATYADAR <span className={style.stocktext}>SAN</span>
-        </h1>
-        <h1 className={style.nextContent}>
-          <span style={{ textAlign: "center", width: "50%" }}>TALK</span>
-          <span
-            style={{
-              float: "right",
-              width: "50%",
-              fontSize: "0.8em",
-              wordWrap: "break-word",
-              textAlign: "right",
-            }}
-          >
-            DEVELO PER
-          </span>
-        </h1>
+      <div className={style.firstContentWrapper}>
+        <div className={style.firstLeftContent}>SATYADAR</div>
+        <div className={style.firstRightContent}>SAN</div>
       </div>
-
-      <img className={style.satyaImg} src={saty} alt="Satya" />
-      <div className={style.frontTextWrapper}>
-        <h1 className={style.frontText}>
-          <span className={style.andText}>&</span>
-          <span style={{placeSelf:"flex-end"}}>WEB DESIGNER</span>
-        </h1>
+      <div className={style.secContentWrapper}>
+        <div className={style.secLeftContent}>TALK</div>
+        <div className={style.secRightContent}>DEVLO</div>
       </div>
-      <div className={style.aboutText}>
-        * ABOUT
+      <div className={style.thirdContentWrapper}>PER</div>
+      <div className={style.forthContentWrapper}>
+        <div className={style.forthLeftContent}>&</div>
+        <div className={style.forthRightContent}>DESIGNER</div>
+      </div>
+      <div className={style.imageWrapper}>
+        <img src={demoImg} className={style.saty} />
+        <div className={style.sideBlack}></div>
+        <div className={style.sideBlackRight}></div>
+        <div className={style.bottomBlack}></div>
       </div>
     </div>
   );

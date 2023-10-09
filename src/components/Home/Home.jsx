@@ -44,6 +44,42 @@ const Home = () => {
     }
   }, []);
 
+  //entry
+  const text= (event) => {  
+    let iteration = 0;
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let interval = null;
+    
+    clearInterval(interval);
+    
+    interval = setInterval(() => {
+      event.target.innerText = event.target.innerText
+        .split("")
+        .map((letter, index) => {
+          if(index < iteration) {
+            return event.target.dataset.value[index];
+          }
+        
+          return letters[Math.floor(Math.random() * 26)]
+        })
+        .join("");
+      
+      if(iteration >= event.target.dataset.value.length){ 
+        clearInterval(interval);
+      }
+      
+      iteration += 1 / 3;
+    }, 40);
+  }    
+  useEffect(() => {
+    // When the component mounts, apply the text animation to the h1 element
+    const h1Element = document.querySelector('.main');
+
+    if (h1Element) {
+      text({ target: h1Element });
+    }
+  }, []);
+
   return (
     <div ref={elementRef} className={style.container}>
       <video ref={video} loop autoPlay muted className={`${style.video} video`}>
@@ -52,7 +88,7 @@ const Home = () => {
 
       <div ref={mainContent} className={style.mainContent}>
         <h2 className={style.topContent}>YOUR VISION OUR RESPONSIBILITY</h2>
-        <h1 className={style.middleContent}>
+        <h1 className={`main ${style.middleContent}`} data-value="ENIGMA TECH">
         ENIGMA TECH
         </h1>
         <h2 className={style.bottomContent}>VISION</h2>
