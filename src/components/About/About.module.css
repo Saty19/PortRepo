@@ -35,7 +35,7 @@ div::-webkit-scrollbar {
 .firstLeftContent {
   font-family: Montserrat, sans-serif;
   color: #d6d1ce;
-  font-size: 13.85vw;
+  font-size: 12vw;
   line-height: 90%;
   font-weight: 900;
   text-transform: uppercase;
@@ -43,8 +43,9 @@ div::-webkit-scrollbar {
 
 .firstRightContent {
   font-family: Montserrat, sans-serif;
-  color: #d6d1ce;
-  font-size: 13.85vw;
+  color: transparent;
+  -webkit-text-stroke: 1px #d6d1ce;
+  font-size: 12vw;
   line-height: 90%;
   font-weight: 900;
   text-transform: uppercase;
@@ -60,7 +61,7 @@ div::-webkit-scrollbar {
 .secLeftContent {
   font-family: Montserrat, sans-serif;
   color: #d6d1ce;
-  font-size: 13.85vw;
+  font-size: 12vw;
   line-height: 90%;
   font-weight: 900;
   text-transform: uppercase;
@@ -71,7 +72,7 @@ div::-webkit-scrollbar {
 .secRightContent {
   font-family: 'Montserrat outlined - bold', sans-serif;
   color: #d6d1ce;
-  font-size: 13.85vw;
+  font-size: 12vw;
   line-height: 90%;
   font-weight: 900;
   text-transform: uppercase;
@@ -83,7 +84,7 @@ div::-webkit-scrollbar {
   justify-content: flex-end;
   font-family: Montserrat, sans-serif;
   color: #d6d1ce;
-  font-size: 13.85vw;
+  font-size: 12vw;
   line-height: 90%;
   font-weight: 900;
   text-transform: uppercase;
@@ -102,11 +103,11 @@ div::-webkit-scrollbar {
 .forthLeftContent {
   font-family: Montserrat, sans-serif;
   color: transparent;
-  font-size: 13.85vw;
+  font-size: 20vw;
   line-height: 90%;
   font-weight: 900;
   text-transform: uppercase;
-  -webkit-text-stroke: 3px #d6d1ce;
+  -webkit-text-stroke: 2px #d6d1ce;
   text-align: right;
   width: 75%;
 
@@ -115,7 +116,7 @@ div::-webkit-scrollbar {
 .forthRightContent {
   font-family: Montserrat, sans-serif;
   color: #d6d1ce;
-  font-size: 13.85vw;
+  font-size: 12vw;
   line-height: 90%;
   font-weight: 900;
   text-transform: uppercase;
