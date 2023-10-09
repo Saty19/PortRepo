@@ -1,14 +1,16 @@
 import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
+// import Hero from "./components/Hero/Hero";
 import "./App.css";
 import SectionSecond from "./components/Section2/SectionSecond";
-import About from "./components/About/About";
-import PhysicsDemo from "./components/Product/PhysicsDemo";
+import Service from "./components/Service/Service";
 import Home from "./components/Home/Home";
+import About from "./components/About/About";
+import Hero from "./components/Hero/Hero";
 
 const App = () => {
   return (
     <div>
+    
       <div
         style={{
           position: "fixed",
@@ -39,9 +41,9 @@ const App = () => {
         <Navbar />
         <Home />
         <SectionSecond />
-        <PhysicsDemo />
-        <About />
-        <Hero />
+        <Service />
+        <About/>
+        <Hero/>
       </div>
     </div>
   );

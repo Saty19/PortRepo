@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useRef } from 'react';
 
 const Home = () => {
-  const videoUrl = 'https://player.vimeo.com/progressive_redirect/playback/854031911/rendition/360p/file.mp4?loc=external&oauth2_token_id=57447761&signature=90d4b4600372b76e164c12dc94c7873997133f3923079a02e7451e10c521a386';
+  const videoUrl = 'https://player.vimeo.com/external/489633226.sd.mp4?s=a500a3f029e29953f06c8ada1ffbb3a2b36b5225&profile_id=164&oauth2_token_id=57447761';
   const elementRef = useRef(null);
   const video = useRef(null);
   const mainContent = useRef(null);
@@ -31,13 +31,14 @@ const Home = () => {
 
       // Video parallax animation
       gsap.to(videoElement, {
-        y: '50%', // Adjust this value as needed
-        ease: 'ease',
+        y:   0.5 * video.current.parentNode.offsetHeight, // Adjust this value as needed
+        ease: 'none',
         scrollTrigger: {
           trigger: element,
           start: "top top",
-          end: "bottom top",
-          scrub: true, // Enable scrubbing for parallax effect
+          markers:false,
+          end: "bottom top ",
+          scrub: 4, // Enable scrubbing for parallax effect
         }
       });
     }
@@ -52,7 +53,7 @@ const Home = () => {
       <div ref={mainContent} className={style.mainContent}>
         <h2 className={style.topContent}>YOUR VISION OUR RESPONSIBILITY</h2>
         <h1 className={style.middleContent}>
-        Hello Test
+        ENIGMA TECH
         </h1>
         <h2 className={style.bottomContent}>VISION</h2>
       </div>
