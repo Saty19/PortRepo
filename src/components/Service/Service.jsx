@@ -20,7 +20,7 @@ function Service() {
 
   useEffect(() => {
     gsap.to(container.current, {
-      y: 0.05 * container.current.parentNode.offsetHeight, // Adjust this value as needed
+      y: 0.08 * container.current.parentNode.offsetHeight, // Adjust this value as needed
       ease: 'none',
       scrollTrigger: {
         trigger: container.current,
