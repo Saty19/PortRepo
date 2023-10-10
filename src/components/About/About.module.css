@@ -28,8 +28,10 @@ div::-webkit-scrollbar {
 .firstContentWrapper {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  margin-top: 5vw;
   z-index: 1;
+  
 }
 
 .firstLeftContent {
@@ -98,6 +100,7 @@ div::-webkit-scrollbar {
   justify-content: flex-end;
   align-items: center;
   z-index: 4;
+  bottom: 5vw;
 }
 
 .forthLeftContent {
@@ -126,7 +129,7 @@ div::-webkit-scrollbar {
   position: absolute;
   overflow: hidden;
   z-index: 3;
-  top: 25px;
+  top: 20px;
   width: 40vw;
   height: 100%;
 }
@@ -143,7 +146,7 @@ div::-webkit-scrollbar {
   position: absolute;
   bottom: 0px;
   width: 15vw;
-  height: 46%;
+  height: 50%;
   background-image: linear-gradient(90deg, #121212, #121212 33%, transparent);
   /* transform: translate(-30%, 0px); */
 }
@@ -172,7 +175,7 @@ div::-webkit-scrollbar {
   .imageWrapper {
     width: 100vw;
     height: 80%;
-    top: 40vw;
+    top: 35vw;
   }
   .container {
     justify-content: normal;
@@ -191,5 +194,19 @@ div::-webkit-scrollbar {
     align-items: flex-end;
     flex: 0;
     align-items: end;
+  }
+  /* .forthRightContent{
+    font-size: 25vw;
+  } */
+}
+@media screen and (max-width: 400px) {
+
+  .imageWrapper {
+  top: 45vw;
+  
+  
+  }
+  .container{
+    font-weight: 900;
   }
 }

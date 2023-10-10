@@ -1,0 +1,20 @@
+/* fonts.css */
+
+* {
+  font-family: Audiowide;
+}
+.container {
+  width: 99%;
+  height: 100vh;
+  /* border-radius: 10px; */
+  position: relative;
+  align-items: center;
+  background: #121212;
+  overflow: hidden;
+  margin: 0 auto;
+  color: white;
+  display: flex;
+  transition: none;
+  margin-bottom: 0;
+}
+
