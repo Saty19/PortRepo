@@ -56,6 +56,9 @@
     flex-direction: column;
   }
   @media screen and (max-width: 840px) {
+    .mainContent{
+      padding: 0;
+    }
     .topContent{
       align-self: flex-start;
       font-size: 4vw;
