@@ -20,9 +20,7 @@ div::-webkit-scrollbar {
   transition: none;
   font-size: 10vw;
   font-weight: 800;
-  box-sizing: border-box;
-  padding-left: 20px;
-  padding-right: 20px;
+  box-sizing: border-box; 
 }
 
 .firstContentWrapper {

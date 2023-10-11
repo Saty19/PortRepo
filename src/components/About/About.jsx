@@ -35,7 +35,7 @@ const About = () => {
       });
     };
   }, []);
-
+  const demoImg="https://assets.website-files.com/62cfb3313a1a61a7d399c600/62cfba001eea8f0afa9f0d48_man_hero_cropped-min-p-800.png"
   return (
     <div className={style.container} ref={containerRef}>
       <div className={style.firstContentWrapper}>
@@ -52,7 +52,7 @@ const About = () => {
         <div className={`text-element ${style.forthRightContent}`}>DESIGNER</div>
       </div>
       <div className={style.imageWrapper}>
-        <img src={saty} className={style.saty} />
+        <img src={demoImg} className={style.saty} />
         <div className={style.sideBlack}></div>
         <div className={style.sideBlackRight}></div>
         <div className={style.bottomBlack}></div>
