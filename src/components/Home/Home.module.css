@@ -24,6 +24,7 @@
     justify-content: flex-end;
     align-items: center;
     height: 70%;
+    padding: 0 5vw;
     background-color: rgb(255, 255, 255);
     transition: none;
     /* backdrop-filter: blur(2px); */
@@ -36,7 +37,7 @@
   }
   .topContent{
     align-self: flex-start;
-    font-size: 4vw;
+    font-size: 3vw;
  
   }
   .bottomContent{
@@ -45,15 +46,19 @@
 
   }
   .linkTag {
-    position: relative;
+    position: absolute;
     width: 60px;
     height: 30%;
-    margin-left: 30px;
+    top: 45%;
+    mix-blend-mode: difference;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
   }
   @media screen and (max-width: 840px) {
+    .mainContent{
+      padding: 0;
+    }
     .topContent{
       align-self: flex-start;
       font-size: 4vw;
@@ -71,5 +76,90 @@
  
 
     }
+    .linkTag {
+      position: fixed;
+      right: 1px;
+      top: 40%;
+      z-index: 20;
+      justify-content: space-around;
+      align-items: center;
+      gap: 30px;
+      right: -5%;
+    }
+    .linkTag:hover {
+      right: 0;
+    }
+    .linkTag::after {
+      position: absolute;
+      content: "";
+      height: 100%;
+      width: 100%;
+      background-color: rgb(255, 255, 255);
+      z-index: -1;
+      border-radius: 10px 0 0 10px;
+    }
+    .linkTag::before {
+      position: absolute;
+      content: "";
+      height: 100%;
+      width: 100%;
+      border: 2px solid white;
+      z-index: -1;
+      top: 3px;
+      right: 2px;
+      border-radius: 10px 0 0 10px;
+    }
+ 
     
+  }
+  @media screen and (max-width: 400px) {
+
+    .linkTag.show {
+      opacity: 1;
+    }
+    
+    
+    .linkTag {
+      position: fixed;
+      right: -10%;
+      z-index: 20;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      right: -50px;
+      opacity: 0;
+      transition: right opacity 0.5s ease;
+     
+    }
+    .linkTag:hover {
+      right: 0;
+     
+    }
+    .linkTag::after {
+      position: absolute;
+      content: "";
+      
+      height: 80%;
+      width: 100%;
+      background-color: rgb(255, 255, 255);
+      transition: all 0.5s;
+      z-index: -1;
+      border-radius: 10px 0 0 10px;
+    }
+    .linkTag:hover:after {
+      background: rgba(255, 255, 255, 0.616);
+      backdrop-filter: blur(5px);
+    }
+    .linkTag::before {
+      position: absolute;
+      content: "";
+      
+      height: 80%;
+      width: 100%;
+      border: 2px solid white;
+      z-index: -1;
+      top: 27px;
+      right: 2px;
+      border-radius: 10px 0 0 10px;
+    }
   }

@@ -1,12 +1,12 @@
 import Navbar from "./components/Navbar/Navbar";
-// import Hero from "./components/Hero/Hero";
 import "./App.css";
 import SectionSecond from "./components/Section2/SectionSecond";
 import Service from "./components/Service/Service";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
-import Hero from "./components/Hero/Hero";
+
 import { useEffect } from "react";
+import Projects from "./components/Projects/Projects";
 
 const App = () => {
 
@@ -61,7 +61,7 @@ const App = () => {
         <SectionSecond />
         <Service />
         <About/>
-        <Hero/>
+        <Projects/>
       </div>
     </div>
   );

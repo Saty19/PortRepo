@@ -85,7 +85,7 @@ function Service() {
       xPercent: `${screenWidth < 840 ? -250 : -150}`,
       duration: 5,
       ease: "linear", // Increase the duration for a smoother effect
-    });
+    },0);
 
     // Event listener for window resize
     window.addEventListener("resize", updateScreenWidth);
@@ -97,7 +97,7 @@ function Service() {
   }, [screenWidth]);
 
   const imageUrl = "https://images.unsplash.com/photo-1695883701435-7bd88f796e05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60";
-
+  const serviceImg="https://images.unsplash.com/photo-1621111848501-8d3634f82336?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHVpJTJGdXh8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
   return (
     <div className={`${style.container}`} ref={container}>
       <img src={imageUrl} className={`${style.serviceImg}`} alt="Service Background" />
@@ -119,13 +119,13 @@ function Service() {
           style={{ color: "white" }}
           className={`BoxWrapperContent ${style.BoxWrapperContent}`}
         >
-          <h2 style={{ color: "white", fontSize: "4vw" }}>TEST</h2>
+          <h2 style={{ color: "white", fontSize: "5vw" }}>TEST</h2>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem iusto
           nulla pariatur sunt suscipit non sit fugiat, optio repellendus
           commodi?
         </div>
         <div className={`box ${style.imageWrapper}`}>
-          <img src={img} className={`img ${style.img}`} alt="Demo" />
+          <img src={serviceImg} className={`img ${style.img}`} alt="Demo" />
         </div>
       </div>
     </div>
