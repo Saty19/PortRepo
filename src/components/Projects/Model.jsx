@@ -4,7 +4,7 @@ import { useGLTF ,Html} from "@react-three/drei";
 import {  useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 export function Model(props) {
-  const { nodes, materials } = useGLTF("/old_computer.glb");
+  const { nodes, materials } = useGLTF("./old_computer.glb");
   const group = useRef()
   useFrame((state) => {
     const t = state.clock.getElapsedTime()
@@ -43,4 +43,4 @@ export function Model(props) {
   );
 }
 
-useGLTF.preload("/old_computer.glb");
+useGLTF.preload("./old_computer.glb");
