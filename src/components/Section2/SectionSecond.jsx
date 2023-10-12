@@ -80,7 +80,7 @@ const SectionSecond = () => {
     );
 
     gsap.to(imgPrlx.current, {
-      y: 0.8 * imgPrlx.current.parentNode.offsetHeight, // Adjust this value as needed
+      y: 0.5 * imgPrlx.current.parentNode.offsetHeight, // Adjust this value as needed
       ease: "none",
       scrollTrigger: {
         trigger: imgPrlx.current,
@@ -97,7 +97,7 @@ const SectionSecond = () => {
         trigger.kill(); // Kill all ScrollTrigger instances
       });
     };
-  }, [isMobile,tl]);
+  }, [tl,isMobile]);
 
   const imageUrl =
     "https://plus.unsplash.com/premium_photo-1674740443999-3d67127b5389?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fDNkfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60";
