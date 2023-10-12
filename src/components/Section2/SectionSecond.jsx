@@ -16,21 +16,24 @@ const SectionSecond = () => {
   const parra = useRef(null);
   const leftTop = useRef(null);
   const ThreeContent = useRef(null);
+  const isMobile = window.matchMedia("(max-width: 820px)").matches;
+
+  const tl =useMemo(()=>{ return (gsap.timeline({
+    scrollTrigger: {
+      trigger: ".section",
+      markers: false,
+      start: `${isMobile ? "40%" : "30%"} 90%`,
+      end: `${isMobile ? "70%" : "90%"} 20%`,
+      scrub: 1,
+      toggleActions: "play none none none",
+    },
+  }))},[isMobile])
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const isMobile = window.matchMedia("(max-width: 820px)").matches;
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".section",
-        markers: false,
-        start: `${isMobile ? "40%" : "30%"} 90%`,
-        end: `${isMobile ? "70%" : "90%"} 20%`,
-        scrub: 1,
-        toggleActions: "play none none none",
-      },
-    });
+    
+   
 
     tl.to(rec1.current, { y: "100%", direction: 1 }, 2);
     tl.to(rec2.current, { y: "100%", direction: 1 }, 2.5);
@@ -94,7 +97,7 @@ const SectionSecond = () => {
         trigger.kill(); // Kill all ScrollTrigger instances
       });
     };
-  }, []);
+  }, [isMobile,tl]);
 
   const imageUrl =
     "https://plus.unsplash.com/premium_photo-1674740443999-3d67127b5389?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fDNkfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60";

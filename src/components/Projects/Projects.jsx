@@ -1,15 +1,14 @@
-import * as THREE from 'three';
-import React, { useRef ,Suspense } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Html, Environment, useGLTF, ContactShadows, OrbitControls, PresentationControls } from '@react-three/drei';
-import { Model } from './Model';
+import { Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { Environment, ContactShadows, PresentationControls } from '@react-three/drei';
+import Model from './Model';
 import style from './Projects.module.css';
 
 const Projects = () => {
   return (
     <div className={style.container}>
       <Canvas
-        camera={{ position: [-10, 0, -25], fov: 55 }}
+        camera={{ position: [-10, 0, -25], fov: 75, far: 1000 }}
         style={{ position: 'absolute', zIndex: 200 }}
         size={{ width: window.innerWidth, height: window.innerHeight }}
       >
@@ -22,7 +21,7 @@ const Projects = () => {
           azimuth={[-Math.PI / 1.4, Math.PI / 2]}
         >
           <group rotation={[0, Math.PI, 0]} position={[0, 1, 0]}>
-            <Suspense fallback={null}>
+            <Suspense fallback={<div>Loading 3D model...</div>}>
               <Model />
             </Suspense>
           </group>
