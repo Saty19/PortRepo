@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import { useState,useEffect } from "react";
 
 import styles from "./NavBar.module.css"; // Create a CSS file for styling
 import NavList from "./NavList";

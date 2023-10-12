@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import style from "./About.module.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -17,6 +17,7 @@ const About = () => {
         trigger: containerRef.current,
         start: "top center", // Trigger when container is at 80% of the viewport
         end: "bottom top",
+        toggleActions:"play reverse none none",
         scrub: false, // Enables smooth scrubbing effect
       },
     });

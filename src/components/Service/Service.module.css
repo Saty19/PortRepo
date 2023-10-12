@@ -121,10 +121,7 @@
 }
 
 @media screen and (max-width: 400px) {
-  #text-anim {
-    font-size: 25px;
-    word-wrap: break-word;
-  }
+
   .BoxWrapper {
     flex-direction: column;
   }
