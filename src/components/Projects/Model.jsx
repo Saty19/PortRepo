@@ -1,46 +1,45 @@
-
 import React, { useRef } from "react";
-import { useGLTF ,Html} from "@react-three/drei";
-import {  useFrame } from '@react-three/fiber'
-import * as THREE from 'three'
-export function Model(props) {
-  const { nodes, materials } = useGLTF("./old_computer.glb");
-  const group = useRef()
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime()
-    group.current.rotation.y += 0.005
+import { useGLTF, Html,Plane } from "@react-three/drei";
+import About from "../About/About";
 
-  })
+export default function Model(props) {
+  const { nodes, materials } = useGLTF("/web.glb");
+  console.log(nodes)
+  
   return (
-    <group {...props} dispose={null}>
-      <group
-        position={[-400.642, 4.317, -600.653]}
-        rotation={[-1.527, 0, -Math.PI / 2]}
-      >
-        <group rotation={[Math.PI / 2, 0, 0]}  >
-          <mesh 
-            castShadow
-            receiveShadow
-            geometry={nodes.Cube001_Accessories002_0.geometry}
-            material={materials["Accessories.002"]}
-            position={[300.179, -157.86, -500.985]}
-            rotation={[-Math.PI / 2, 0, 0]}
-            scale={18.866}
-          />
-          <mesh ref={group}
-            castShadow
-            receiveShadow
-            geometry={nodes.Sphere001_Television002_0.geometry}
-            material={materials["Television.002"]}
-            position={[42.439, 207.866, -316.892]}
-            scale={[4.899, 4.899, 4.743]}
-          >
+ 
+      <group {...props} dispose={null} scale={[2,2,2]}>
+      <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.Cube.geometry}
+      material={materials["Material.001"]}
+      position={[0, -1.443, 1.613]}
+      rotation={[0.371, 0, 0]}
+      scale={[2.3, 0.017, 0.614]}
+        >
+   
+        </mesh>
+        <Plane visible={false}>
+        <Html className="content" rotation-x={-Math.PI*2} position={[0.0001, 0, 1]} transform scale={0.08} center style={{opacity:"0.8",width:"4000px"}}
+        >
+        <div className="wrapper" onPointerDown={(e) => e.stopPropagation()}>
+          <About/>
+        </div>
+      </Html>
+        </Plane>
+        <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Cube001.geometry}
+        material={materials["Material.003"]}
+        rotation={[0.371, 0, 0]}
+        scale={[2.3, 0.017, 0.614]}
+        >
        
-          </mesh>
-        </group>
+        </mesh>
       </group>
-    </group>
-  );
+    );
 }
 
-useGLTF.preload("./old_computer.glb");
+useGLTF.preload("/web.glb");

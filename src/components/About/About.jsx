@@ -36,7 +36,7 @@ const About = () => {
       });
     };
   }, []);
-
+  const demoImg="https://assets.website-files.com/62cfb3313a1a61a7d399c600/62cfba001eea8f0afa9f0d48_man_hero_cropped-min-p-800.png"
   return (
     <div className={style.container} ref={containerRef}>
       <div className={style.firstContentWrapper}>

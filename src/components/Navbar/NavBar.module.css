@@ -1,6 +1,4 @@
-* {
-    transition: all ease-in-out 0.5s;
-}
+
 
 .navMenu {
     width: 100px;
@@ -8,7 +6,7 @@
     position: fixed;
     margin-top: 0;
     margin-left: 0.47%;
- 
+    transition: all ease-in-out 0.5s;
 }
 
 
@@ -19,7 +17,7 @@
     margin-top: 0;
     margin-left: 0.47%;
 
-
+    transition: all ease-in-out 0.5s;
 }
 .navMenuTest::before
 {
@@ -39,7 +37,7 @@
     position: relative;
     background-color: rgb(255, 255, 255);
     border-radius: 0 0 10px 0;
-
+    transition: all ease-in-out 0.5s;
 
 
 }
@@ -55,6 +53,7 @@
     bottom: -27px;
     left: -1px;
     margin: 0;
+    transition: all ease-in-out 0.5s;
 }
 
 .navBox::after {
@@ -67,6 +66,7 @@
     right: -29px;
     transform: rotate(90deg);
     margin: 0;
+    transition: all ease-in-out 0.5s;
 
 }
 
@@ -76,6 +76,7 @@
     width: 100%;
     height: 1px;
     background: black;
+    transition: all ease-in-out 0.5s;
 
 }
 
@@ -96,6 +97,7 @@
     right: 0;
     top: 50%;
     transform: translate(-50%, -50%);
+    transition: all ease-in-out 0.5s;
 
 }
 
@@ -105,6 +107,7 @@
     position: absolute;
     right: 5%;
     top: 10%;
+    transition: all ease-in-out 0.5s;
     z-index: 10;
 }
 

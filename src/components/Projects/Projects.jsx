@@ -1,8 +1,7 @@
-import * as THREE from 'three';
-import React, { useRef ,Suspense } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Html, Environment, useGLTF, ContactShadows, OrbitControls, PresentationControls } from '@react-three/drei';
-import { Model } from './Model';
+import { Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { Environment, ContactShadows, PresentationControls } from '@react-three/drei';
+import Model from './Model';
 import style from './Projects.module.css';
 
 
@@ -11,10 +10,10 @@ const Projects = () => {
     <div className={style.container}>
       <Canvas
         camera={{ position: [-10, 0, -25], fov: 55 }}
-        style={{ position: 'absolute' }}
+        style={{ position: 'absolute', zIndex: 200 }}
         size={{ width: window.innerWidth, height: window.innerHeight }}
       >
-        <pointLight position={[10, 10, 10]} intensity={1.5} />
+      
         <PresentationControls
           config={{ mass: 2, tension: 500 }}
           snap={{ mass: 4, tension: 1500 }}
@@ -23,7 +22,7 @@ const Projects = () => {
           azimuth={[-Math.PI / 1.4, Math.PI / 2]}
         >
           <group rotation={[0, Math.PI, 0]} position={[0, 1, 0]}>
-            <Suspense fallback={null}>
+            <Suspense >
               <Model />
             </Suspense>
           </group>
