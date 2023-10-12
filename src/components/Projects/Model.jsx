@@ -2,7 +2,7 @@
 import React, { useRef,useMemo } from "react";
 import { useGLTF, Html } from "@react-three/drei";
 import { useFrame } from '@react-three/fiber'
-
+import * as THREE from 'three'
 
 const Model = React.memo((props) => {
 

@@ -21,7 +21,7 @@ const Projects = () => {
           azimuth={[-Math.PI / 1.4, Math.PI / 2]}
         >
           <group rotation={[0, Math.PI, 0]} position={[0, 1, 0]}>
-            <Suspense fallback={<div>Loading 3D model...</div>}>
+            <Suspense >
               <Model />
             </Suspense>
           </group>
