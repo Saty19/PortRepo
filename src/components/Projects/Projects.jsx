@@ -5,12 +5,13 @@ import { Html, Environment, useGLTF, ContactShadows, OrbitControls, Presentation
 import { Model } from './Model';
 import style from './Projects.module.css';
 
+
 const Projects = () => {
   return (
     <div className={style.container}>
       <Canvas
         camera={{ position: [-10, 0, -25], fov: 55 }}
-        style={{ position: 'absolute', zIndex: 200 }}
+        style={{ position: 'absolute' }}
         size={{ width: window.innerWidth, height: window.innerHeight }}
       >
         <pointLight position={[10, 10, 10]} intensity={1.5} />
