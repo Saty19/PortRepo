@@ -17,16 +17,6 @@ function Service() {
   const updateScreenWidth = () => {
     setScreenWidth(window.innerWidth);
   };
-  const tl = useMemo(()=>{
-    return(
-    gsap.timeline({
-    scrollTrigger: {
-      trigger: container.current,
-      start: "10% 80%",
-      end: "90% 70%",
-      scrub: 2,
-    },
-  }))},[])
 
   useEffect(() => {
     gsap.to(container.current, {
@@ -55,7 +45,14 @@ function Service() {
     );
 
     // Main timeline
-
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
+        start: "10% 80%",
+        end: "90% 70%",
+        scrub: 2,
+      },
+    });
     tl.to(
       ".box",
       {
@@ -97,7 +94,7 @@ function Service() {
       // Remove the event listener on unmount
       window.removeEventListener("resize", updateScreenWidth);
     };
-  }, [screenWidth,tl]);
+  }, [screenWidth]);
 
   const imageUrl = "https://images.unsplash.com/photo-1695883701435-7bd88f796e05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60";
   const serviceImg="https://images.unsplash.com/photo-1621111848501-8d3634f82336?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHVpJTJGdXh8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
