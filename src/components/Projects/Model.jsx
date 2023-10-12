@@ -3,7 +3,7 @@ import { useGLTF, Html,Plane } from "@react-three/drei";
 import About from "../About/About";
 
 export default function Model(props) {
-  const { nodes, materials } = useGLTF("/web.glb");
+  const { nodes, materials } = useGLTF("./web.glb");
   console.log(nodes)
   
   return (
@@ -42,4 +42,4 @@ export default function Model(props) {
     );
 }
 
-useGLTF.preload("/web.glb");
+useGLTF.preload("./web.glb");
