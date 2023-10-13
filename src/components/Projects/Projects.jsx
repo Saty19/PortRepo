@@ -1,10 +1,10 @@
-import React, { Suspense, useState } from 'react';
+import React, { useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Environment, ContactShadows, PresentationControls } from '@react-three/drei';
 import Model from './Model';
 import style from './Projects.module.css';
-import About from "../About/About";
-import Service from "../Service/Service";
+import About from '../About/About';
+import Service from '../Service/Service';
 
 const Projects = () => {
   const [isHovered, setIsHovered] = useState('');
@@ -16,13 +16,10 @@ const Projects = () => {
     PHP: "<h1>PHP</h1>",
     LARAVEL: "<h1>LARAVEL</h1>",
   };
+
   const handleHover = (name) => {
     setIsHovered(name);
   };
-
-
-
-
 
   return (
     <div className={style.container}>
@@ -41,8 +38,8 @@ const Projects = () => {
       <div className={style.CanvaContainer}>
         <Canvas
           camera={{ position: [-10, 0, -25], fov: 55 }}
-          style={{ position: 'absolute', zIndex: 200 ,touchAction:"none"}}
-           size={{ width: window.innerWidth, height: window.innerHeight }}
+          style={{ position: 'absolute', zIndex: 200, touchAction: "none" }}
+          size={{ width: window.innerWidth, height: window.innerHeight }}
         >
           <PresentationControls
             config={{ mass: 2, tension: 500 }}
@@ -52,9 +49,7 @@ const Projects = () => {
             azimuth={[-Math.PI / 1.4, Math.PI / 2]}
           >
             <group rotation={[0, Math.PI, 0]} position={[0, 1, 0]}>
-              <Suspense>
-                <Model Hovered={nameComponentMap[isHovered]} />
-              </Suspense>
+              <Model Hovered={nameComponentMap[isHovered]} />
             </group>
           </PresentationControls>
           <Environment preset="city" />

@@ -1,12 +1,12 @@
-import React, { useRef } from "react";
+
 import { useGLTF, Html, Plane } from "@react-three/drei";
-import About from "../About/About";
+
 
 export default function Model(props) {
   const { nodes, materials } = useGLTF("./web.glb");
   const isHovered=props.Hovered
 
-  // console.log(isHovered)
+
 
   return (
 
