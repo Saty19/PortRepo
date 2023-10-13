@@ -41,8 +41,8 @@ const Projects = () => {
       <div className={style.CanvaContainer}>
         <Canvas
           camera={{ position: [-10, 0, -25], fov: 55 }}
-          style={{ position: 'absolute', zIndex: 200 }}
-          size={{ width: window.innerWidth, height: window.innerHeight }}
+          style={{ position: 'absolute', zIndex: 200 ,touchAction:"none"}}
+           size={{ width: window.innerWidth, height: window.innerHeight }}
         >
           <PresentationControls
             config={{ mass: 2, tension: 500 }}
