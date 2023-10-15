@@ -2,7 +2,7 @@ import { useGLTF, Html, Plane } from "@react-three/drei";
 import * as THREE from "three";
 import style from "./Model.module.css"
 export default function Model(props) {
-  const { nodes, materials } = useGLTF("/scfiprjt.glb");
+  const { nodes, materials } = useGLTF("./scfiprjt.glb");
   const isHovered = props.Hovered;
 
   return (
@@ -58,4 +58,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/scfiprjt.glb");
+useGLTF.preload("./scfiprjt.glb");
