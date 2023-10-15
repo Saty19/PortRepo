@@ -6,7 +6,7 @@ import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import { useEffect } from "react";
 import Projects from "./components/Projects/Projects";
-import { Suspense } from "react";
+
 const App = () => {
   useEffect(() => {
     const handleWheelEvent = (e) => {
@@ -79,10 +79,13 @@ const App = () => {
         <SectionSecond />
         <Service />
         <About />
-        <Suspense>
+       {
+    
         
         <Projects />
-        </Suspense>
+ 
+      
+      }
       </div>
     </div>
   );

@@ -9,7 +9,7 @@
   /* border-radius: 10px; */
   position: relative;
   align-items: center;
-  background: #121212;
+  /* background: #121212; */
   overflow: hidden;
   margin: 0 auto;
   color: white;
@@ -18,9 +18,52 @@
   margin-bottom: 0;
   
 }
+.image{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 
+}
+.image img{
+  filter: blur(2px);
+}
+.CanvaContainer{
+  position: relative;
+  width: 50%;
+  height: 100%;
+  float: right;
+}
 .canvas{
   width: 50%;
-  
-  right: 0;
+
+}
+canvas{
+  position: relative;
+}
+.listItem{
+  display: flex;
+  width: 50%;
+  height: 100%;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.Item{
+  font-size: 5vw;
+  text-align: left;
+}
+@media screen and (max-width:800px) {
+  .container {
+    flex-direction: column-reverse;
+  }
+  .canvas{
+    width: 100%;
+  }
+  .Item{
+    font-size: 10vw;
+  }
+  .CanvaContainer{
+    width: 100%;
+  }
+
 }
