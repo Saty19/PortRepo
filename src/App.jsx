@@ -6,40 +6,27 @@ import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import { useEffect, useRef, useState } from "react";
 import { Suspense } from "react";
-import Projects from "./components/Projects/Projects";
+
+import { lazy } from "react";
+import { useLayoutEffect } from "react";
 
 const App = () => {
-  const [isProjectsLoaded, setProjectsLoaded] = useState(false);
   const projectsRef = useRef(null);
 
-  useEffect(() => {
+  const LazyProject = lazy(() => import("./components/Projects/Projects"));
+  useLayoutEffect(() => {
     const handleWheelEvent = (e) => {
       if (e.ctrlKey || e.metaKey) {
-        // Prevent zooming with Ctrl (Windows/Linux) or Command (Mac) + Scroll
         e.preventDefault();
-      }
-
-      // Check if the user has scrolled to a certain position (e.g., the bottom of the page)
-      const windowHeight = window.innerHeight;
-      const scrollPosition = window.scrollY;
-      const bottomPosition = windowHeight * 2; // Adjust this value as needed
-
-      if (scrollPosition >= bottomPosition && !isProjectsLoaded) {
-        // Lazy load the Projects component
-        import("./components/Projects/Projects").then(() => {
-          setProjectsLoaded(true);
-        });
       }
     };
 
-    // Attach the event listener when the component mounts
     window.addEventListener("wheel", handleWheelEvent, { passive: false });
 
-    // Remove the event listener when the component unmounts
     return () => {
       window.removeEventListener("wheel", handleWheelEvent);
     };
-  }, [isProjectsLoaded]);
+  }, []);
   return (
     <div>
       <div
@@ -94,13 +81,11 @@ const App = () => {
         <Home />
         <SectionSecond />
         <Service />
+
         <About />
+
         <Suspense fallback={null}>
-          <div ref={projectsRef}>
-            <Suspense fallback={null}>
-              {isProjectsLoaded && <Projects />}
-            </Suspense>
-          </div>
+          <LazyProject />
         </Suspense>
       </div>
     </div>

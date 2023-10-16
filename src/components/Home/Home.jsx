@@ -1,6 +1,7 @@
 import style from "./Home.module.css";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLayoutEffect } from "react";
 import { useEffect, useRef, useMemo ,useState} from 'react';
 // import { AiFillGithub, AiFillInstagram } from 'react-icons/ai';
 // import { FaFacebookSquare } from 'react-icons/fa';
@@ -11,7 +12,7 @@ const Home = () => {
   const video = useRef(null);
   const mainContent = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     const element = elementRef.current;
