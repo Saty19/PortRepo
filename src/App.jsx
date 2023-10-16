@@ -22,7 +22,7 @@ const App = () => {
       // Check if the user has scrolled to a certain position (e.g., the bottom of the page)
       const windowHeight = window.innerHeight;
       const scrollPosition = window.scrollY;
-      const bottomPosition = windowHeight * 1.1; // Adjust this value as needed
+      const bottomPosition = windowHeight * 2; // Adjust this value as needed
 
       if (scrollPosition >= bottomPosition && !isProjectsLoaded) {
         // Lazy load the Projects component
