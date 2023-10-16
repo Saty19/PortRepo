@@ -16,6 +16,7 @@ const SectionSecond = () => {
   const parra = useRef(null);
   const leftTop = useRef(null);
   const ThreeContent = useRef(null);
+  
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);

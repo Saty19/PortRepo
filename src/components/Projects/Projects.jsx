@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { lazy,useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Environment, ContactShadows, PresentationControls, PerspectiveCamera } from '@react-three/drei';
-import Model from './Model';
 import style from './Projects.module.css';
+import { Suspense } from 'react';
+import { useMemo } from 'react';
 
 
-const Projects = () => {
+
+const Projects =  () => {
   const [isHovered, setIsHovered] = useState('');
+  const ModelLoad= useMemo(()=>{
+   return lazy(()=> import ("./Model"))
+  },[])
+
 
   const nameComponentMap = {
     MAGENTO: "ABOUT",
@@ -58,7 +64,9 @@ const Projects = () => {
             azimuth={[-Math.PI / 1.4, Math.PI / 2]}
           >
             <group rotation={[0,270, 0]} position={[0, 1, 0]}>
-              <Model Hovered={nameComponentMap[isHovered]} />
+            <Suspense fallback={null}>
+              <ModelLoad Hovered={nameComponentMap[isHovered]} />
+              </Suspense>
             </group>
           </PresentationControls>
           <Environment preset="city" />

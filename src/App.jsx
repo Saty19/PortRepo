@@ -4,15 +4,31 @@ import SectionSecond from "./components/Section2/SectionSecond";
 import Service from "./components/Service/Service";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Suspense } from "react";
 import Projects from "./components/Projects/Projects";
 
 const App = () => {
+  const [isProjectsLoaded, setProjectsLoaded] = useState(false);
+  const projectsRef = useRef(null);
+
   useEffect(() => {
     const handleWheelEvent = (e) => {
       if (e.ctrlKey || e.metaKey) {
         // Prevent zooming with Ctrl (Windows/Linux) or Command (Mac) + Scroll
         e.preventDefault();
+      }
+
+      // Check if the user has scrolled to a certain position (e.g., the bottom of the page)
+      const windowHeight = window.innerHeight;
+      const scrollPosition = window.scrollY;
+      const bottomPosition = windowHeight * 1.1; // Adjust this value as needed
+
+      if (scrollPosition >= bottomPosition && !isProjectsLoaded) {
+        // Lazy load the Projects component
+        import("./components/Projects/Projects").then(() => {
+          setProjectsLoaded(true);
+        });
       }
     };
 
@@ -23,7 +39,7 @@ const App = () => {
     return () => {
       window.removeEventListener("wheel", handleWheelEvent);
     };
-  }, []);
+  }, [isProjectsLoaded]);
   return (
     <div>
       <div
@@ -79,13 +95,13 @@ const App = () => {
         <SectionSecond />
         <Service />
         <About />
-       {
-    
-        
-        <Projects />
- 
-      
-      }
+        <Suspense fallback={null}>
+          <div ref={projectsRef}>
+            <Suspense fallback={null}>
+              {isProjectsLoaded && <Projects />}
+            </Suspense>
+          </div>
+        </Suspense>
       </div>
     </div>
   );
