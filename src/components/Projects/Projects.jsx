@@ -63,11 +63,11 @@ const Projects =  () => {
             polar={[-Math.PI / 3, Math.PI / 3]}
             azimuth={[-Math.PI / 1.4, Math.PI / 2]}
           >
-            <group rotation={[0,270, 0]} position={[0, 1, 0]}>
-            <Suspense fallback={null}>
+          <Suspense fallback={null}>
+          <group rotation={[0,270, 0]} position={[0, 1, 0]}>
               <ModelLoad Hovered={nameComponentMap[isHovered]} />
+              </group>
               </Suspense>
-            </group>
           </PresentationControls>
           <Environment preset="city" />
           <ContactShadows position={[0, -4.6, 0]} scale={20} blur={2} far={4.5} />
