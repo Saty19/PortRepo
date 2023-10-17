@@ -5,44 +5,52 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 export default function Model(props) {
   const { nodes, materials } = useGLTF("./TEST.glb");
-  const group = useRef()
-  const first = useRef()
-  const sec = useRef()
+  const group = useRef();
+  const first = useRef();
+  const sec = useRef();
   const isHovered = props.Hovered;
+  
   useFrame((state) => {
-    const t = state.clock.getElapsedTime()
-    group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, Math.cos(t / 2) / 20 + 0.25, 0.1)
-    group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, Math.sin(t / 25) / 45, 0.1)
-    group.current.rotation.z = THREE.MathUtils.lerp(group.current.rotation.z, Math.sin(t / 10) / 50, 0.8)
-    group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, (-2 + Math.sin(t / 2)) / 7, 0.8)
-    first.current.rotation.y +=0.01
-    sec.current.rotation.y += -0.01
-  })
+    const t = state.clock.getElapsedTime();
+    group.current.rotation.set(
+      0.1 + Math.cos(t / 4.5) / 10,
+      Math.sin(t / 4) / 4,
+      0.3 - (1 + Math.sin(t / 4)) / 8
+    );
+    group.current.position.y = (1 + Math.sin(t / 2)) / 10;
+    first.current.rotation.y += 0.01;
+    sec.current.rotation.y += -0.01;
+  });
 
   return (
     <group {...props} dispose={null} ref={group}>
-      <group scale={[10,10,10]} rotation-x={-276}  rotation-z={45}>
-      <group ref={first}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Circle.geometry}
-          material={materials["Material.005"]}
-          rotation={[0, -1.4, 0]}
-          scale={1.1}
-          userData={{ name: "Circle" }}
-        />
+      <group
+        scale={[8, 8, 8]}
+        rotation-x={-25.5}
+        rotation-y={26.2}
+        rotation-z={45}
+      >
+        <group ref={first}>
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Circle.geometry}
+            material={materials["Material.005"]}
+            rotation={[0, -1.4, 0]}
+            scale={1.1}
+            userData={{ name: "Circle" }}
+          />
         </group>
         <group ref={sec}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Circle001.geometry}
-          material={materials["Material.006"]}
-          position={[0, 0.1, 0]}
-          scale={[0.9, 1.1, 0.9]}
-          userData={{ name: "Circle.001" }}
-        />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Circle001.geometry}
+            material={materials["Material.006"]}
+            position={[0, 0.1, 0]}
+            scale={[0.9, 1.1, 0.9]}
+            userData={{ name: "Circle.001" }}
+          />
         </group>
         <mesh
           castShadow
@@ -71,13 +79,10 @@ export default function Model(props) {
           scale={0.2}
           userData={{ name: "Circle.004" }}
         >
-          <Plane
-            visible={false}
-            scale={[10, 10, 1]}
-            position={[0, 2, -2]}
-          >
+          <Plane visible={false}   rotation-y={-70} scale={[10, 10, 1]} position={[0, 2, -1]}>
             <Html
               className={style.htmlMain}
+              
               rotation-x={-Math.PI * 2}
               position={[0.0001, 0, 1]}
               transform
@@ -86,10 +91,10 @@ export default function Model(props) {
               style={{ opacity: "0.8", width: "100%", height: "100%" }}
             >
               <div
-                style={{ height: "100%" }}
+                style={{ height: "100%" ,fontSize:"2vw"}}
                 onPointerDown={(e) => e.stopPropagation()}
               >
-                {isHovered}
+                {isHovered && isHovered.name}
               </div>
             </Html>
           </Plane>
