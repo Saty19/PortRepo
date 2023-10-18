@@ -1,165 +1,171 @@
 .container {
-    width: 99%;
-    height: 100vh;
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
-    margin: 10px auto;
-    color: white;
-    display: flex;
-    margin-bottom: 0;
+  width: 99%;
+  height: 100vh;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  background: #f0f0f0;
+  margin: 0 auto;
+  color: white;
+  display: flex;
+}
+.cardImage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(10deg);
+  width: 20vw;
+  overflow: hidden;
+  height: 30vw;
+}
+.cardImage img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.mainContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+ align-items: center;
+}
+.brandName{
+  font-size: 10vw;
+  font-family: Montserrat, sans-serif;
+  color: white;
+  mix-blend-mode: difference;
+}
+.brandNameSec{
+  font-size: 10vw;
+  font-family: Montserrat, sans-serif;
+  color: transparent;
+  width: 40%;
+  text-align: left;
+  -webkit-text-stroke: 2px white;
+  mix-blend-mode: difference;
+}
+.mainContent>h3{
+  color: black;
+  position: absolute;
+  right: 5vw;
+  bottom: 5vw;
+  z-index: 10;
+}
+.OwnName{
+  font-family: Montserrat, sans-serif;
+  width: 40%;
+  text-align: left;
+  color: rgb(0, 0, 0);
+  z-index: 200;
+}
+.linkTag {
+  position: absolute;
+  width: 60px;
+  height: 30%;
+  top: 45%;
+  mix-blend-mode: difference;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+@media screen and (max-width: 840px) {
+  .mainContent {
+    padding-top: 35vw;
   }
-  .video{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    transition: none;
-    z-index: -1;
+  .brandName{
+    font-size: 15vw;
   }
-  .mainContent{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    height: 70%;
-    padding: 0 5vw;
-    background-color: rgb(255, 255, 255);
-    transition: none;
-    /* backdrop-filter: blur(2px); */
-    color: black;
-    mix-blend-mode:screen ;
+  .brandNameSec{
+    font-size: 15vw;
+    width: 60vw;
   }
-  .middleContent{
-    font-size: 10vw;
-    font-weight: 600;
+  .OwnName{
+    width: 60vw;
   }
-  .topContent{
-    align-self: flex-start;
-    font-size: 3vw;
- 
-  }
-  .bottomContent{
-    font-size: 4vw;
-    align-self: flex-end;
-
+  .cardImage {
+    width: 40vw;
+    height: 60vw;
+    transform: translate(-50%, -45%) rotate(10deg);
   }
   .linkTag {
-    position: absolute;
-    width: 60px;
-    height: 30%;
-    top: 45%;
-    mix-blend-mode: difference;
-    display: flex;
+    position: fixed;
+    right: 1px;
+    top: 40%;
+    z-index: 20;
     justify-content: space-around;
-    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    right: -5%;
   }
-  @media screen and (max-width: 840px) {
-    .mainContent{
-      padding: 0;
-    }
-    .topContent{
-      align-self: flex-start;
-      font-size: 4vw;
-      text-align: first;
-
-    }
-    .middleContent{
-      font-size: 5em;
-      text-align: end;
-    }
-  
-    .bottomContent{
-      font-size: 2em;
-      align-self: flex-end;
- 
-
-    }
-    .linkTag {
-      position: fixed;
-      right: 1px;
-      top: 40%;
-      z-index: 20;
-      justify-content: space-around;
-      align-items: center;
-      gap: 30px;
-      right: -5%;
-    }
-    .linkTag:hover {
-      right: 0;
-    }
-    .linkTag::after {
-      position: absolute;
-      content: "";
-      height: 100%;
-      width: 100%;
-      background-color: rgb(255, 255, 255);
-      z-index: -1;
-      border-radius: 10px 0 0 10px;
-    }
-    .linkTag::before {
-      position: absolute;
-      content: "";
-      height: 100%;
-      width: 100%;
-      border: 2px solid white;
-      z-index: -1;
-      top: 3px;
-      right: 2px;
-      border-radius: 10px 0 0 10px;
-    }
- 
-    
+  .linkTag:hover {
+    right: 0;
   }
-  @media screen and (max-width: 400px) {
-
-    .linkTag.show {
-      opacity: 1;
-    }
-    
-    
-    .linkTag {
-      position: fixed;
-      right: -10%;
-      z-index: 20;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-      right: -50px;
-      opacity: 0;
-      transition: right opacity 0.5s ease;
-     
-    }
-    .linkTag:hover {
-      right: 0;
-     
-    }
-    .linkTag::after {
-      position: absolute;
-      content: "";
-      
-      height: 80%;
-      width: 100%;
-      background-color: rgb(255, 255, 255);
-      transition: all 0.5s;
-      z-index: -1;
-      border-radius: 10px 0 0 10px;
-    }
-    .linkTag:hover:after {
-      background: rgba(255, 255, 255, 0.616);
-      backdrop-filter: blur(5px);
-    }
-    .linkTag::before {
-      position: absolute;
-      content: "";
-      
-      height: 80%;
-      width: 100%;
-      border: 2px solid white;
-      z-index: -1;
-      top: 27px;
-      right: 2px;
-      border-radius: 10px 0 0 10px;
-    }
+  .linkTag::after {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    z-index: -1;
+    border-radius: 10px 0 0 10px;
   }
+  .linkTag::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    border: 2px solid white;
+    z-index: -1;
+    top: 3px;
+    right: 2px;
+    border-radius: 10px 0 0 10px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .linkTag.show {
+    opacity: 1;
+  }
+
+  .linkTag {
+    position: fixed;
+    right: -10%;
+    z-index: 20;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    right: -50px;
+    opacity: 0;
+    transition: right opacity 0.5s ease;
+  }
+  .linkTag:hover {
+    right: 0;
+  }
+  .linkTag::after {
+    position: absolute;
+    content: "";
+
+    height: 80%;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    transition: all 0.5s;
+    z-index: -1;
+    border-radius: 10px 0 0 10px;
+  }
+  .linkTag:hover:after {
+    background: rgba(255, 255, 255, 0.616);
+    backdrop-filter: blur(5px);
+  }
+  .linkTag::before {
+    position: absolute;
+    content: "";
+    height: 80%;
+    width: 100%;
+    border: 2px solid white;
+    z-index: -1;
+    top: 27px;
+    right: 2px;
+    border-radius: 10px 0 0 10px;
+  }
+}

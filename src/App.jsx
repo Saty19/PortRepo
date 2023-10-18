@@ -7,6 +7,7 @@ import About from "./components/About/About";
 import { useLayoutEffect } from "react";
 import SmoothScroll from "./components/Scroll/SmoothScroll";
 import Projects from "./components/Projects/Projects";
+import Testimonial from "./components/Testimonials/Testimonial";
 
 const App = () => {
 
@@ -30,7 +31,7 @@ const App = () => {
         style={{
           position: "fixed",
           right: "2%",
-          top: "3%",
+          top: "30px",
           zIndex: 1000,
           mixBlendMode: "difference",
         }}
@@ -80,6 +81,7 @@ const App = () => {
         <Service />
         <About />
         <Projects />
+        <Testimonial/>
       </div>
     </SmoothScroll>
   );

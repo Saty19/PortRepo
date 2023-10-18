@@ -7,7 +7,8 @@ import { Environment, PresentationControls, PerspectiveCamera, } from "@react-th
 import style from "./Projects.module.css";
 import { Suspense } from "react";
 import { useMemo } from "react";
-import bg from "/background.png";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { nameComponentMap } from "./Content/content"
 import { useRef } from "react";
 
@@ -32,10 +33,27 @@ const Projects = () => {
     setHoveredItem(hovered);
   };
 
+  useEffect(()=>{
+    gsap.registerPlugin(ScrollTrigger);
+
+
+      const tl=gsap.timeline({
+        scrollTrigger:{
+          trigger:container.current,
+          start:"top 70%",
+          end:"50% 50%",
+          scrub:3,
+        
+        }
+      });
+      tl.to(img.current,{bottom:"-100%",ease:"linear"})
+
+  },[])
+
   return (
     <div className={style.container} ref={container}>
       <div className={style.image} ref={img}>
-        <img src={bg} alt="" />
+        
       </div>
       <div className={style.listItem}>
         {nameComponentMap.map((item) => (

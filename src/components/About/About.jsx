@@ -11,13 +11,25 @@ const About = () => {
     // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
 
+    gsap.to(containerRef.current, {
+      y: 0.08 * containerRef.current.parentNode.offsetHeight, // Adjust this value as needed
+      ease: 'none',
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        markers: false,
+        end: "bottom top ",
+        scrub: 0, // Enable scrubbing for parallax effect
+      }
+    });
+
     // Define a timeline for the animation
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top center", // Trigger when container is at 80% of the viewport
         end: "bottom top",
-        toggleActions:"play reverse none none",
+        toggleActions:"play pause restart none ",
         scrub: false, // Enables smooth scrubbing effect
       },
     });

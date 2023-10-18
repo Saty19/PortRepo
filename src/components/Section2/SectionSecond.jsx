@@ -10,7 +10,7 @@ const SectionSecond = () => {
   const rec3 = useRef(null);
   const rec4 = useRef(null);
   const imgPrlx = useRef(null);
-
+  const container= useRef(null)
   const rightContent = useRef(null);
   const leftContent = useRef(null);
   const parra = useRef(null);
@@ -78,7 +78,7 @@ const SectionSecond = () => {
     );
 
     gsap.to(imgPrlx.current, {
-      y: 0.8 * imgPrlx.current.parentNode.offsetHeight, // Adjust this value as needed
+      y: 0.5 * imgPrlx.current.parentNode.offsetHeight, // Adjust this value as needed
       ease: "none",
       scrollTrigger: {
         trigger: imgPrlx.current,
@@ -88,6 +88,7 @@ const SectionSecond = () => {
         scrub: 0, // Enable scrubbing for parallax effect
       },
     });
+
 
     return () => {
       tl.kill(); // Kill the timeline to prevent memory leaks
@@ -122,7 +123,7 @@ const SectionSecond = () => {
   }, []);
 
   return (
-    <div className={`section ${style.container}`}>
+    <div className={`section ${style.container}`} ref={container}>
       <img
         src={imageUrl}
         ref={imgPrlx}

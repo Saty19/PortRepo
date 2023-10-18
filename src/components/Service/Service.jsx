@@ -73,19 +73,7 @@ function Service() {
       2
     );
 
-    gsap.to(textRef.current, {
-      scrollTrigger: {
-        trigger: container.current,
-        start: `${screenWidth < 840 ? "10%" : "top"} 80%`,
-        end: `${screenWidth < 840 ? "80%" : "50%"} top`,
-        markers: false,
-        toggleActions: "play none none none",
-        scrub: 10, // Increase the scrub value to slow down the animation
-      },
-      xPercent: `${screenWidth < 840 ? -250 : -150}`,
-      duration: 5,
-      ease: "linear", // Increase the duration for a smoother effect
-    },0);
+   
 
     // Event listener for window resize
     window.addEventListener("resize", updateScreenWidth);
@@ -101,10 +89,6 @@ function Service() {
   return (
     <div className={`${style.container}`} ref={container}>
       <img src={imageUrl} className={`${style.serviceImg}`} alt="Service Background" />
-
-      <h1 ref={textRef} className={style.textpup}>
-        NOW I AM JUST USING THIS FOR TESTING
-      </h1>
       <div
         style={{
           width: "80%",
