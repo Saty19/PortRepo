@@ -9,9 +9,9 @@ import { Suspense } from "react";
 
 import { lazy } from "react";
 import { useLayoutEffect } from "react";
+import SmoothScroll from "./components/Scroll/SmoothScroll";
 
 const App = () => {
-  const projectsRef = useRef(null);
 
   const LazyProject = lazy(() => import("./components/Projects/Projects"));
   useLayoutEffect(() => {
@@ -28,7 +28,7 @@ const App = () => {
     };
   }, []);
   return (
-    <div>
+    <SmoothScroll>
       <div
         style={{
           position: "fixed",
@@ -88,7 +88,7 @@ const App = () => {
           <LazyProject />
         </Suspense>
       </div>
-    </div>
+    </SmoothScroll>
   );
 };
 
