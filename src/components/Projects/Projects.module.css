@@ -16,6 +16,7 @@
   display: flex;
   transition: none;
   margin-bottom: 0;
+  overflow: hidden;
   
 }
 .image{
@@ -23,11 +24,11 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-
+  background: "#121212";
+  transition: all 1s;
 }
-.image img{
 
-}
+
 .CanvaContainer{
   position: relative;
   width: 50%;
@@ -41,27 +42,72 @@
 canvas{
   position: relative;
 }
+.listItem:nth-child(0){
+  color: white;
+}
 .listItem{
   display: flex;
-  width: 50%;
+  width: 30%;
   height: 100%;
-  justify-content: space-around;
   flex-direction: column;
+  padding-top: 10vw;
+  padding-left: 5vw;
  
 }
+
 .Item{
   font-size: 4vw;
-
+  color: transparent;
+  -webkit-text-stroke: 1px white;
   text-align: left;
+  transition: all 0.5s;
+}
+.Item:hover{
+  color: white;
+}
+.Item:target{
+color: white;
+}
+.rightcontent{
+  width: 30%;
+  height: 100%;
+
+  flex-direction: column;
+  display: flex;
+  padding-right: 10vw;
+  flex-flow: wrap;
+}
+.rightcontent h1{
+padding-top: 5vw;
+font-size: 5vw;
+}
+.rightcontent div{
+  display: flex;
+  flex-direction: column;
+ 
+ justify-content: center;
 }
 @media screen and (max-width:800px) {
   .container {
-    flex-direction: column-reverse;
+    flex-direction: column;
+  }
+  .listItem{
+    width: 100%;
+    padding-top: 20vw;
+    
+  }
+  .rightcontent{
+    width: 100%;
+    text-align: right;
+  }
+  .rightcontent h1{
+    display: none;
   }
   .canvas{
-    width: 100%;
+    height: 1000px;
   }
   .Item{
+    
     font-size: 10vw;
   }
   .CanvaContainer{

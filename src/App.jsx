@@ -4,16 +4,13 @@ import SectionSecond from "./components/Section2/SectionSecond";
 import Service from "./components/Service/Service";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
-import { useEffect, useRef, useState } from "react";
-import { Suspense } from "react";
-
-import { lazy } from "react";
 import { useLayoutEffect } from "react";
 import SmoothScroll from "./components/Scroll/SmoothScroll";
+import Projects from "./components/Projects/Projects";
 
 const App = () => {
 
-  const LazyProject = lazy(() => import("./components/Projects/Projects"));
+
   useLayoutEffect(() => {
     const handleWheelEvent = (e) => {
       if (e.ctrlKey || e.metaKey) {
@@ -81,12 +78,8 @@ const App = () => {
         <Home />
         <SectionSecond />
         <Service />
-
         <About />
-
-        <Suspense fallback={null}>
-          <LazyProject />
-        </Suspense>
+        <Projects />
       </div>
     </SmoothScroll>
   );
