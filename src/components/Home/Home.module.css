@@ -17,16 +17,17 @@
 }
 .cardImage {
   position: absolute;
-  top: 100%;
-  margin: 0 auto;
-  width: 20vw;
   overflow: hidden;
+  bottom: 0;
+  opacity: 0;
+  width: 20vw;
   height: 30vw;
 }
+
 .cardImage img {
   object-fit: cover;
-  height: 30vw;
-  width: 20vw;
+  height: 100%;
+  width: 100%;
   transition: all 0.5s;
 }
 .cardImage:hover img{
@@ -38,7 +39,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
- align-items: center;
+  align-items: center;
 }
 .brandName{
   font-size: 10vw;
@@ -90,13 +91,17 @@
     font-size: 15vw;
     width: 60vw;
   }
+  .mainContent>h3{
+    text-align: right;
+    right: 5vw;
+  }
   .OwnName{
     width: 60vw;
   }
   .cardImage {
     width: 40vw;
     height: 60vw;
-    transform: translate(-50%, -45%) rotate(10deg);
+    bottom: 35vh;
   }
   .linkTag {
     display: none;

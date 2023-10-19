@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 function Service() {
 
   const container = useRef(null);
+  const containtWrapper=useRef(null)
 
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
@@ -19,32 +20,18 @@ function Service() {
   };
 
   useEffect(() => {
-    gsap.to(container.current, {
-      y: 0.08 * container.current.parentNode.offsetHeight, // Adjust this value as needed
-      ease: 'none',
+    const contentAnimation=gsap.to(containtWrapper.current, {
+      y: 0.5 * containtWrapper.current.parentNode.offsetHeight, // Adjust this value as needed
+      ease: 'linear',
       scrollTrigger: {
         trigger: container.current,
         start: "top top",
-        markers: false,
         end: "bottom top ",
-        scrub: 0, // Enable scrubbing for parallax effect
+        scrub: 1, // Enable scrubbing for parallax effect
       }
     });
 
-    gsap.fromTo(
-      ".img",
-      {
-        opacity: 0,
-        ease: "rough",
-        scrollTrigger: {
-          trigger: ".img",
-          start: "top top",
-        },
-      },
-      { opacity: 1, duration: 4 }
-    );
 
-    // Main timeline
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
@@ -80,6 +67,7 @@ function Service() {
 
     return () => {
       tl.kill();
+      contentAnimation.kill()
       // Remove the event listener on unmount
       window.removeEventListener("resize", updateScreenWidth);
     };
@@ -89,6 +77,7 @@ function Service() {
   const serviceImg="https://images.unsplash.com/photo-1621111848501-8d3634f82336?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHVpJTJGdXh8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
   return (
     <div className={`${style.container}`} ref={container}>
+    <div ref={containtWrapper} className={style.containtWrapper}>
       <img src={imageUrl} className={`${style.serviceImg}`} alt="Service Background" />
       <div
         style={{
@@ -112,6 +101,7 @@ function Service() {
         <div className={`box ${style.imageWrapper}`}>
           <img src={serviceImg} className={`img ${style.img}`} alt="Demo" />
         </div>
+      </div>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ const Home = () => {
   const mainContent = useRef(null);
   const card = useRef(null)
   const animation = useMemo(() => {
-  return gsap.registerPlugin(ScrollTrigger);
+    return gsap.registerPlugin(ScrollTrigger);
   }, []);
   useLayoutEffect(() => {
     animation;
@@ -22,24 +22,16 @@ const Home = () => {
         start: "top top",
         markers: false,
         end: "bottom top ",
-        scrub: 0,
+        scrub: 1,
       },
     });
-    const cardAnimation = gsap.fromTo(card.current, 
-      { 
-        transform: "rotate(0deg)", y: 0 
-      }, 
-      {
-      transform: "rotate(10deg)",
-      y: -500,
-      ease: "power2 out", 
-      duration: 2
-      })
+ 
 
-   
+
+
     return () => {
-      animationInstance.kill(); 
-      cardAnimation.kill();
+      animationInstance.kill();
+     // cardAnimation.kill();
     };
   }, [animation]);
 
@@ -55,6 +47,8 @@ const Home = () => {
   };
 
   useEffect(() => {
+    const tl= gsap.to(card.current,{y:-100,rotate:10,opacity:1,duration:2, ease:"power2.out"})
+
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
@@ -63,12 +57,14 @@ const Home = () => {
     window.addEventListener('resize', updateScreenWidth);
 
     return () => {
+      tl.kill();
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', updateScreenWidth);
     };
   }, []);
 
   useEffect(() => {
+   
     const scrollPercentage = (scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
     setShowLinkTag(scrollPercentage >= 10);
   }, [scrollY]);
@@ -90,10 +86,10 @@ const Home = () => {
       </div>
       {screenWidth > 840 ? (
         <div className={style.linkTag}>
-          {    
-          /* <FaFacebookSquare size={40} color="white" />
-          <AiFillGithub size={40} color="white" />
-          <AiFillInstagram size={40} color="white" />*/
+          {
+            /* <FaFacebookSquare size={40} color="white" />
+            <AiFillGithub size={40} color="white" />
+            <AiFillInstagram size={40} color="white" />*/
           }
         </div>
       ) : (
@@ -101,9 +97,9 @@ const Home = () => {
           className={`${style.linkTag} ${showLinkTag ? style.show : ''}`}
         >
           {
-          /* <FaFacebookSquare size={20} color="black" />
-          <AiFillGithub size={20} color="black" />
-          <AiFillInstagram size={20} color="black" />*/
+            /* <FaFacebookSquare size={20} color="black" />
+            <AiFillGithub size={20} color="black" />
+            <AiFillInstagram size={20} color="black" />*/
           }
         </div>
       )}
