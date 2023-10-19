@@ -3,62 +3,59 @@
 import { lazy, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Bloom, EffectComposer, SMAA } from "./PostprocessingAsync";
-import { Environment, PresentationControls, PerspectiveCamera, } from "@react-three/drei";
+import {
+  Environment,
+  PresentationControls,
+  PerspectiveCamera,
+} from "@react-three/drei";
 import style from "./Projects.module.css";
 import { Suspense } from "react";
 import { useMemo } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { nameComponentMap } from "./Content/content"
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { nameComponentMap } from "./Content/content";
 import { useRef } from "react";
 
 const Projects = () => {
-
-  const container = useRef(null)
-  const img = useRef(null)
+  const container = useRef(null);
+  const img = useRef(null);
 
   const [hoveredItem, setHoveredItem] = useState({
     name: "MAGENTO",
-    CONTENT: "ContentAI is a Magento module that automates the content creation process for your website using OpenAI (Artificial Intelligence).",
+    CONTENT:
+      "ContentAI is a Magento module that automates the content creation process for your website using OpenAI (Artificial Intelligence).",
   });
-
 
   const ModelLoad = useMemo(() => {
     return lazy(() => import("./Model"));
   }, []);
-
 
   const handleHover = (name) => {
     const hovered = nameComponentMap.find((item) => item?.name === name);
     setHoveredItem(hovered);
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top 70%",
+        end: "50% 50%",
+        scrub: 3,
+      },
+    });
+    tl.to(img.current, { bottom: "-100%", ease: "linear" });
 
-      const tl=gsap.timeline({
-        scrollTrigger:{
-          trigger:container.current,
-          start:"top 70%",
-          end:"50% 50%",
-          scrub:3,
-        
-        }
-      });
-      tl.to(img.current,{bottom:"-100%",ease:"linear"})
-
-      return ()=>{
-        tl.kill()
-      }
-
-  },[])
+    return () => {
+      tl.kill();
+    };
+  }, []);
 
   return (
     <div className={style.container} ref={container}>
-      <div className={style.image} ref={img}>
-        
-      </div>
+      <div className={style.image} ref={img}></div>
       <div className={style.listItem}>
         {nameComponentMap.map((item) => (
           <div
@@ -68,7 +65,8 @@ const Projects = () => {
           >
             {item?.name}
           </div>
-        ))}
+          ))}
+          
       </div>
 
       <div className={style.CanvaContainer}>
@@ -78,7 +76,6 @@ const Projects = () => {
           size={{ width: window.innerWidth, height: window.innerHeight }}
           background="rgba(0, 0, 0, 0)"
         >
-
           <PerspectiveCamera
             makeDefault
             fov={55} // Field of view
@@ -96,7 +93,7 @@ const Projects = () => {
           >
             <Suspense fallback={null}>
               <EffectComposer>
-                <SMAA/>
+                <SMAA />
                 <Bloom intensity={0.1} luminanceThreshold={0.5} />
                 <group rotation={[0, 270, 0]} position={[0, 1, 0]}>
                   <ModelLoad Hovered={hoveredItem} />
@@ -116,10 +113,9 @@ const Projects = () => {
             <p>{hoveredItem.CONTENT}</p>
           </div>
         )}
-
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default Projects;

@@ -14,6 +14,7 @@ function Service() {
 
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
+
   // Function to update screen width when the window is resized
   const updateScreenWidth = () => {
     setScreenWidth(window.innerWidth);

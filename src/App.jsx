@@ -8,8 +8,6 @@ import SmoothScroll from "./components/Scroll/SmoothScroll";
 import Projects from "./components/Projects/Projects";
 import Testimonial from "./components/Testimonials/Testimonial";
 
-
-
 const App = () => {
   useLayoutEffect(() => {
     const handleWheelEvent = (e) => {
@@ -24,9 +22,13 @@ const App = () => {
       window.removeEventListener("wheel", handleWheelEvent);
     };
   }, []);
-  return (
 
-    <SmoothScroll>
+  // Check if the screen width is less than 768 pixels
+  const isMobile = window.innerWidth <= 840;
+
+  return (
+    // Conditionally render SmoothScroll or a regular div
+    isMobile ? (
       <div>
         <Home />
         <SectionSecond />
@@ -35,7 +37,18 @@ const App = () => {
         <Projects />
         <Testimonial />
       </div>
-    </SmoothScroll>
+    ) : (
+      <SmoothScroll>
+        <div>
+          <Home />
+          <SectionSecond />
+          <Service />
+          <About />
+          <Projects />
+          <Testimonial />
+        </div>
+      </SmoothScroll>
+    )
   );
 };
 
