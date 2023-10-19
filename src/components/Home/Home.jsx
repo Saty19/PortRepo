@@ -14,22 +14,22 @@ const Home = () => {
   }, []);
   useLayoutEffect(() => {
     animation;
-    const content= gsap.to(elementRef.current, {
-      y: 0.1 * elementRef.current.parentNode.offsetHeight, 
-      ease:"linear",
-      scrollTrigger: {
-        trigger: elementRef.current,
-        start: "center top",
-        markers: false,
-        end: "bottom top ",
-        scrub: 1, // Enable scrubbing for parallax effect
-      },
-    });
+    // const content= gsap.to(elementRef.current, {
+    //   y: 0.1 * elementRef.current.parentNode.offsetHeight, 
+    //   ease:"linear",
+    //   scrollTrigger: {
+    //     trigger: elementRef.current,
+    //     start: "center top",
+    //     markers: false,
+    //     end: "bottom top ",
+    //     scrub: 1, // Enable scrubbing for parallax effect
+    //   },
+    // });
 
 
 
     return () => {
-      content.kill()
+     // content.kill()
      // animationInstance.kill();
      // cardAnimation.kill();
     };
