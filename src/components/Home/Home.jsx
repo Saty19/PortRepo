@@ -14,23 +14,23 @@ const Home = () => {
   }, []);
   useLayoutEffect(() => {
     animation;
-    const animationInstance = gsap.to(contentWrapper.current, {
-      y: 0.1 * elementRef.current.parentNode.offsetHeight,
-      ease: "none",
+    const content= gsap.to(elementRef.current, {
+      y: 0.1 * elementRef.current.parentNode.offsetHeight, 
+      ease:"linear",
       scrollTrigger: {
         trigger: elementRef.current,
-        start: "top top",
+        start: "center top",
         markers: false,
         end: "bottom top ",
-        scrub: 1,
+        scrub: 1, // Enable scrubbing for parallax effect
       },
     });
- 
 
 
 
     return () => {
-      animationInstance.kill();
+      content.kill()
+     // animationInstance.kill();
      // cardAnimation.kill();
     };
   }, [animation]);

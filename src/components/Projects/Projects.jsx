@@ -104,7 +104,6 @@ const Projects = () => {
               </EffectComposer>
             </Suspense>
           </PresentationControls>
-
           <Environment preset="city" />
         </Canvas>
       </div>

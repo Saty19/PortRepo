@@ -77,12 +77,12 @@ const SectionSecond = () => {
       0
     );
 
-   const imageanimation= gsap.to(imgPrlx.current, {
-      y: 0.5 * imgPrlx.current.parentNode.offsetHeight, 
+   const imageanimation= gsap.to(container.current, {
+      y: 0.1 * container.current.parentNode.offsetHeight, 
       ease:"linear",
       scrollTrigger: {
         trigger: container.current,
-        start: "top top",
+        start: "center top",
         markers: false,
         end: "bottom top ",
         scrub: 1, // Enable scrubbing for parallax effect
@@ -92,7 +92,7 @@ const SectionSecond = () => {
 
     return () => {
       tl.kill();
-      imageanimation.kill(); 
+     imageanimation.kill(); 
       ScrollTrigger.getAll().forEach((trigger) => {
         trigger.kill(); 
       });

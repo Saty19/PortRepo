@@ -35,7 +35,7 @@ const Navbar = () => {
     top: 0,
     left: 0,
     right: 0,
-    background: isSticky ? 'white' : 'white',
+    background: 'white',
     zIndex: 100,
   };
 //End the concept of Sticky and fixed
