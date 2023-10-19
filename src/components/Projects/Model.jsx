@@ -4,25 +4,28 @@ import { useGLTF, Html, Plane } from "@react-three/drei";
 import style from "./Model.module.css";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
+import * as THREE from 'three';
+
 export default function Model(props) {
   const { nodes, materials } = useGLTF("./TEST.glb");
   const group = useRef();
   const first = useRef();
   const sec = useRef();
-
   const isHovered = props.Hovered;
-  
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime();
-    group.current.rotation.set(
-      0.1 + Math.cos(t / 4.5) / 10,
-      Math.sin(t / 4) / 4,
-      0.3 - (1 + Math.sin(t / 4)) / 8
-    );
-    group.current.position.y = (1 + Math.sin(t / 2)) / 10;
-    first.current.rotation.y += 0.01;
-    sec.current.rotation.y += -0.01;
+
+
+ 
+
+ 
+  useFrame(() => {
+    
+      first.current.rotation.y += 0.01;
+      sec.current.rotation.y += -0.01;
+    
   });
+
+  // Cleanup function when the component unmounts
+ 
 
   return (
     

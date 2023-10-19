@@ -9,6 +9,8 @@ import SmoothScroll from "./components/Scroll/SmoothScroll";
 import Projects from "./components/Projects/Projects";
 import Testimonial from "./components/Testimonials/Testimonial";
 
+
+
 const App = () => {
 
 

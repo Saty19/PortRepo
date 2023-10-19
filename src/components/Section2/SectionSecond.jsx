@@ -77,7 +77,7 @@ const SectionSecond = () => {
       0
     );
 
-    gsap.to(imgPrlx.current, {
+   const imageanimation= gsap.to(imgPrlx.current, {
       y: 0.5 * imgPrlx.current.parentNode.offsetHeight, // Adjust this value as needed
       ease: "none",
       scrollTrigger: {
@@ -91,9 +91,10 @@ const SectionSecond = () => {
 
 
     return () => {
-      tl.kill(); // Kill the timeline to prevent memory leaks
+      tl.kill();
+      imageanimation.kill(); 
       ScrollTrigger.getAll().forEach((trigger) => {
-        trigger.kill(); // Kill all ScrollTrigger instances
+        trigger.kill(); 
       });
     };
   }, []);

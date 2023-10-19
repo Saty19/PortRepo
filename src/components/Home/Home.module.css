@@ -9,19 +9,28 @@
   color: white;
   display: flex;
 }
+.contentWrapper{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
 .cardImage {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(10deg);
+  top: 100%;
+  margin: 0 auto;
   width: 20vw;
   overflow: hidden;
   height: 30vw;
 }
 .cardImage img {
   object-fit: cover;
-  height: 100%;
-  width: 100%;
+  height: 170px;
+  width: 110px;
+  transition: all 0.5s;
+}
+.cardImage:hover img{
+  scale: 1.5;
 }
 .mainContent {
   width: 100%;
@@ -90,82 +99,20 @@
     transform: translate(-50%, -45%) rotate(10deg);
   }
   .linkTag {
-    position: fixed;
-    right: 1px;
-    top: 40%;
-    z-index: 20;
-    justify-content: space-around;
-    align-items: center;
-    gap: 30px;
-    right: -5%;
+    display: none;
   }
-  .linkTag:hover {
-    right: 0;
-  }
-  .linkTag::after {
-    position: absolute;
-    content: "";
-    height: 100%;
-    width: 100%;
-    background-color: rgb(255, 255, 255);
-    z-index: -1;
-    border-radius: 10px 0 0 10px;
-  }
-  .linkTag::before {
-    position: absolute;
-    content: "";
-    height: 100%;
-    width: 100%;
-    border: 2px solid white;
-    z-index: -1;
-    top: 3px;
-    right: 2px;
-    border-radius: 10px 0 0 10px;
-  }
+  
 }
 @media screen and (max-width: 400px) {
+  .OwnName{
+    text-align: right;
+  }
   .linkTag.show {
     opacity: 1;
   }
 
   .linkTag {
-    position: fixed;
-    right: -10%;
-    z-index: 20;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    right: -50px;
-    opacity: 0;
-    transition: right opacity 0.5s ease;
+   display: none;
   }
-  .linkTag:hover {
-    right: 0;
-  }
-  .linkTag::after {
-    position: absolute;
-    content: "";
-
-    height: 80%;
-    width: 100%;
-    background-color: rgb(255, 255, 255);
-    transition: all 0.5s;
-    z-index: -1;
-    border-radius: 10px 0 0 10px;
-  }
-  .linkTag:hover:after {
-    background: rgba(255, 255, 255, 0.616);
-    backdrop-filter: blur(5px);
-  }
-  .linkTag::before {
-    position: absolute;
-    content: "";
-    height: 80%;
-    width: 100%;
-    border: 2px solid white;
-    z-index: -1;
-    top: 27px;
-    right: 2px;
-    border-radius: 10px 0 0 10px;
-  }
+  
 }

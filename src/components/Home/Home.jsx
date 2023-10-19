@@ -4,33 +4,46 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLayoutEffect, useRef, useEffect, useState, useMemo } from 'react';
 import img from "/SecImage.jpg"
 const Home = () => {
- 
+
   const elementRef = useRef(null);
- 
+  const contentWrapper = useRef(null)
   const mainContent = useRef(null);
-
+  const card = useRef(null)
   const animation = useMemo(() => {
-    return gsap.registerPlugin(ScrollTrigger);
+  return gsap.registerPlugin(ScrollTrigger);
   }, []);
-  useLayoutEffect(()=>{
+  useLayoutEffect(() => {
     animation;
-
-    gsap.to(elementRef.current, {
-      y: 0.1 * elementRef.current.parentNode.offsetHeight, // Adjust this value as needed
+    const animationInstance = gsap.to(contentWrapper.current, {
+      y: 0.1 * elementRef.current.parentNode.offsetHeight,
       ease: "none",
       scrollTrigger: {
         trigger: elementRef.current,
         start: "top top",
         markers: false,
         end: "bottom top ",
-        scrub: 0, // Enable scrubbing for parallax effect
+        scrub: 0,
       },
     });
+    const cardAnimation = gsap.fromTo(card.current, 
+      { 
+        transform: "rotate(0deg)", y: 0 
+      }, 
+      {
+      transform: "rotate(10deg)",
+      y: -500,
+      ease: "power2 out", 
+      duration: 2
+      })
+
+   
+    return () => {
+      animationInstance.kill(); 
+      cardAnimation.kill();
+    };
+  }, [animation]);
 
 
-  },[animation])
-
-  
 
   // Screen width and link tag
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -62,30 +75,36 @@ const Home = () => {
 
   return (
     <div ref={elementRef} className={style.container}>
-      <div className={style.cardImage}>
-      
-      <img src={img} />
-      </div>
-      <div ref={mainContent} className={style.mainContent}>
-       
-      <h1 className={style.brandName}>ENIGMA</h1>
-      <h1 className={style.brandNameSec}>VISION</h1>
-      <h2 className={style.OwnName}>*BY SATYA</h2>
-      <h3>* YOUR VISION MY RESPONSIBILITY</h3>
+      <div className={style.contentWrapper} ref={contentWrapper}>
+        <div className={style.cardImage} ref={card}>
+
+          <img src={img} />
+        </div>
+        <div ref={mainContent} className={style.mainContent}>
+
+          <h1 className={style.brandName}>ENIGMA</h1>
+          <h1 className={style.brandNameSec}>VISION</h1>
+          <h2 className={style.OwnName}>*BY SATYA</h2>
+          <h3>* YOUR VISION MY RESPONSIBILITY</h3>
+        </div>
       </div>
       {screenWidth > 840 ? (
         <div className={style.linkTag}>
-     {    /* <FaFacebookSquare size={40} color="white" />
+          {    
+          /* <FaFacebookSquare size={40} color="white" />
           <AiFillGithub size={40} color="white" />
-      <AiFillInstagram size={40} color="white" />*/}
+          <AiFillInstagram size={40} color="white" />*/
+          }
         </div>
       ) : (
         <div
           className={`${style.linkTag} ${showLinkTag ? style.show : ''}`}
         >
-         {/* <FaFacebookSquare size={20} color="black" />
+          {
+          /* <FaFacebookSquare size={20} color="black" />
           <AiFillGithub size={20} color="black" />
-          <AiFillInstagram size={20} color="black" />*/}
+          <AiFillInstagram size={20} color="black" />*/
+          }
         </div>
       )}
     </div>

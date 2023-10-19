@@ -8,7 +8,7 @@ import style from "./Service.module.css";
 gsap.registerPlugin(ScrollTrigger);
 
 function Service() {
-  const textRef = useRef(null);
+
   const container = useRef(null);
 
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -79,6 +79,7 @@ function Service() {
     window.addEventListener("resize", updateScreenWidth);
 
     return () => {
+      tl.kill();
       // Remove the event listener on unmount
       window.removeEventListener("resize", updateScreenWidth);
     };

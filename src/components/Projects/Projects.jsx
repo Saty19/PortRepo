@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unknown-property */
 import { lazy, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Bloom, EffectComposer, Glitch, SMAA } from "@react-three/postprocessing";
+import { Bloom, EffectComposer, SMAA } from "./PostprocessingAsync";
 import { Environment, PresentationControls, PerspectiveCamera, } from "@react-three/drei";
 import style from "./Projects.module.css";
 import { Suspense } from "react";
@@ -29,7 +29,7 @@ const Projects = () => {
 
 
   const handleHover = (name) => {
-    const hovered = nameComponentMap.find((item) => item.name === name);
+    const hovered = nameComponentMap.find((item) => item?.name === name);
     setHoveredItem(hovered);
   };
 
@@ -48,6 +48,10 @@ const Projects = () => {
       });
       tl.to(img.current,{bottom:"-100%",ease:"linear"})
 
+      return ()=>{
+        tl.kill()
+      }
+
   },[])
 
   return (
@@ -59,10 +63,10 @@ const Projects = () => {
         {nameComponentMap.map((item) => (
           <div
             key={item.ID}
-            onMouseEnter={() => handleHover(item.name)}
-            className={style.Item}
+            onMouseEnter={() => handleHover(item?.name)}
+            className={style?.Item}
           >
-            {item.name}
+            {item?.name}
           </div>
         ))}
       </div>
