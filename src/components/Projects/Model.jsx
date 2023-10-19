@@ -4,8 +4,6 @@ import { useGLTF, Html, Plane } from "@react-three/drei";
 import style from "./Model.module.css";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import * as THREE from 'three';
-
 export default function Model(props) {
   const { nodes, materials } = useGLTF("./TEST.glb");
   const group = useRef();

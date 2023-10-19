@@ -70,7 +70,7 @@
   width: 40%;
   text-align: left;
   color: rgb(0, 0, 0);
-  z-index: 200;
+  z-index: 3;
 }
 .linkTag {
   position: absolute;
@@ -85,25 +85,30 @@
 @media screen and (max-width: 840px) {
   .mainContent {
     padding-top: 35vw;
+    
   }
   .brandName{
-    font-size: 15vw;
+    font-size: 20vw;
   }
   .brandNameSec{
-    font-size: 15vw;
-    width: 60vw;
+    font-size: 20vw;
+    text-align: left;
+    width: 80%;
   }
   .mainContent>h3{
     text-align: right;
     right: 5vw;
+    bottom: 5vw;
   }
   .OwnName{
-    width: 60vw;
+    width: 70vw;
+    text-align: left;
+    color: black;
   }
   .cardImage {
-    width: 40vw;
+    width: 50vw;
     height: 60vw;
-    bottom: 20vh;
+    bottom: 10vh;
   }
   .linkTag {
     display: none;
@@ -111,8 +116,31 @@
   
 }
 @media screen and (max-width: 400px) {
-  .OwnName{
+  .brandName{
+    font-size: 20vw;
+    font-weight: 900;
+    width: 70vw;
+  }
+  .brandNameSec{
+    font-size: 20vw;
+    font-weight: 900;
+    text-align: left;
+    width: 70vw;
+  }
+  .mainContent>h3{
     text-align: right;
+    right: 5vw;
+    bottom: 20vw;
+  }
+  .OwnName{
+    width: 70vw;
+    text-align: left;
+    color: black;
+  }
+  .cardImage {
+    width: 60vw;
+    height: 80vw;
+    bottom: 25vh;
   }
   .linkTag.show {
     opacity: 1;

@@ -22,7 +22,7 @@ function Service() {
 
   useEffect(() => {
     const contentAnimation=gsap.to(container.current, {
-      y: 0.1 * container.current.parentNode.offsetHeight, // Adjust this value as needed
+      y: 0.05 * container.current.parentNode.offsetHeight, // Adjust this value as needed
       ease: 'linear',
       scrollTrigger: {
         trigger: container.current,

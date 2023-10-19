@@ -55,7 +55,8 @@ const Navbar = () => {
               onClick={toggle}
             >
               {isToggled ? (
-                <svg
+              
+                <svg 
                   xmlns="http://www.w3.org/2000/svg"
                   width="30"
                   height="30"
@@ -75,6 +76,7 @@ const Navbar = () => {
                     fill="black"
                   />
                 </svg>
+              
               ) : (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

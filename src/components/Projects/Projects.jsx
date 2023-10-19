@@ -1,8 +1,5 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-unknown-property */
 import { lazy, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Bloom, EffectComposer, SMAA } from "./PostprocessingAsync";
 import {
   Environment,
   PresentationControls,
@@ -15,6 +12,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { nameComponentMap } from "./Content/content";
 import { useRef } from "react";
+
+export const Bloom = lazy(() => import("@react-three/postprocessing").then((module) => ({ default: module.Bloom })));
+export const EffectComposer = lazy(() => import("@react-three/postprocessing").then((module) => ({ default: module.EffectComposer })));
+
 
 const Projects = () => {
   const container = useRef(null);
@@ -59,14 +60,13 @@ const Projects = () => {
       <div className={style.listItem}>
         {nameComponentMap.map((item) => (
           <div
-            key={item.ID}
+            key={item?.ID}
             onMouseEnter={() => handleHover(item?.name)}
-            className={style?.Item}
+            className={style.Item}
           >
-            {item?.name}
+            {item.name}
           </div>
-          ))}
-          
+        ))}
       </div>
 
       <div className={style.CanvaContainer}>
@@ -92,8 +92,8 @@ const Projects = () => {
             azimuth={[-Math.PI / 1.4, Math.PI / 2]}
           >
             <Suspense fallback={null}>
-              <EffectComposer>
-                <SMAA />
+              <EffectComposer smma>
+       
                 <Bloom intensity={0.1} luminanceThreshold={0.5} />
                 <group rotation={[0, 270, 0]} position={[0, 1, 0]}>
                   <ModelLoad Hovered={hoveredItem} />
@@ -115,7 +115,7 @@ const Projects = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Projects;
