@@ -68,13 +68,13 @@ const Home = () => {
     const scrollPercentage = (scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
     setShowLinkTag(scrollPercentage >= 10);
   }, [scrollY]);
-
+  const demo ="https://cdn.pixabay.com/photo/2023/06/07/20/03/ai-generated-8048160_640.jpg"
   return (
     <div ref={elementRef} className={style.container}>
       <div className={style.contentWrapper} ref={contentWrapper}>
         <div className={style.cardImage} ref={card}>
 
-          <img src={img} />
+          <img src={demo} />
         </div>
         <div ref={mainContent} className={style.mainContent}>
 
