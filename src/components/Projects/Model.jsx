@@ -1,111 +1,139 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable react/no-unknown-property */
-import { useGLTF, Html, Plane } from "@react-three/drei";
 import style from "./Model.module.css";
-import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import  { useRef } from "react";
+import { Html, Plane, useGLTF } from "@react-three/drei";
+import Service from "../Service/Service";
+
 export default function Model(props) {
-  const { nodes, materials } = useGLTF("./TEST.glb");
-  const group = useRef();
-  const first = useRef();
-  const sec = useRef();
+  const { nodes, materials } = useGLTF("/laptop.glb");
+  
   const isHovered = props.Hovered;
-
-
- 
-
- 
-  useFrame(() => {
-    
-      first.current.rotation.y += 0.01;
-      sec.current.rotation.y += -0.01;
-    
-  });
-
-  // Cleanup function when the component unmounts
- 
-
   return (
-    
-    <group {...props} dispose={null} ref={group}>
-      <group
-        scale={[8, 8, 8]}
-        rotation-x={-25.5}
-        rotation-y={26.2}
-        rotation-z={45}
+    <group {...props} dispose={null} scale={[2,2,2]} >
+    <group rotation={[-Math.PI, 0, -3.135]}>
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.macBook_BottomPart_Cube001.geometry}
+      material={materials["Black.001"]}
+    />
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.macBook_BottomPart_Cube001_1.geometry}
+      material={materials["Main.001"]}
+    />
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.macBook_BottomPart_Cube001_2.geometry}
+      material={materials["Second.001"]}
+    />
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.macBook_BottomPart_Cube001_3.geometry}
+      material={materials["KeysMain.001"]}
+    />
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.macBook_BottomPart_Cube001_4.geometry}
+      material={materials["KeysBottom.001"]}
+    />
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.macBook_BottomPart_Cube001_5.geometry}
+      material={materials["TopLine.001"]}
+    />
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.macBook_BottomPart_Cube001_6.geometry}
+      material={materials["DarkGrey.001"]}
+    />
+  </group>
+  <group rotation={[-Math.PI, 0, -3.135]}>
+      <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.macBook_TopPart_Cube001.geometry}
+      material={materials["Outline.001"]}
+    />
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.macBook_TopPart_Cube001_1.geometry}
+      material={materials["Screen.001"]}
+    >
+   
+    <Html
+        className={style.htmlMain}
+        position={[0, 1, -0.1]} transform occlude 
+        rotation-y={91.1} 
+     
+        scale={0.07}
+        center
+        style={{ opacity: "0.8", width: "1920px", height: "1100px" }}
       >
-        <group ref={first}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Circle.geometry}
-            material={materials["Material.005"]}
-            rotation={[0, -1.4, 0]}
-            scale={1.1}
-            userData={{ name: "Circle" }}
-          />
-        </group>
-        <group ref={sec}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Circle001.geometry}
-            material={materials["Material.006"]}
-            position={[0, 0.1, 0]}
-            scale={[0.9, 1.1, 0.9]}
-            userData={{ name: "Circle.001" }}
-          />
-        </group>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Circle002.geometry}
-          material={materials["Material.007"]}
-          position={[0, 0.3, 0]}
-          scale={0.4}
-          userData={{ name: "Circle.002" }}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Circle003.geometry}
-          material={materials["Material.008"]}
-          position={[0, 0.2, 0]}
-          scale={0.7}
-          userData={{ name: "Circle.003" }}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.Circle004.geometry}
-          material={materials["Material.009"]}
-          position={[0, 0.3, 0]}
-          scale={0.2}
-          userData={{ name: "Circle.004" }}
+        <div
+          style={{ height: "100%" ,fontSize:"2vw"}}
+          onPointerDown={(e) => e.stopPropagation()}
         >
-          <Plane visible={false}   rotation-y={-70} scale={[10, 10, 1]} position={[0, 2, -1]}>
-            <Html
-              className={style.htmlMain}
-              
-              rotation-x={-Math.PI * 2}
-              position={[0.0001, 0, 1]}
-              transform
-              scale={0.08}
-              center
-              style={{ opacity: "0.8", width: "100%", height: "100%" }}
-            >
-              <div
-                style={{ height: "100%" ,fontSize:"2vw"}}
-                onPointerDown={(e) => e.stopPropagation()}
-              >
-                {isHovered && isHovered.name}
-              </div>
-            </Html>
-          </Plane>
-        </mesh>
-      </group>
+          {isHovered?.name==="MAGENTO" && <Service/> }
+        </div>
+      </Html>
+     
+    </mesh>
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.macBook_TopPart_Cube001_2.geometry}
+      material={materials["Emission.001"]}
+    />
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.macBook_TopPart_Cube001_3.geometry}
+      material={materials["Logo.001"]}
+    />
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.macBook_TopPart_Cube001_4.geometry}
+      material={materials["Main.001"]}
+    />
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.macBook_TopPart_Cube001_5.geometry}
+      material={materials["Text.001"]}
+    />
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.macBook_TopPart_Cube001_6.geometry}
+      material={materials["Camera.001"]}
+    />
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.macBook_TopPart_Cube001_7.geometry}
+      material={materials["Camera1.001"]}
+    />
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.macBook_TopPart_Cube001_8.geometry}
+      material={materials["CameraGreen.001"]}
+    />
+  </group>
     </group>
   );
 }
 
-useGLTF.preload("./TEST.glb");
+useGLTF.preload("/laptop.glb");
+
+
+

@@ -13,9 +13,16 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { nameComponentMap } from "./Content/content";
 import { useRef } from "react";
 
-export const Bloom = lazy(() => import("@react-three/postprocessing").then((module) => ({ default: module.Bloom })));
-export const EffectComposer = lazy(() => import("@react-three/postprocessing").then((module) => ({ default: module.EffectComposer })));
-
+export const Bloom = lazy(() =>
+  import("@react-three/postprocessing").then((module) => ({
+    default: module.Bloom,
+  }))
+);
+export const EffectComposer = lazy(() =>
+  import("@react-three/postprocessing").then((module) => ({
+    default: module.EffectComposer,
+  }))
+);
 
 const Projects = () => {
   const container = useRef(null);
@@ -56,7 +63,8 @@ const Projects = () => {
 
   return (
     <div className={style.container} ref={container}>
-      <div className={style.image} ref={img}></div>
+      <div className={style.headLine}>PROJECT</div>
+      
       <div className={style.listItem}>
         {nameComponentMap.map((item) => (
           <div
@@ -81,7 +89,8 @@ const Projects = () => {
             fov={55} // Field of view
             near={0.1} // Near clipping plane
             far={1000} // Far clipping plane
-            position={[0, 0, 30]}
+            position={[0, 2, 20]}
+           
           />
 
           <PresentationControls
@@ -93,7 +102,6 @@ const Projects = () => {
           >
             <Suspense fallback={null}>
               <EffectComposer smma>
-       
                 <Bloom intensity={0.1} luminanceThreshold={0.5} />
                 <group rotation={[0, 270, 0]} position={[0, 1, 0]}>
                   <ModelLoad Hovered={hoveredItem} />
@@ -105,8 +113,6 @@ const Projects = () => {
         </Canvas>
       </div>
       <div className={style.rightcontent}>
-        <h1>PROJECT</h1>
-
         {hoveredItem && (
           <div>
             <h2>{hoveredItem.name}</h2>

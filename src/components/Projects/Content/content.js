@@ -1,11 +1,12 @@
 
+
   
    export const  nameComponentMap = [
         {
           ID: 1,
           name: "MAGENTO",
           CONTENT:
-            "ContentAI is a Magento module that automates the content creation process for your website using OpenAI (Artificial Intelligence).",
+          "ContentAI is a Magento module that automates the content creation process for your website using OpenAI (Artificial Intelligence).",
         },
         {
           ID: 2,

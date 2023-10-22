@@ -11,17 +11,17 @@ const About = () => {
     // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
 
-  const containerAnimation=  gsap.to(containerRef.current, {
-      y: 0.01 * containerRef.current.parentNode.offsetHeight, // Adjust this value as needed
-      ease: 'none',
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        markers: false,
-        end: "bottom top ",
-        scrub: 0, // Enable scrubbing for parallax effect
-      }
-    });
+  // const containerAnimation=  gsap.to(containerRef.current, {
+  //     y: 0.01 * containerRef.current.parentNode.offsetHeight, // Adjust this value as needed
+  //     ease: 'none',
+  //     scrollTrigger: {
+  //       trigger: containerRef.current,
+  //       start: "top top",
+  //       markers: false,
+  //       end: "bottom top ",
+  //       scrub: 0, // Enable scrubbing for parallax effect
+  //     }
+  //   });
 
     // Define a timeline for the animation
     const tl = gsap.timeline({
@@ -47,7 +47,7 @@ const About = () => {
         trigger.kill();
       });
       tl.kill();
-     containerAnimation.kill();
+    //  containerAnimation.kill();
     };
   }, []);
   const demoImg="https://assets.website-files.com/62cfb3313a1a61a7d399c600/62cfba001eea8f0afa9f0d48_man_hero_cropped-min-p-800.png"
