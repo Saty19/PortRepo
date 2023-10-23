@@ -124,6 +124,7 @@
 @media screen and (max-width: 820px) {
   .threeContent {
     font-size: 8vw;
+    height: 80%;
   }
   .animatedContent{
     font-size: 12vw;

@@ -10,59 +10,67 @@ gsap.registerPlugin(ScrollTrigger);
 function Service() {
   const container = useRef(null);
   const imagewrapper = useRef(null);
+  const ITEM = useRef(null);
 
-
+  const [activeItemIndex, setActiveItemIndex] = useState(1);
   // Function to update screen width when the window is resized
   const updateScreenWidth = () => {
     setScreenWidth(window.innerWidth);
   };
-  const [HoveredItem, setHoveredItem] = useState([{
-    ID:1,
+  const [HoveredItem, setHoveredItem] = useState({
+    ID: 1,
     name: "Web App & Design",
-    CONTENT:"ContentAI is a Magento module that automates the content creation process for your website using OpenAI (Artificial Intelligence).",
-    image:"https://cdn.pixabay.com/photo/2020/11/07/01/28/abstract-5719221_640.jpg",
-}]);
- 
-
+    CONTENT:
+      "ContentAI is a Magento module that automates the content creation process for your website using OpenAI (Artificial Intelligence).",
+    image:
+      "https://cdn.pixabay.com/photo/2020/11/07/01/28/abstract-5719221_640.jpg",
+  });
 
   useEffect(() => {
-    const tl = gsap.timeline({scrollTrigger:{
-      trigger:container.current,
-      start:"top center"
-
-    }});
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top center",
+      },
+    });
     tl.to(imagewrapper.current, {
       clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-      duration: 2 ,
+      duration: 2,
       ease: "expo.inOut",
     });
 
-
+    gsap.to(ITEM.current.children, {
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top 40%",
+      },
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+      stagger: 0.1,
+      ease:"power2.out"
+    });
 
     return () => {
-      tl.kill()
+      tl.kill();
     };
   }, []);
 
-  const handleHover = (name) => {
-  
+  const handleHover = (name, index) => {
     const hovered = serviceContent.find((item) => item?.name === name);
     setHoveredItem(hovered);
-  };
-
-  const handleMouseLeave = () => {
+    setActiveItemIndex(index);
   };
 
   return (
     <div className={`${style.container}`} ref={container}>
-    <div className={style.headLine}>SERVICE</div>
-    <div className={style.leftContent}>
+      <div className={style.headLine}>SERVICE</div>
+      <div className={style.leftContent} ref={ITEM}>
         {serviceContent.map((item) => (
           <div
-            className={style.item}
+            className={`${style.item} ${
+              item.ID == activeItemIndex ? style.active : ""
+            } `}
             key={item.ID}
-            onMouseEnter={() => handleHover(item.name)}
-            onMouseLeave={handleMouseLeave}
+            onMouseEnter={() => handleHover(item.name, item.ID)}
           >
             {item.name.toUpperCase()}
           </div>
@@ -71,11 +79,9 @@ function Service() {
       <div className={style.RightContent}>
         <div className={style.contentWrapper}>
           <div className={style.line}>
-          <div className={style.line2}/>
+            <div className={style.line2} />
             <div className={style.content}>
-              {
-               
-                HoveredItem && HoveredItem.CONTENT}
+              {HoveredItem && HoveredItem.CONTENT}
             </div>
           </div>
         </div>
