@@ -47,7 +47,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    const tl= gsap.to(card.current,{y:-100,rotate:10,opacity:1,duration:2, ease:"power2.out"})
+    // const tl= gsap.to(card.current,{y:-100,rotate:10,opacity:1,duration:2, ease:"power2.out"})
 
     const handleScroll = () => {
       setScrollY(window.scrollY);
