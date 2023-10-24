@@ -204,6 +204,14 @@ div::-webkit-scrollbar {
   
   
   }
+  .firstLeftContent {
+    font-size: 13vw;
+    font-weight: 900;
+  }
+  .forthRightContent{
+    font-size: 15vw;
+    font-weight: 900;
+  }
   .container{
     font-weight: 900;
   }

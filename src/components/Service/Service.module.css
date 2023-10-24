@@ -55,7 +55,7 @@
   color: transparent;
   -webkit-text-stroke: 1px  white;
   font-size: 3vw;
-  
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
   transition: all 0.5s;
   
 }
@@ -167,9 +167,31 @@
 }
 
 
-
+.active{
+  color: white;
+}
 @media screen and (max-width: 820px) {
+  .headLine{
+    font-size: 30vw;
+    width: auto;
+    right: 0;
+    writing-mode: vertical-lr;
+ 
 
+  }
+  .container{
+    flex-direction: column;
+  }
+  .leftContent{
+    width: 100%;
+    justify-content: center;
+  }
+  .RightContent{
+    width: 100%;
+  }
+  .item{
+    font-size: 8vw;
+  }
 }
 
 @media screen and (max-width: 400px) {

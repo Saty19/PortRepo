@@ -4,6 +4,7 @@ import {
   Environment,
   PresentationControls,
   PerspectiveCamera,
+  
 } from "@react-three/drei";
 import style from "./Projects.module.css";
 import { Suspense } from "react";
@@ -27,7 +28,8 @@ export const EffectComposer = lazy(() =>
 const Projects = () => {
   const container = useRef(null);
   const img = useRef(null);
-
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [activeItemIndex, setActiveItemIndex] = useState(1);
   const [hoveredItem, setHoveredItem] = useState({
     name: "MAGENTO",
     CONTENT:
@@ -38,9 +40,10 @@ const Projects = () => {
     return lazy(() => import("./Model"));
   }, []);
 
-  const handleHover = (name) => {
+  const handleHover = (name,index) => {
     const hovered = nameComponentMap.find((item) => item?.name === name);
     setHoveredItem(hovered);
+    setActiveItemIndex(index)
   };
 
   useEffect(() => {
@@ -55,9 +58,14 @@ const Projects = () => {
       },
     });
     tl.to(img.current, { bottom: "-100%", ease: "linear" });
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
 
+    window.addEventListener('resize', handleResize);
     return () => {
       tl.kill();
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -69,8 +77,8 @@ const Projects = () => {
         {nameComponentMap.map((item) => (
           <div
             key={item?.ID}
-            onMouseEnter={() => handleHover(item?.name)}
-            className={style.Item}
+            onMouseEnter={() => handleHover(item?.name,item.ID)}
+            className={`${style.Item} ${ item.ID==activeItemIndex?style.active:''} `}
           >
             {item.name}
           </div>
@@ -79,7 +87,7 @@ const Projects = () => {
 
       <div className={style.CanvaContainer}>
         <Canvas
-          style={{ touchAction: "none" }}
+          
           className={style.canvas}
           size={{ width: window.innerWidth, height: window.innerHeight }}
           background="rgba(0, 0, 0, 0)"
@@ -89,26 +97,41 @@ const Projects = () => {
             fov={55} // Field of view
             near={0.1} // Near clipping plane
             far={1000} // Far clipping plane
-            position={[0, 2, 20]}
+            position={[0, 1, 20]}
            
           />
 
-          <PresentationControls
-            config={{ mass: 2, tension: 500 }}
-            snap={{ mass: 4, tension: 1500 }}
-            rotation={[0, 0.3, 0]}
-            polar={[-Math.PI / 3, Math.PI / 3]}
-            azimuth={[-Math.PI / 1.4, Math.PI / 2]}
-          >
-            <Suspense fallback={null}>
+          {
+            windowWidth<=820?(
+              <Suspense fallback={null}>
               <EffectComposer smma>
                 <Bloom intensity={0.1} luminanceThreshold={0.5} />
                 <group rotation={[0, 270, 0]} position={[0, 1, 0]}>
-                  <ModelLoad Hovered={hoveredItem} />
+                  <ModelLoad Hovered={hoveredItem} Scale={3.5}/>
                 </group>
               </EffectComposer>
             </Suspense>
-          </PresentationControls>
+            ):(
+              <PresentationControls
+              config={{ mass: 2, tension: 1000 }}
+              snap={{ mass: 4, tension: 1500 }}
+              rotation={[0.2, -0.1, 0]}
+              polar={[0, Math.PI / 7]} // Adjust the polar property to limit the vertical rotation
+              azimuth={[-Math.PI / 1.5, Math.PI / 2]}
+            >
+              <Suspense fallback={null}>
+                <EffectComposer smma>
+                  <Bloom intensity={0.1} luminanceThreshold={0.5} />
+                  <group rotation={[0, 270, 0]} position={[0, 1, 0]}>
+                    <ModelLoad Hovered={hoveredItem} />
+                  </group>
+                </EffectComposer>
+              </Suspense>
+            </PresentationControls>)
+        
+        
+        }
+        
           <Environment preset="city" />
         </Canvas>
       </div>
