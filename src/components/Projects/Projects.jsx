@@ -27,7 +27,6 @@ export const EffectComposer = lazy(() =>
 
 const Projects = () => {
   const container = useRef(null);
-  const img = useRef(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [activeItemIndex, setActiveItemIndex] = useState(1);
   const [hoveredItem, setHoveredItem] = useState({
@@ -57,7 +56,7 @@ const Projects = () => {
         scrub: 3,
       },
     });
-    tl.to(img.current, { bottom: "-100%", ease: "linear" });
+
     function handleResize() {
       setWindowWidth(window.innerWidth);
     }

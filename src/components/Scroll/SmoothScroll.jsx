@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import "./SmoothScroll.css";
 import useWindowSize from "./useWindowSize";
 import Navbar from "../Navbar/Navbar";
+import Loader from "../Loader/Loader";
 
 const SmoothScroll = ({ children }) => {
   const windowSize = useWindowSize();
@@ -54,6 +55,8 @@ const SmoothScroll = ({ children }) => {
 
   return (
     <div className="parent" >
+
+    <Loader/>
       <div
         style={{
           position: "fixed",
@@ -101,6 +104,7 @@ const SmoothScroll = ({ children }) => {
           <path d="M1 9H9" stroke="white" strokeLinecap="round" />
         </svg>
       </div>
+      
       <Navbar />
       <div ref={scrollingContainerRef}>{children}</div>
     </div>

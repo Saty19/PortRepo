@@ -2,7 +2,6 @@ import style from "./Home.module.css";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {  useRef, useEffect, useState, useMemo } from 'react';
-import img from "/SecImage.jpg"
 const Home = () => {
 
   const elementRef = useRef(null);

@@ -2,7 +2,7 @@ import { useEffect, useRef, useMemo } from "react";
 import style from "./SecSecond.module.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
-import image from "/SecImage.jpg";
+
 
 const SectionSecond = () => {
   const rec1 = useRef(null);
@@ -12,10 +12,9 @@ const SectionSecond = () => {
   const container= useRef(null)
   const rightContent = useRef(null);
   const leftContent = useRef(null);
-  const parra = useRef(null);
   const leftTop = useRef(null);
   const ThreeContent = useRef(null);
-  
+  const item= ["JAVA", "JAVASCRIPT", "REACT", "THREE"]
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -36,16 +35,7 @@ const SectionSecond = () => {
     tl.to(rec2.current, { y: "100%", direction: 1 }, 2.5);
     tl.to(rec3.current, { y: "100%", direction: 1 }, 3);
     tl.to(rec4.current, { y: "100%", direction: 1 }, 3.5);
-    tl.to(
-      parra.current,
-      {
-        opacity: 1,
-        duration: 3,
-        position: isMobile && "absolute",
-        zIndex: isMobile && 2,
-      },
-      3
-    );
+
     tl.to(
       ThreeContent.current,
       {
@@ -57,15 +47,7 @@ const SectionSecond = () => {
       },
       4
     );
-    tl.to(
-      rightContent.current,
-      {
-        opacity: 1,
-        duration: 0.8,
-        ease: "none",
-      },
-      0.6
-    );
+ 
     tl.to(
       leftContent.current,
       {
@@ -104,17 +86,14 @@ const SectionSecond = () => {
     return () => {
       tl.kill();
     //  imageanimation.kill(); 
-      ScrollTrigger.getAll().forEach((trigger) => {
+        ScrollTrigger.getAll().forEach((trigger) => {
         trigger.kill(); 
       });
     };
   }, []);
 
-  const imageUrl =
-    "https://plus.unsplash.com/premium_photo-1674740443999-3d67127b5389?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fDNkfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60";
-
   const elements = useMemo(() => {
-    return ["JAVA", "JAVASCRIPT", "REACT", "THREE"].map((text, index) => (
+    return item.map((text, index) => (
       <div className={style.parent} key={index}>
         <div
           className={style.rectangle}
@@ -136,19 +115,11 @@ const SectionSecond = () => {
 
   return (
     <div className={`section ${style.container}`} ref={container}>
-     { /*<img
-        src={imageUrl}
-        ref={imgPrlx}
-        className={style.secimage}
-        style={{ objectFit: "cover" }}
-     />*/}
       <div className={style.leftContent} ref={leftContent}>
         <div style={{ width: "100%" }} ref={leftTop}>
           {elements}
         </div>
-        {/*<p ref={parra} className={style.Parragraph}>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis laborum molestiae placeat voluptatum animi at ex quos doloribus mollitia adipisci?
-          </p>*/}
+       
       </div>
 
       <div className={style.rightContent} ref={rightContent}>
