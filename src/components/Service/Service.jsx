@@ -2,106 +2,91 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import style from "./Service.module.css";
-// import img from "/service.jpg";
+import { serviceContent } from "./servicecontent";
 
 // Initialize ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
 function Service() {
-
   const container = useRef(null);
-  const containtWrapper=useRef(null)
+  const imagewrapper = useRef(null);
 
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   // Function to update screen width when the window is resized
   const updateScreenWidth = () => {
     setScreenWidth(window.innerWidth);
   };
+  const [HoveredItem, setHoveredItem] = useState([{
+    ID:1,
+    name: "Web App & Design",
+    CONTENT:"ContentAI is a Magento module that automates the content creation process for your website using OpenAI (Artificial Intelligence).",
+    image:"https://cdn.pixabay.com/photo/2020/11/07/01/28/abstract-5719221_640.jpg",
+}]);
+ 
+
 
   useEffect(() => {
-    const contentAnimation=gsap.to(container.current, {
-      y: 0.1 * container.current.parentNode.offsetHeight, // Adjust this value as needed
-      ease: 'linear',
-      scrollTrigger: {
-        trigger: container.current,
-        start: "top top",
-        end: "bottom top ",
-        scrub: 1, // Enable scrubbing for parallax effect
-      }
+    const tl = gsap.timeline({scrollTrigger:{
+      trigger:container.current,
+      start:"top center"
+
+    }});
+    tl.to(imagewrapper.current, {
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+      duration: 2 ,
+      ease: "expo.inOut",
     });
 
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: container.current,
-        start: "10% 80%",
-        end: "90% 70%",
-        scrub: 2,
-      },
-    });
-    tl.to(
-      ".box",
-      {
-        width: screenWidth < 840 ? "90%" : "50%",
-        duration: 3,
-        ease: "ease",
-      },
-      1
-    );
-    tl.fromTo(
-      ".BoxWrapperContent",
-      { opacity: 0 },
-      {
-        opacity: 1,
-        duration: 3,
-        ease: "power2.out",
-      },
-      2
-    );
-
-   
-
-    // Event listener for window resize
-    window.addEventListener("resize", updateScreenWidth);
 
     return () => {
-      tl.kill();
-      contentAnimation.kill()
-      // Remove the event listener on unmount
-      window.removeEventListener("resize", updateScreenWidth);
+      tl.kill()
     };
-  }, [screenWidth]);
+  }, []);
 
-  const imageUrl = "https://images.unsplash.com/photo-1695883701435-7bd88f796e05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60";
-  const serviceImg="https://images.unsplash.com/photo-1621111848501-8d3634f82336?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHVpJTJGdXh8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+  const handleHover = (name) => {
+  
+    const hovered = serviceContent.find((item) => item?.name === name);
+    setHoveredItem(hovered);
+  };
+
+  const handleMouseLeave = () => {
+  };
+
   return (
     <div className={`${style.container}`} ref={container}>
-    <div ref={containtWrapper} className={style.containtWrapper}>
-      <img src={imageUrl} className={`${style.serviceImg}`} alt="Service Background" />
-      <div
-        style={{
-          width: "80%",
-          float: "right",
-          marginTop: "10%",
-          marginLeft: "auto",
-        }}
-      />
-      <div className={style.containertext}>SERVICE</div>
-      <div className={`BoxWrapper ${style.BoxWrapper}`}>
-        <div
-          style={{ color: "white" }}
-          className={`BoxWrapperContent ${style.BoxWrapperContent}`}
-        >
-          <h2 style={{ color: "white", fontSize: "5vw" }}>TEST</h2>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem iusto
-          nulla pariatur sunt suscipit non sit fugiat, optio repellendus
-          commodi?
-        </div>
-        <div className={`box ${style.imageWrapper}`}>
-          <img src={serviceImg} className={`img ${style.img}`} alt="Demo" />
-        </div>
+    <div className={style.headLine}>SERVICE</div>
+    <div className={style.leftContent}>
+        {serviceContent.map((item) => (
+          <div
+            className={style.item}
+            key={item.ID}
+            onMouseEnter={() => handleHover(item.name)}
+            onMouseLeave={handleMouseLeave}
+          >
+            {item.name.toUpperCase()}
+          </div>
+        ))}
       </div>
+      <div className={style.RightContent}>
+        <div className={style.contentWrapper}>
+          <div className={style.line}>
+          <div className={style.line2}/>
+            <div className={style.content}>
+              {
+               
+                HoveredItem && HoveredItem.CONTENT}
+            </div>
+          </div>
+        </div>
+        <div className={style.imagewrapper} ref={imagewrapper}>
+          <img
+            src={HoveredItem && HoveredItem.image}
+            style={{
+              opacity: HoveredItem ? 1 : 0,
+            }}
+          />
+        </div>
       </div>
     </div>
   );

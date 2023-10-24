@@ -1,72 +1,78 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-unknown-property */
 import { lazy, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Bloom, EffectComposer, SMAA } from "./PostprocessingAsync";
-import { Environment, PresentationControls, PerspectiveCamera, } from "@react-three/drei";
+import {
+  Environment,
+  PresentationControls,
+  PerspectiveCamera,
+} from "@react-three/drei";
 import style from "./Projects.module.css";
 import { Suspense } from "react";
 import { useMemo } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { nameComponentMap } from "./Content/content"
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { nameComponentMap } from "./Content/content";
 import { useRef } from "react";
 
-const Projects = () => {
+export const Bloom = lazy(() =>
+  import("@react-three/postprocessing").then((module) => ({
+    default: module.Bloom,
+  }))
+);
+export const EffectComposer = lazy(() =>
+  import("@react-three/postprocessing").then((module) => ({
+    default: module.EffectComposer,
+  }))
+);
 
-  const container = useRef(null)
-  const img = useRef(null)
+const Projects = () => {
+  const container = useRef(null);
+  const img = useRef(null);
 
   const [hoveredItem, setHoveredItem] = useState({
     name: "MAGENTO",
-    CONTENT: "ContentAI is a Magento module that automates the content creation process for your website using OpenAI (Artificial Intelligence).",
+    CONTENT:
+      "ContentAI is a Magento module that automates the content creation process for your website using OpenAI (Artificial Intelligence).",
   });
-
 
   const ModelLoad = useMemo(() => {
     return lazy(() => import("./Model"));
   }, []);
-
 
   const handleHover = (name) => {
     const hovered = nameComponentMap.find((item) => item?.name === name);
     setHoveredItem(hovered);
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top 70%",
+        end: "50% 50%",
+        scrub: 3,
+      },
+    });
+    tl.to(img.current, { bottom: "-100%", ease: "linear" });
 
-      const tl=gsap.timeline({
-        scrollTrigger:{
-          trigger:container.current,
-          start:"top 70%",
-          end:"50% 50%",
-          scrub:3,
-        
-        }
-      });
-      tl.to(img.current,{bottom:"-100%",ease:"linear"})
-
-      return ()=>{
-        tl.kill()
-      }
-
-  },[])
+    return () => {
+      tl.kill();
+    };
+  }, []);
 
   return (
     <div className={style.container} ref={container}>
-      <div className={style.image} ref={img}>
-        
-      </div>
+      <div className={style.headLine}>PROJECT</div>
+      
       <div className={style.listItem}>
         {nameComponentMap.map((item) => (
           <div
-            key={item.ID}
+            key={item?.ID}
             onMouseEnter={() => handleHover(item?.name)}
-            className={style?.Item}
+            className={style.Item}
           >
-            {item?.name}
+            {item.name}
           </div>
         ))}
       </div>
@@ -78,13 +84,13 @@ const Projects = () => {
           size={{ width: window.innerWidth, height: window.innerHeight }}
           background="rgba(0, 0, 0, 0)"
         >
-
           <PerspectiveCamera
             makeDefault
             fov={55} // Field of view
             near={0.1} // Near clipping plane
             far={1000} // Far clipping plane
-            position={[0, 0, 30]}
+            position={[0, 2, 20]}
+           
           />
 
           <PresentationControls
@@ -95,8 +101,7 @@ const Projects = () => {
             azimuth={[-Math.PI / 1.4, Math.PI / 2]}
           >
             <Suspense fallback={null}>
-              <EffectComposer>
-                <SMAA/>
+              <EffectComposer smma>
                 <Bloom intensity={0.1} luminanceThreshold={0.5} />
                 <group rotation={[0, 270, 0]} position={[0, 1, 0]}>
                   <ModelLoad Hovered={hoveredItem} />
@@ -108,15 +113,12 @@ const Projects = () => {
         </Canvas>
       </div>
       <div className={style.rightcontent}>
-        <h1>PROJECT</h1>
-
         {hoveredItem && (
           <div>
             <h2>{hoveredItem.name}</h2>
             <p>{hoveredItem.CONTENT}</p>
           </div>
         )}
-
       </div>
     </div>
   );

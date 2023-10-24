@@ -11,6 +11,7 @@
   transition: none;
   margin-bottom: 0;
   overflow: hidden;
+  background: #f0f0f0;
   
 }
 .secimage{
@@ -48,7 +49,6 @@
 .rectangle {
   position: absolute;
   z-index: 8;
- 
   padding-left: 20%;
   width: 100%;
   height: 100%;
@@ -68,9 +68,6 @@
 .rightContent {
   height: 100%;
   width: 50%;
-  /* background: url(./editing.png);
-  background-size: cover;
-  background-position: center; */
   transition: none;
   position: absolute;
   right: 0;
@@ -96,13 +93,12 @@
   position: absolute;
   overflow: hidden;
   z-index: 10;
-  mix-blend-mode: lighten;
+  mix-blend-mode: screen;
   float: right;
   width: 0%;
   height: 50%;
   background-color: rgb(255, 255, 255);
-
-  color: black;
+  color: rgb(13, 3, 29);
   top: 70%;
   transform: translate(0, -50%);
   transition: none;

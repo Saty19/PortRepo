@@ -8,7 +8,7 @@ const SmoothScroll = ({ children }) => {
   const windowSize = useWindowSize();
   const scrollingContainerRef = useRef();
   const data = {
-    ease: 0.1,
+    ease: 0.08,
     current: 0,
     previous: 0,
     rounded: 0,
@@ -16,16 +16,6 @@ const SmoothScroll = ({ children }) => {
   let animationFrameId; // Define a variable to hold the animation frame ID
 
   
-  const scroll = {
-    position: 'fixed',
-    zIndex: 100,
-    top: 0,
-    left: 0,
-    margin: 0,
-    width: '100%',
-    height: '100%',
-    overflow: 'hidden',
-  };
 
   useEffect(() => {
     setBodyHeight();

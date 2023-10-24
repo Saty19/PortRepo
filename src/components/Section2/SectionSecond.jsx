@@ -9,7 +9,6 @@ const SectionSecond = () => {
   const rec2 = useRef(null);
   const rec3 = useRef(null);
   const rec4 = useRef(null);
-  const imgPrlx = useRef(null);
   const container= useRef(null)
   const rightContent = useRef(null);
   const leftContent = useRef(null);
@@ -51,7 +50,7 @@ const SectionSecond = () => {
       ThreeContent.current,
       {
         width: "70%",
-        top: isMobile ? "70%" : "80%",
+        top: isMobile ? "70%" : "70%",
         height: isMobile && "70%",
         borderRadius: 10,
         duration: 2,
@@ -77,22 +76,34 @@ const SectionSecond = () => {
       0
     );
 
-   const imageanimation= gsap.to(container.current, {
-      y: 0.1 * container.current.parentNode.offsetHeight, 
-      ease:"linear",
-      scrollTrigger: {
-        trigger: container.current,
-        start: "center top",
-        markers: false,
-        end: "bottom top ",
-        scrub: 1, // Enable scrubbing for parallax effect
-      },
-    });
+  //  const imageanimation= gsap.to(imgPrlx.current, {
+  //     y: 0.3 * imgPrlx.current.parentNode.offsetHeight, 
+  //     ease:"linear",
+  //     scrollTrigger: {
+  //       trigger: container.current,
+  //       start: "top top",
+  //       markers: false,
+  //       end: "bottom top ",
+  //       scrub: 1, // Enable scrubbing for parallax effect
+  //     },
+  //   });
 
+  const containerColor=gsap.timeline({
+    scrollTrigger:{
+      trigger:container.current,
+      start:"50% top",
+      end:"bottom 80%",
+      markers:false,
+      scrub:1
+    }
+  })
+  containerColor.to(container.current,{
+    background:"#121212",direction:3
+  })
 
     return () => {
       tl.kill();
-     imageanimation.kill(); 
+    //  imageanimation.kill(); 
       ScrollTrigger.getAll().forEach((trigger) => {
         trigger.kill(); 
       });
@@ -125,12 +136,12 @@ const SectionSecond = () => {
 
   return (
     <div className={`section ${style.container}`} ref={container}>
-      <img
+     { /*<img
         src={imageUrl}
         ref={imgPrlx}
         className={style.secimage}
         style={{ objectFit: "cover" }}
-      />
+     />*/}
       <div className={style.leftContent} ref={leftContent}>
         <div style={{ width: "100%" }} ref={leftTop}>
           {elements}

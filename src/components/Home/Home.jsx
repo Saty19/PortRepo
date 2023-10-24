@@ -1,7 +1,7 @@
 import style from "./Home.module.css";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useLayoutEffect, useRef, useEffect, useState, useMemo } from 'react';
+import {  useRef, useEffect, useState, useMemo } from 'react';
 import img from "/SecImage.jpg"
 const Home = () => {
 
@@ -12,29 +12,6 @@ const Home = () => {
   const animation = useMemo(() => {
     return gsap.registerPlugin(ScrollTrigger);
   }, []);
-  useLayoutEffect(() => {
-    animation;
-    // const content= gsap.to(elementRef.current, {
-    //   y: 0.1 * elementRef.current.parentNode.offsetHeight, 
-    //   ease:"linear",
-    //   scrollTrigger: {
-    //     trigger: elementRef.current,
-    //     start: "center top",
-    //     markers: false,
-    //     end: "bottom top ",
-    //     scrub: 1, // Enable scrubbing for parallax effect
-    //   },
-    // });
-
-
-
-    return () => {
-     // content.kill()
-     // animationInstance.kill();
-     // cardAnimation.kill();
-    };
-  }, [animation]);
-
 
 
   // Screen width and link tag
@@ -47,7 +24,8 @@ const Home = () => {
   };
 
   useEffect(() => {
-    // const tl= gsap.to(card.current,{y:-100,rotate:10,opacity:1,duration:2, ease:"power2.out"})
+    animation
+    const tl= gsap.to(card.current,{y:-100,rotate:10,opacity:1,duration:2, ease:"power2.out"})
 
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -61,20 +39,20 @@ const Home = () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', updateScreenWidth);
     };
-  }, []);
+  }, [animation]);
 
   useEffect(() => {
    
     const scrollPercentage = (scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
     setShowLinkTag(scrollPercentage >= 10);
   }, [scrollY]);
-
+  const demo ="https://cdn.pixabay.com/photo/2023/06/07/20/03/ai-generated-8048160_640.jpg"
   return (
     <div ref={elementRef} className={style.container}>
       <div className={style.contentWrapper} ref={contentWrapper}>
         <div className={style.cardImage} ref={card}>
 
-          <img src={img} />
+          <img src={demo} />
         </div>
         <div ref={mainContent} className={style.mainContent}>
 

@@ -5,19 +5,34 @@
 }
 .container {
   width: 99%;
-  height: 100vh;
-  /* border-radius: 10px; */
-  position: relative;
-  align-items: center;
-  background:gray;
-  overflow: hidden;
   margin: 0 auto;
-  color: white;
+  height: 100vh;
   display: flex;
-  transition: none;
-
   overflow: hidden;
-  
+  position: relative;
+  background: #121212;
+  transition: none;
+  color: white;
+}
+.container::after{
+  content: '';
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  left: 370px;
+  top: 250px;
+  border-radius: 50%;
+  background: #216A93;
+
+  filter: blur(307px);
+}
+.container::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg ,#121212,transparent);
+  z-index: 1;
 }
 .image{
   position: absolute;
@@ -28,7 +43,19 @@
 
 }
 
-
+.headLine{
+  width: 100%;
+  position: absolute;
+  font-family: Arial, Helvetica, sans-serif;
+  color:white;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  mix-blend-mode: soft-light;
+  font-size: 288.206px;
+  opacity: 0.8;
+  z-index: 1;
+}
 .CanvaContainer{
   position: relative;
   width: 50%;
