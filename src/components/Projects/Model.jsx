@@ -23,7 +23,7 @@ export default function Model(props) {
   useEffect(() => {
     return () => {
       // Unsubscribe from the animation here
-      useFrame.unsubscribe(update);
+      // useFrame.unsubscribe(update);
     };
   }, []);
 

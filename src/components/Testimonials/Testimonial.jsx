@@ -1,21 +1,12 @@
+import React from "react";
+import style from "./Testimonial.module.css";
 
-import style from "./Testimonial.module.css"
 const Testimonial = () => {
-
-
-
-  
   return (
     <div className={style.container}>
   
     </div>
-  )
-}
+  );
+};
 
-export default Testimonial
-
-
-
-
-
-
+export default Testimonial;

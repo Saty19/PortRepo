@@ -111,7 +111,7 @@
     bottom: 10vh;
   }
   .linkTag {
-    display: none;
+    display: block;
   }
   
 }
@@ -147,7 +147,7 @@
   }
 
   .linkTag {
-   display: none;
+   display: block;
   }
   
 }

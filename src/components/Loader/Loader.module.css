@@ -15,10 +15,10 @@
     stroke: #fff;
     stroke-width: 1px;
     stroke-dasharray: 5500;
-    animation: draw 250s infinite;
+    
 }
 
-@keyframes draw {
+/* @keyframes draw {
     0% {
         stroke-dashoffset: 5500;
     }
@@ -26,4 +26,4 @@
     100% {
         stroke-dashoffset: 0;
     }
-}
+} */

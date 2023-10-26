@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-
+import { useEffect, useLayoutEffect, useRef } from "react";
 import "./SmoothScroll.css";
 import useWindowSize from "./useWindowSize";
 import Navbar from "../Navbar/Navbar";
@@ -9,7 +8,7 @@ const SmoothScroll = ({ children }) => {
   const windowSize = useWindowSize();
   const scrollingContainerRef = useRef();
   const data = {
-    ease: 0.08,
+    ease: 0.09,
     current: 0,
     previous: 0,
     rounded: 0,
@@ -42,7 +41,7 @@ const SmoothScroll = ({ children }) => {
     animationFrameId = requestAnimationFrame(() => smoothScrollingHandler());
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Start smooth scrolling when the component mounts
     // eslint-disable-next-line react-hooks/exhaustive-deps
     animationFrameId = requestAnimationFrame(() => smoothScrollingHandler());
@@ -56,7 +55,7 @@ const SmoothScroll = ({ children }) => {
   return (
     <div className="parent" >
 
-    <Loader/>
+  {/*<Loader/>*/}
       <div
         style={{
           position: "fixed",

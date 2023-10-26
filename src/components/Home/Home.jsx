@@ -1,7 +1,11 @@
 import style from "./Home.module.css";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import {  useRef, useEffect, useState, useMemo } from 'react';
+import {  useRef, useEffect, useState, useMemo, useLayoutEffect } from 'react';
+import { useSelector } from "react-redux";
+
+
+
 const Home = () => {
 
   const elementRef = useRef(null);
@@ -11,34 +15,33 @@ const Home = () => {
   const animation = useMemo(() => {
     return gsap.registerPlugin(ScrollTrigger);
   }, []);
-
-
-  // Screen width and link tag
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+ 
+  const size=useSelector(state=>state.size.size)
+  const [screenWidth, setScreenWidth] = useState(size);
   const [scrollY, setScrollY] = useState(0);
   const [showLinkTag, setShowLinkTag] = useState(false);
 
-  const updateScreenWidth = () => {
-    setScreenWidth(window.innerWidth);
-  };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+  
     animation
     const tl= gsap.to(card.current,{y:-100,rotate:10,opacity:1,duration:2, ease:"power2.out"})
+
+      
 
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
 
     window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', updateScreenWidth);
+    // window.addEventListener('resize', updateScreenWidth);
 
     return () => {
       tl.kill();
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', updateScreenWidth);
+      // window.removeEventListener('resize', updateScreenWidth);
     };
-  }, [animation]);
+  }, [animation, size]);
 
   useEffect(() => {
    
@@ -63,6 +66,7 @@ const Home = () => {
       </div>
       {screenWidth > 840 ? (
         <div className={style.linkTag}>
+ 
           {
             /* <FaFacebookSquare size={40} color="white" />
             <AiFillGithub size={40} color="white" />

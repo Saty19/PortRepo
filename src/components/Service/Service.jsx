@@ -10,7 +10,6 @@ function Service() {
   const containerRef = useRef(null);
   const imagewrapperRef = useRef(null);
   const itemRef = useRef(null);
-
   const [activeItemIndex, setActiveItemIndex] = useState(1);
   const [hoveredItem, setHoveredItem] = useState(serviceContent[0]);
 
@@ -18,9 +17,12 @@ function Service() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
+        toggleActions:"play none none reset",
         start: "top center",
       },
     });
+
+
 
     tl.to(imagewrapperRef.current, {
       clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
@@ -38,6 +40,32 @@ function Service() {
       ease: "power2.out",
     });
 
+    const containerColor=gsap.timeline({
+      scrollTrigger:{
+        trigger:containerRef.current,
+        start:"top center",
+        end:"top center",
+        markers:false,
+        scrub:1
+      }
+    })
+    containerColor.from(containerRef.current,{
+      background:"#f0f0f0",direction:3
+    })
+
+    // const imageanimation= gsap.to(containerRef.current, {
+    //   y: 0.001 * containerRef.current.parentNode.offsetHeight, 
+    //   ease:"linear",
+    //   scrollTrigger: {
+    //     trigger: containerRef.current,
+    //     start: "top top",
+    //     markers: false,
+    //     end: "bottom top ",
+    //     scrub: 1, // Enable scrubbing for parallax effect
+    //   },
+    // });
+
+
     return () => {
       tl.kill();
       itemAnimation.kill();
@@ -52,6 +80,7 @@ function Service() {
 
   return (
     <div className={`${style.container}`} ref={containerRef}>
+    
       <div className={style.headLine}>SERVICE</div>
       <div className={style.leftContent} ref={itemRef}>
         {serviceContent.map((item) => (
