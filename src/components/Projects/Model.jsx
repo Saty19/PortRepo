@@ -6,7 +6,7 @@ import Service from "../Service/Service";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from 'three'
 export default function Model(props) {
-  const { nodes, materials } = useGLTF("/laptop.glb");
+  const { nodes, materials } = useGLTF("./laptop.glb");
   const group = useRef()
   const update = (state) => {
     const t = state.clock.getElapsedTime();
@@ -166,7 +166,7 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/laptop.glb");
+useGLTF.preload("./laptop.glb");
 
 
 
