@@ -1,0 +1,19 @@
+.container {
+  width: 99%;
+  height: 100vh;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #f0f0f0;
+  margin: 0 auto;
+  color: white;
+  display: flex;
+}
+.container from{
+  display: flex;
+  flex-direction: column;
+}

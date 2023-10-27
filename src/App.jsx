@@ -8,6 +8,7 @@ import SmoothScroll from "./components/Scroll/SmoothScroll";
 import Projects from "./components/Projects/Projects";
 import Testimonial from "./components/Testimonials/Testimonial";
 import Navbar from "./components/Navbar/Navbar";
+import { ContactUs } from "./components/ContactUs/ContactUs";
 
 
 
@@ -91,7 +92,7 @@ const App = () => {
     ) : (
       <SmoothScroll>
         <div>
-
+          <ContactUs/>
           <Home />
           <SectionSecond />
           <Service />
