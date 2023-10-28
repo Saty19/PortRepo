@@ -22,7 +22,22 @@ function Service() {
       },
     });
 
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top center", // Trigger when container is at 80% of the viewport
+        end: "bottom top",
+        toggleActions:"play pause restart none ",
+        scrub: false, // Enables smooth scrubbing effect
+      },
+    });
 
+    // Add animations to rotate text elements on the X-axis
+    tl2.fromTo(
+      ".text-element",
+      { rotationX: 90,opacity:0 }, // Initial rotation
+      { rotationX: 0, opacity:1, duration: 3 ,transition:"none"} // Final rotation
+    );
 
     tl.to(imagewrapperRef.current, {
       clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
@@ -81,7 +96,7 @@ function Service() {
   return (
     <div className={`${style.container}`} ref={containerRef}>
     
-      <div className={style.headLine}>SERVICE</div>
+      <div className={`text-element ${style.headLine}`}>SERVICE</div>
       <div className={style.leftContent} ref={itemRef}>
         {serviceContent.map((item) => (
           <div

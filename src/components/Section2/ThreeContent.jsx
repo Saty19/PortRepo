@@ -11,7 +11,7 @@ const baubleMaterial = new THREE.MeshStandardMaterial({ color: "white", roughnes
 
 export const ThreeContent = () => (
   <Canvas shadows gl={{ antialias: false }} dpr={[1, 1.5]} camera={{ position: [0, 0, 20], fov: 35, near: 1, far: 40 }}
-  size={{ width: window.innerWidth, height: window.innerHeight }} style={{position:"absolute"}}
+  size={{ width: window.innerWidth, height: window.innerHeight }} style={{position:"absolute",zIndex:3,touchAction:"default"}}
   onPointerDown={(e) => e.stopPropagation()}
 
   >
@@ -40,7 +40,7 @@ function Clump({ mat = new THREE.Matrix4(), vec = new THREE.Vector3(), ...props 
       ref.current.getMatrixAt(i, mat)
       // Normalize the position and multiply by a negative force.
       // This is enough to drive it towards the center-point.
-      api.at(i).applyForce(vec.setFromMatrixPosition(mat).normalize().multiplyScalar(-40).toArray(), [0, 0, 0])
+      api.at(i).applyForce(vec.setFromMatrixPosition(mat).normalize().multiplyScalar(-20).toArray(), [0, 0, 0])
     }
   })
   return (

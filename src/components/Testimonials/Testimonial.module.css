@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Encode+Sans+Expanded:wght@300&display=swap');
+
 .container {
     width: 99%;
     transition: none;
@@ -5,12 +7,49 @@
     margin: 10px auto;
     color: white;
     display: flex;
+    flex-direction: column;
+
     margin: 0 auto;
     position: relative;
     background: #121212;
     transition: none;
     margin-bottom: 0;
     overflow: hidden;
-    
+  
   }
- 
+  .buttonWrapper{
+    width: 100%;
+    height: 100%;
+    perspective: 1000px; 
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .contactButton{
+    width: 30vw;
+    height: 10vw;
+    background-color: white;
+
+    transform: translate(0%,0%);
+    display: grid;
+    place-items: center;
+    font-size: 4vw;
+    -webkit-font-smoothing: antialiased;
+    color: black;
+    border-radius: 100vw;
+    cursor: pointer;
+  }
+  .buttonName{
+    width: auto;
+    height: auto;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .contactContent{
+    width: 100%;
+    font-size: 3vw;
+    font-family: 'Bebas Neue', sans-serif;
+  }

@@ -17,14 +17,14 @@
 .container::after{
   content: '';
   position: absolute;
-  width: 520px;
-  height: 520px;
+  width: 300px;
+  height: 300px;
   left: 370px;
   top: 250px;
   border-radius: 50%;
   background: #216A93;
 
-  filter: blur(307px);
+  filter: blur(200px);
 }
 .container::before{
   content: '';
@@ -116,6 +116,7 @@ font-size: 5vw;
   display: flex;
   flex-direction: column;
  justify-content: end;
+ padding-bottom: 5vw;
 }
 @media screen and (max-width:820px) {
   .container {

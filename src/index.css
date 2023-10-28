@@ -1,8 +1,12 @@
 
   
 *{
-  font-family: Audiowide;
+
+  font-family: 'Yantramanav', sans-serif;
+  font-weight: 700;
   cursor:default ;
+  letter-spacing: 2px;
+  user-select: none;
 
 }
 body {

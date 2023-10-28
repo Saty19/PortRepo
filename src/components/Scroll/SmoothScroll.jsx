@@ -8,7 +8,7 @@ const SmoothScroll = ({ children }) => {
   const windowSize = useWindowSize();
   const scrollingContainerRef = useRef();
   const data = {
-    ease: 0.09,
+    ease: 0.15,
     current: 0,
     previous: 0,
     rounded: 0,

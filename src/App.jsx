@@ -92,13 +92,13 @@ const App = () => {
     ) : (
       <SmoothScroll>
         <div>
-          <ContactUs/>
-          <Home />
-          <SectionSecond />
-          <Service />
-          <About />
-          <Projects />
-          <Testimonial />
+        <Home />
+        <SectionSecond />
+        <Service />
+        <About />
+        <Projects />
+        <Testimonial />
+        <ContactUs/>
         </div>
       </SmoothScroll>
     )

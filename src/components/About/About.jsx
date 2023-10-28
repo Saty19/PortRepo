@@ -29,14 +29,14 @@ const About = () => {
         trigger: containerRef.current,
         start: "top center", // Trigger when container is at 80% of the viewport
         end: "bottom top",
-        toggleActions:"play pause restart none ",
+        toggleActions:"play pause none none",
         scrub: false, // Enables smooth scrubbing effect
       },
     });
 
     // Add animations to rotate text elements on the X-axis
     tl.fromTo(
-      ".text-element",
+      ".textelement",
       { rotationX: 90,opacity:0 }, // Initial rotation
       { rotationX: 0, opacity:1, duration: 3 ,transition:"none"} // Final rotation
     );
@@ -54,20 +54,20 @@ const About = () => {
   return (
     <div className={style.container} ref={containerRef}>
       <div className={style.firstContentWrapper}>
-        <div className={`text-element ${style.firstLeftContent}`}>SATYADAR</div>
-        <div className={`text-element ${style.firstRightContent}`}>SAN</div>
+        <div className={`textelement ${style.firstLeftContent}`}>SATYADAR</div>
+        <div className={`textelement ${style.firstRightContent}`}>SAN</div>
       </div>
       <div className={style.secContentWrapper}>
-        <div className={`text-element ${style.secLeftContent}`}>TALK</div>
-        <div className={`text-element ${style.secRightContent}`}>DEVLO</div>
+        <div className={`textelement ${style.secLeftContent}`}>TALK</div>
+        <div className={`textelement ${style.secRightContent}`}>DEVLO</div>
       </div>
-      <div className={`text-element ${style.thirdContentWrapper}`}>PER</div>
+      <div className={`textelement ${style.thirdContentWrapper}`}>PER</div>
       <div className={style.forthContentWrapper}>
-        <div className={`text-element ${style.forthLeftContent}`}>&</div>
-        <div className={`text-element ${style.forthRightContent}`}>DESIGNER</div>
+        <div className={`textelement ${style.forthLeftContent}`}>&</div>
+        <div className={`textelement ${style.forthRightContent}`}>DESIGNER</div>
       </div>
       <div className={style.imageWrapper}>
-        <img src={demoImg} className={style.saty} />
+        <img src={saty} className={style.saty} />
         <div className={style.sideBlack}></div>
         <div className={style.sideBlackRight}></div>
         <div className={style.bottomBlack}></div>

@@ -114,6 +114,7 @@ const SectionSecond = () => {
       </div>
 
       <div className={style.rightContent} ref={rightContent}>
+      TEST CONTENT
       </div>
       <div className={style.animatedContent}>PORTFOLIO</div>
     </div>
