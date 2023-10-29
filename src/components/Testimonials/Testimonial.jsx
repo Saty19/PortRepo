@@ -29,6 +29,13 @@ const TestimonialCarousel = () => {
   return (
     <div className={styles.container}>
       <div className={styles.contactContent}>Let's make your brand</div>
+      <div className={styles.MainContent}>
+        LOOKING FOR A POWERFUL WEBSITE?
+        <div className={styles.SubContent}>
+          WE DESIGN STUNNING WEBSITES THAT CAPTURE YOUR AUDIENCE'S ATTENTION AND
+          CONVERT THEM INTO CUSTOMERS. OUR DESIGNS ARE CLEAN & MODERN.
+        </div>
+      </div>
       <div className={styles.buttonWrapper} ref={buttonWrapper}>
         <a className={styles.contactButton} ref={buttonRef}>
           <div className={styles.buttonName} ref={buttonName}>
