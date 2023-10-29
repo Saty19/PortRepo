@@ -25,7 +25,7 @@ function Service() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          toggleActions: "play none none reset",
+          toggleActions: "play none none restart",
           start: "top center",
         },
       });

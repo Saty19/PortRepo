@@ -67,6 +67,68 @@
     font-size: 1vw;
     width: 50%;
   }
+/* testing */
+.testimonial-carousel {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  cursor: grab;
+}
+
+/* Testimonial card */
+.testimonial {
+  flex: 0 0 auto;
+  min-width: 100%;
+  scroll-snap-align: start;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  user-drag: none;
+  cursor: grab;
+}
+
+/* Testimonial card image */
+.testimonial-image {
+  max-width: 100%;
+  max-height: 200px;
+  margin: 0 auto 10px;
+  display: block;
+}
+
+/* Testimonial text and author */
+.testimonial-text {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.testimonial-author {
+  font-style: italic;
+}
+
+/* Carousel controls */
+.carousel-controls {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.carousel-controls button {
+  background: #0073e6;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.carousel-controls button:hover {
+  background: #005bb7;
+}
+
   @media screen and (max-width: 820px) {
     .contactButton{
       width: 60vw;

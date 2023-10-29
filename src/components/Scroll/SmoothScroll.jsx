@@ -1,13 +1,33 @@
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef } from "react";
+import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import "./SmoothScroll.css";
-import useWindowSize from "./useWindowSize";
 import Navbar from "../Navbar/Navbar";
 
 const SmoothScroll = ({ children }) => {
-  const windowSize = useWindowSize();
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useLayoutEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+      
+      // When the window resizes, you should recalculate and set the body height
+      setBodyHeight();
+      
+      // Reload the page to refresh the full content
+      window.location.reload();
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const scrollingContainerRef = useRef();
   const data = useMemo(() => {
-    // Calculate or prepare complex data
     return {
       ease: 0.25,
       current: 0,
@@ -18,7 +38,9 @@ const SmoothScroll = ({ children }) => {
   let animationFrameId;
 
   const setBodyHeight = () => {
-    document.body.style.height = `${scrollingContainerRef.current.getBoundingClientRect().height}px`;
+    document.body.style.height = `${
+      scrollingContainerRef.current.getBoundingClientRect().height
+    }px`;
   };
 
   const smoothScrollingHandler = () => {
@@ -45,7 +67,7 @@ const SmoothScroll = ({ children }) => {
     return cleanupScrolling;
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setBodyHeight();
 
     return cleanupScrolling;
@@ -62,7 +84,7 @@ const SmoothScroll = ({ children }) => {
           mixBlendMode: "difference",
         }}
       >
-        <svg
+      <svg
           xmlns="http://www.w3.org/2000/svg"
           width="80"
           height="50"
@@ -100,9 +122,11 @@ const SmoothScroll = ({ children }) => {
           <path d="M1 9H9" stroke="white" strokeLinecap="round" />
         </svg>
       </div>
-      
+
       <Navbar />
-      <div ref={scrollingContainerRef}>{children}</div>
+      <div ref={scrollingContainerRef}>
+        <div >{children}</div>
+      </div>
     </div>
   );
 };

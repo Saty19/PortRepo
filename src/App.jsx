@@ -9,6 +9,8 @@ import Projects from "./components/Projects/Projects";
 import Testimonial from "./components/Testimonials/Testimonial";
 import Navbar from "./components/Navbar/Navbar";
 import { ContactUs } from "./components/ContactUs/ContactUs";
+import TestimonialCarousel from "./components/Testimonials/Testimonial";
+import TestimonialOrg from "./components/Testimonials/TestimonialOrg";
 
 
 
@@ -98,6 +100,7 @@ const App = () => {
         <About />
         <Projects />
         <Testimonial />
+        <TestimonialOrg/>
         <ContactUs/>
         </div>
       </SmoothScroll>
