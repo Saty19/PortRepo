@@ -35,7 +35,7 @@ function Clump({ mat = new THREE.Matrix4(), vec = new THREE.Vector3(), ...props 
   //   const texture = useTexture("/satya3.png")
   const [ref, api] = useSphere(() => ({ args: [1], mass: 1, angularDamping: 0.1, linearDamping: 0.65, position: [rfs(20), rfs(20), rfs(20)] }))
   useFrame((state) => {
-    for (let i = 0; i <40; i++) {
+    for (let i = 0; i <30; i++) {
       // Get current whereabouts of the instanced sphere
       ref.current.getMatrixAt(i, mat)
       // Normalize the position and multiply by a negative force.
@@ -45,7 +45,7 @@ function Clump({ mat = new THREE.Matrix4(), vec = new THREE.Vector3(), ...props 
     {/* material-map={texture}*/}
   })
   return (
-    <instancedMesh ref={ref} castShadow receiveShadow args={[sphereGeometry, baubleMaterial, 40]}/>
+    <instancedMesh ref={ref} castShadow receiveShadow args={[sphereGeometry, baubleMaterial, 30]} scale={0.5}/>
    
 
   )
