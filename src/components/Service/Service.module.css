@@ -3,7 +3,8 @@
   margin: 0 auto;
   height: 100vh;
   display: flex;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
   background: #121212;
   transition: none;
@@ -17,16 +18,7 @@
   top: 20vw;
   border-radius: 50%;
   background: #216a93;
-
   filter: blur(200px);
-}
-.after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 50%;
-  background: linear-gradient(180deg, #121212, transparent);
-  z-index: 1;
 }
 .headLine {
   width: 100%;
@@ -53,13 +45,13 @@
 }
 .item {
   color: transparent;
-  -webkit-text-stroke: 1px white;
+  -webkit-text-stroke: 1px #d6d1ce;
   font-size: 3vw;
   clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
   transition: all 0.5s;
 }
 .item:hover {
-  color: white;
+  color: #d6d1ce;
   scale: 1.1;
   transform: translateX(5vw);
 }
@@ -168,7 +160,9 @@
 }
 
 .active {
-  color: white;
+  color: #d6d1ce;
+  scale: 1.1;
+  transform: translateX(5vw);
 }
 @media screen and (max-width: 820px) {
   .headLine {

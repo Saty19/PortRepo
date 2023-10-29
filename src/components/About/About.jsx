@@ -1,47 +1,35 @@
-import { useEffect, useRef } from "react";
+import { Fragment, useEffect, useMemo, useRef } from "react";
 import style from "./About.module.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import saty from "/satya3.png"; // Adjust the path to your image
+import saty from "/satya3.png"; 
 
 const About = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    // Register ScrollTrigger plugin
+
     gsap.registerPlugin(ScrollTrigger);
 
-  // const containerAnimation=  gsap.to(containerRef.current, {
-  //     y: 0.01 * containerRef.current.parentNode.offsetHeight, // Adjust this value as needed
-  //     ease: 'none',
-  //     scrollTrigger: {
-  //       trigger: containerRef.current,
-  //       start: "top top",
-  //       markers: false,
-  //       end: "bottom top ",
-  //       scrub: 0, // Enable scrubbing for parallax effect
-  //     }
-  //   });
 
-    // Define a timeline for the animation
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top center", // Trigger when container is at 80% of the viewport
+        start: "top center",
         end: "bottom top",
         toggleActions:"play pause none none",
-        scrub: false, // Enables smooth scrubbing effect
+        scrub: false,
       },
     });
 
-    // Add animations to rotate text elements on the X-axis
+  
     tl.fromTo(
       ".textelement",
-      { rotationX: 90,opacity:0 }, // Initial rotation
-      { rotationX: 0, opacity:1, duration: 3 ,transition:"none"} // Final rotation
+      { rotationX: 90,opacity:0 }, 
+      { rotationX: 0, opacity:1, duration: 3 ,transition:"none"} 
     );
 
-    // Ensure that the ScrollTrigger updates when the component unmounts
+  
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => {
         trigger.kill();
@@ -50,10 +38,9 @@ const About = () => {
     //  containerAnimation.kill();
     };
   }, []);
-  const demoImg="https://assets.website-files.com/62cfb3313a1a61a7d399c600/62cfba001eea8f0afa9f0d48_man_hero_cropped-min-p-800.png"
-  return (
-    <div className={style.container} ref={containerRef}>
-      <div className={style.firstContentWrapper}>
+  const elements = useMemo(() => (
+        <Fragment>
+        <div className={style.firstContentWrapper}>
         <div className={`textelement ${style.firstLeftContent}`}>SATYADAR</div>
         <div className={`textelement ${style.firstRightContent}`}>SAN</div>
       </div>
@@ -66,6 +53,12 @@ const About = () => {
         <div className={`textelement ${style.forthLeftContent}`}>&</div>
         <div className={`textelement ${style.forthRightContent}`}>DESIGNER</div>
       </div>
+        </Fragment>
+    ), []);
+  const demoImg="https://assets.website-files.com/62cfb3313a1a61a7d399c600/62cfba001eea8f0afa9f0d48_man_hero_cropped-min-p-800.png"
+  return (
+    <div className={style.container} ref={containerRef}>
+      {elements}
       <div className={style.imageWrapper}>
         <img src={saty} className={style.saty} />
         <div className={style.sideBlack}></div>

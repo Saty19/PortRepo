@@ -39,10 +39,10 @@ export default function Model(props) {
     }
 
   },[])
-  const isHovered = props.Hovered;
+  const isHovered = props?.Hovered;
 
   return (
-    <group ref={group} {...props} dispose={null} scale={windowWidth<=820?scale:2} rotation-x={19}>
+    <group ref={group} {...props} dispose={null} scale={windowWidth<=820?scale:3.2} rotation-x={19} position={[0,-10,0]}>
     <group rotation={[-Math.PI, 0, -3.135]}>
     <mesh
       castShadow
@@ -103,10 +103,10 @@ export default function Model(props) {
    
     <Html
         className={style.htmlMain}
-        position={[0, 1.23, -0.005]} transform occlude 
-        rotation-y={91.1} 
-        rotation-x={94.35}
-        scale={0.07}
+        position={[-0.05, 1.35, -0.001]} transform occlude 
+        rotation-y={91.11} 
+        rotation-x={94.33}
+        scale={[0.070,0.088,0.07]}
         center
         style={{ width: "96vw", height: "125vh"}}
       >

@@ -1,10 +1,8 @@
 import { lazy, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
-  Environment,
   PresentationControls,
   PerspectiveCamera,
-  
 } from "@react-three/drei";
 import style from "./Projects.module.css";
 import { Suspense } from "react";
@@ -39,10 +37,10 @@ const Projects = () => {
     return lazy(() => import("./Model"));
   }, []);
 
-  const handleHover = (name,index) => {
+  const handleHover = (name, index) => {
     const hovered = nameComponentMap.find((item) => item?.name === name);
     setHoveredItem(hovered);
-    setActiveItemIndex(index)
+    setActiveItemIndex(index);
   };
 
   useEffect(() => {
@@ -61,84 +59,78 @@ const Projects = () => {
       setWindowWidth(window.innerWidth);
     }
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
       tl.kill();
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
     <div className={style.container} ref={container}>
       <div className={style.headLine}>PROJECT</div>
-      
+    
       <div className={style.listItem}>
         {nameComponentMap.map((item) => (
           <div
             key={item?.ID}
-            onMouseEnter={() => handleHover(item?.name,item.ID)}
-            className={`${style.Item} ${ item.ID==activeItemIndex?style.active:''} `}
+            onMouseEnter={() => handleHover(item?.name, item.ID)}
+            className={`${style.Item} ${item.ID == activeItemIndex ? style.active : ""}`}
           >
-            {item.name}
+            {item.name  }
           </div>
         ))}
       </div>
 
-      <div className={style.CanvaContainer}>
-        <Canvas
+      <div className={style.rightcontent}>
+        <div className={style.CanvaContainer}>
+          <Canvas
+            className={style.canvas}
+            size={{ width: window.innerWidth, height: window.innerHeight }}
+            background="rgba(0, 0, 0, 0)"
+          >
+            <PerspectiveCamera
+              makeDefault
+              fov={55} // Field of view
+              near={0.1} // Near clipping plane
+              far={1000} // Far clipping plane
+              position={[0, 1, 20]}
+            />
+            <directionalLight color={'white'} intensity={1} position={[2,5,4]}/>
           
-          className={style.canvas}
-          size={{ width: window.innerWidth, height: window.innerHeight }}
-          background="rgba(0, 0, 0, 0)"
-        >
-          <PerspectiveCamera
-            makeDefault
-            fov={55} // Field of view
-            near={0.1} // Near clipping plane
-            far={1000} // Far clipping plane
-            position={[0, 1, 20]}
-           
-          />
-
-          {
-            windowWidth<=820?(
-              <Suspense fallback={null}>
-              <EffectComposer smma>
-                <Bloom intensity={0.1} luminanceThreshold={0.5} />
-                <group rotation={[0, 270, 0]} position={[0, 1, 0]}>
-                  <ModelLoad Hovered={hoveredItem} Scale={3.5}/>
-                </group>
-              </EffectComposer>
-            </Suspense>
-            ):(
-              <PresentationControls
-              config={{ mass: 2, tension: 1000 }}
-              snap={{ mass: 4, tension: 1500 }}
-              rotation={[0.2, -0.1, 0]}
-              polar={[0, Math.PI / 7]} // Adjust the polar property to limit the vertical rotation
-              azimuth={[-Math.PI / 1.5, Math.PI / 2]}
-            >
+            {windowWidth <= 820 ? (
               <Suspense fallback={null}>
                 <EffectComposer smma>
                   <Bloom intensity={0.1} luminanceThreshold={0.5} />
                   <group rotation={[0, 270, 0]} position={[0, 1, 0]}>
-                    <ModelLoad Hovered={hoveredItem} />
+                    <ModelLoad Hovered={hoveredItem} Scale={2.5} />
                   </group>
                 </EffectComposer>
               </Suspense>
-            </PresentationControls>)
-        
-        
-        }
-        
-          <Environment preset="city" />
-        </Canvas>
-      </div>
-      <div className={style.rightcontent}>
+            ) : (
+              <PresentationControls
+                config={{ mass: 2, tension: 1000 }}
+                snap={{ mass: 4, tension: 1500 }}
+                rotation={[0.1, -0., 0]}
+                polar={[0, Math.PI / 10]} // Adjust the polar property to limit the vertical rotation
+                azimuth={[-Math.PI / 5, Math.PI / 5]}
+              >
+                <Suspense fallback={null}>
+                  <EffectComposer smma>
+                    <Bloom intensity={0.1} luminanceThreshold={0.5} />
+                    <group rotation={[0, 270, 0]} position={[0, 1, 0]}>
+                      <ModelLoad Hovered={hoveredItem} />
+                    </group>
+                  </EffectComposer>
+                </Suspense>
+              </PresentationControls>
+            )}
+          </Canvas>
+        </div>
         {hoveredItem && (
-          <div>
-            <h2>{hoveredItem.name}</h2>
-            <p>{hoveredItem.CONTENT}</p>
+          <div className={style.bottomContent} >
+            <h2 className={style.bottomFirstContent}>{hoveredItem.name}</h2>
+            <p className={style.bottomLastContent}>{hoveredItem.CONTENT}</p>
           </div>
         )}
       </div>

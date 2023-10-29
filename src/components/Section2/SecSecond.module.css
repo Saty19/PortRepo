@@ -66,17 +66,21 @@
   transition: none;
 }
 .rightContent {
-  height: auto;
-  width: auto;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  text-align: center;
-  font-size: 10vw;
-  z-index: 5;
-  mix-blend-mode: difference;
-  transition: none;
+  height: 50%;
+  width: 30%;
   position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(9px);
+  right: 10vw;
+  bottom: 3vw;
+  text-align: center;
+  color: black;
+  border-radius: 10px;
+  font-size: 5vw;
+  z-index: 5;
+  mix-blend-mode: screen;
+  transition: none;
+
 }
 
 
@@ -84,22 +88,7 @@
   margin: 0 auto;
   width: 100%;
 }
-.threeContent {
-  position: absolute;
-  overflow: hidden;
-  z-index: 10;
-  mix-blend-mode: screen;
-  float: right;
-  width: 0%;
-  height: 50%;
-  background-color: rgb(255, 255, 255);
-  color: rgb(13, 3, 29);
-  top: 70%;
-  transform: translate(0, -50%);
-  transition: none;
-  font-size: 4vw;
-  font-weight: 200;
-}
+
 .animatedContent {
   position: absolute;
   height: 100%;
@@ -167,5 +156,23 @@
     backdrop-filter: blur(2px);
     right: 0;
     opacity: 0;
+  }
+  .rightContent {
+    height: 30%;
+    width: 80%;
+    transform: translateX(13%);
+    /* left: -50%; */
+    position: absolute;
+    background: rgba(255, 255, 255, 0.518);
+    backdrop-filter: blur(9px);
+    text-align: center;
+    color: black;
+    right: auto;
+    
+    font-size: 8vw;
+    z-index: 5;
+    mix-blend-mode: normal;
+
+  
   }
 }

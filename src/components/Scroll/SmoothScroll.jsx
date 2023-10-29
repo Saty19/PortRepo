@@ -1,33 +1,24 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import "./SmoothScroll.css";
 import useWindowSize from "./useWindowSize";
 import Navbar from "../Navbar/Navbar";
-import Loader from "../Loader/Loader";
 
 const SmoothScroll = ({ children }) => {
   const windowSize = useWindowSize();
   const scrollingContainerRef = useRef();
-  const data = {
-    ease: 0.15,
-    current: 0,
-    previous: 0,
-    rounded: 0,
-  };
-  let animationFrameId; // Define a variable to hold the animation frame ID
-
-  
-
-  useEffect(() => {
-    setBodyHeight();
-    return () => {
-      // Cleanup function to clear animation frame when component unmounts
-      cancelAnimationFrame(animationFrameId);
+  const data = useMemo(() => {
+    // Calculate or prepare complex data
+    return {
+      ease: 0.25,
+      current: 0,
+      previous: 0,
+      rounded: 0,
     };
-  }, [animationFrameId, windowSize.height]);
+  }, []);
+  let animationFrameId;
 
   const setBodyHeight = () => {
-    document.body.style.height = `${scrollingContainerRef.current.getBoundingClientRect().height
-      }px`;
+    document.body.style.height = `${scrollingContainerRef.current.getBoundingClientRect().height}px`;
   };
 
   const smoothScrollingHandler = () => {
@@ -37,25 +28,31 @@ const SmoothScroll = ({ children }) => {
 
     scrollingContainerRef.current.style.transform = `translateY(-${data.previous}px)`;
 
-    // Recursive call and store the animation frame ID
-    animationFrameId = requestAnimationFrame(() => smoothScrollingHandler());
+    animationFrameId = requestAnimationFrame(smoothScrollingHandler);
   };
 
-  useLayoutEffect(() => {
-    // Start smooth scrolling when the component mounts
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    animationFrameId = requestAnimationFrame(() => smoothScrollingHandler());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const cleanupScrolling = useCallback(() => {
+    cancelAnimationFrame(animationFrameId);
+  });
 
-    return () => {
-      // Cleanup function to clear animation frame when component unmounts
-      cancelAnimationFrame(animationFrameId);
-    };
+  useLayoutEffect(() => {
+    setBodyHeight();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    animationFrameId = requestAnimationFrame(smoothScrollingHandler);
+
+    return cleanupScrolling;
   }, []);
 
-  return (
-    <div className="parent" >
+  useEffect(() => {
+    setBodyHeight();
 
-  {/*<Loader/>*/}
+    return cleanupScrolling;
+  }, [cleanupScrolling, windowSize.height]);
+
+  return (
+    <div className="parent">
       <div
         style={{
           position: "fixed",
