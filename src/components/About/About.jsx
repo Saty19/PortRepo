@@ -17,7 +17,7 @@ const About = () => {
         trigger: containerRef.current,
         start: "top center",
         end: "bottom top",
-        toggleActions:"play pause none none",
+        toggleActions:"play none none none",
         scrub: false,
       },
     });

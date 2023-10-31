@@ -68,10 +68,10 @@ const SectionSecond = () => {
         scrub: 1,
       },
     });
-    containerColor.to(container.current, {
-      background: "#121212",
-      direction: 3,
-    });
+    containerColor.fromTo(container.current, {
+      background: "#f0f0f0",
+
+    },{background:"#121212",duration:1});
   }, [rec1, rec2, rec3, rec4, container, leftContent]);
 
   useEffect(() => {

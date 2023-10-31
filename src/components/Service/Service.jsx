@@ -72,10 +72,10 @@ function Service() {
         },
       });
 
-      containerColor.from(containerRef.current, {
+      containerColor.fromTo(containerRef.current, {
         background: "#f0f0f0",
-        direction: 3,
-      });
+
+      },{background:"#121212",duration:1});
 
       return () => {
         tl.kill();
