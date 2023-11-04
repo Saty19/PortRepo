@@ -28,7 +28,7 @@ const TestimonialCarousel = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.contactContent}>Let's make your brand</div>
+  {/*<div className={styles.contactContent}>Let's make your brand</div>*/}
       <div className={styles.MainContent}>
         LOOKING FOR A POWERFUL WEBSITE?
         <div className={styles.SubContent}>

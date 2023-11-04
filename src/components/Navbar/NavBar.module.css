@@ -1,44 +1,105 @@
 
 
-.navMenu {
+.navMenuOpen {
     width: 100px;
     height: 100px;
     position: fixed;
     margin-top: 0;
     margin-left: 0.47%;
     transition: all ease-in-out 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+   
+    /* transition: opacity 0.5s ease-in-out; */
+    
 }
-.navMenuTest {
-    width: 60%;
+.navMenuClose {
+    width: 40%;
     height: 100%;
     position: fixed;
     margin-top: 0;
     margin-left: 0.47%;
-
+    background-color: rgb(255, 255, 255);
     transition: all ease-in-out 0.5s;
+    
 }
-.navMenuTest::before
-{
-    content: '';
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    background: rgba(93, 93, 93, 0.648);
-    backdrop-filter: blur(10px);
-    transition: all 0.8s;
+.AllContentWrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.exploreContent{
+    width: 30%;
+    height: 100%;
+    padding-top: 13%;
+
+}
+.leftNavwrapper{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
 }
 .navBox {
     width: 100%;
-    height: 100%;
+    height: 70%;
     position: relative;
-    background-color: rgb(255, 255, 255);
-    border-radius: 0 0 10px 0;
+    display: flex;
     transition: all ease-in-out 0.5s;
-
-
+    overflow: hidden;
 }
-.navBox::before {
+.navBox::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    background: black;
+}
+.linkNav{
+    height: 10vw;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+.linkNav::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    background: black;
+}
+.bottomWrapper{
+    height: 100%;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    padding-top: 10%;
+    font-size: 2vw;
+    transition: opacity 0.3s ease-in-out;
+    position: relative;
+}
+.bottomWrapperLeftLine{
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    left: 0;
+    background: black;
+}
+.navListWrapper{
+    width: 100%;
+    height: 70%;
+    position: relative;
+    padding-top: 10%;
+}
+
+.navMenuOpen::before {
     position: absolute;
     content: "";
     width: 30px;
@@ -50,7 +111,7 @@
     transition: all ease-in-out 0.5s;
 }
 
-.navBox::after {
+.navMenuOpen::after {
     position: absolute;
     content: "";
     width: 30px;
@@ -63,9 +124,6 @@
     transition: all ease-in-out 0.5s;
 
 }
-
-
-
 .design {
     width: 100%;
     height: 1px;
@@ -75,28 +133,7 @@
 }
 
 
-.button {
-    background: none;
-    border: none;
-    position: absolute;
 
-    z-index: 10;
-    right: 0;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    transition: all ease-in-out 0.5s;
-
-}
-
-.buttonRight {
-    background: none;
-    border: none;
-    position: absolute;
-    right: 5%;
-    top: 10%;
-    transition: all ease-in-out 0.5s;
-    z-index: 10;
-}
 
 
 @media screen and (max-width: 600px) {
@@ -104,13 +141,16 @@
         width: 80px;
         height: 80px;
     }
-    .navMenuTest {
-        width: 60%;
-        height: 40%;
+    .navMenuClose {
+        width: 100%;
+        height: 100%;
         position: fixed;
         margin-top: 0;
         margin-left: 0.47%;
-    
+        transition: all ease-in-out 0.5s;
+    }
+    .linkNav{
+        height: 30vw;
     }
     
 }

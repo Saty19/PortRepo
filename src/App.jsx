@@ -3,7 +3,7 @@ import SectionSecond from "./components/Section2/SectionSecond";
 import Service from "./components/Service/Service";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
-import { useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import SmoothScroll from "./components/Scroll/SmoothScroll";
 import Projects from "./components/Projects/Projects";
 import Testimonial from "./components/Testimonials/Testimonial";
@@ -11,11 +11,15 @@ import Navbar from "./components/Navbar/Navbar";
 import { ContactUs } from "./components/ContactUs/ContactUs";
 import TestimonialCarousel from "./components/Testimonials/Testimonial";
 import TestimonialOrg from "./components/Testimonials/TestimonialOrg";
-
-
+import { Element } from "react-scroll";
 
 const App = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useLayoutEffect(() => {
+
     const handleWheelEvent = (e) => {
       if (e.ctrlKey || e.metaKey) {
         e.preventDefault();
@@ -94,14 +98,24 @@ const App = () => {
     ) : (
       <SmoothScroll>
         <div>
-        <Home />
-        <SectionSecond />
-        <Service />
-        <About />
-        <Projects />
-        <Testimonial />
-        <TestimonialOrg/>
-        <ContactUs/>
+          <Element name="home">
+            <Home />
+          </Element>
+          <Element name="port">
+            <SectionSecond />
+          </Element>
+          <Element name="service">
+            <Service />
+          </Element>
+          <Element name="about">
+            <About />
+          </Element>
+          <Element name="work">
+            <Projects />
+          </Element>
+          <Element name="contact">
+          <Testimonial />
+          </Element>
         </div>
       </SmoothScroll>
     )
