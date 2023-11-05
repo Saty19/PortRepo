@@ -73,21 +73,23 @@ canvas{
   background-color: rgba(255, 255, 255, 0.385) ;
 }
 .Item{
-  font-size: 2vw;
+  font-size: 3.8vw;
   height: auto;
-  color:gray;
-  /* -webkit-text-stroke: 1px #000000; */
+  color:transparent;
+  -webkit-text-stroke: 1.5px #121212;
   text-align: left;
   transition: all 0.5s;
 }
 .active{
-  color: rgb(61, 61, 61);
+  color: #121212;
   scale: 1.1;
 /* transform: translateX(2vw); */
 }
 .Item:hover{
-  color: rgb(61, 61, 61);
+  color: #121212;
   scale: 1.1;
+  -webkit-text-stroke: none;
+  
   /* transform: translateX(2vw); */
 }
 

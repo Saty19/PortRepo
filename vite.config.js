@@ -6,6 +6,5 @@ export default defineConfig({
   base: '/PortRepo/',
   plugins: [
     react(),
-    reactRefresh(),
   ],
 })

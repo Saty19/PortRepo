@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState, useCallback, useMemo } from "react";
+import { useRef, useState, useCallback, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import style from "./Service.module.css";
@@ -6,19 +6,41 @@ import { serviceContent } from "./servicecontent";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Service() {
+const Service = () => {
   const containerRef = useRef(null);
   const imagewrapperRef = useRef(null);
-  const itemRef = useRef(null);
 
   const [activeItemIndex, setActiveItemIndex] = useState(1);
-  const [hoveredItem, setHoveredItem] = useState(serviceContent[0]);
+  const [hoveredItem, setHoveredItem] = useState(null);
 
   const handleHover = useCallback((name, index) => {
     const hovered = serviceContent.find((item) => item.name === name);
     setHoveredItem(hovered);
     setActiveItemIndex(index);
   }, []);
+
+  const nothovered = () => {
+    setHoveredItem(null);
+  };
+
+  const handleMouseMove = (e) => {
+    const rect = containerRef.current.getBoundingClientRect();
+    const offsetX = e.clientX - rect.left + 200;
+  
+    // Calculate the Y offset based on mouse position, and limit it to a certain range
+    const maxOffsetY = 300; // Adjust this value as needed
+    const offsetY = Math.min(
+      maxOffsetY,
+      Math.max(-maxOffsetY, e.clientY - rect.top - 50)
+    );
+  
+    gsap.to(imagewrapperRef.current, {
+      x: offsetX,
+      y: offsetY,
+      duration: 1,
+    });
+  };
+  
 
   useLayoutEffect(() => {
     const setupScrollTrigger = () => {
@@ -28,38 +50,6 @@ function Service() {
           toggleActions: "play none none restart",
           start: "top center",
         },
-      });
-
-      const tl2 = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top center",
-          end: "bottom top",
-          toggleActions: "play pause restart none",
-          scrub: false,
-        },
-      });
-
-      tl2.fromTo(
-        ".text-element",
-        { rotationX: 90, opacity: 0 },
-        { rotationX: 0, opacity: 1, duration: 3, transition: "none" }
-      );
-
-      tl.to(imagewrapperRef.current, {
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-        duration: 2,
-        ease: "expo.inOut",
-      });
-
-      const itemAnimation = gsap.to(itemRef.current.children, {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 40%",
-        },
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-        stagger: 0.1,
-        ease: "power2.out",
       });
 
       const containerColor = gsap.timeline({
@@ -72,14 +62,36 @@ function Service() {
         },
       });
 
-      containerColor.fromTo(containerRef.current, {
-        background: "#f0f0f0",
+      containerColor.fromTo(
+        containerRef.current,
+        {
+          background: "#f0f0f0",
+        },
+        { background: "#121212", duration: 1 }
+      );
 
-      },{background:"#121212",duration:1});
+      // Add stagger animation to each item
+      gsap.fromTo(
+        containerRef.current.querySelectorAll(`.${style.item}`),
+        {
+          rotateX: 90,
+        },
+        {
+          rotateX: 0,
+          stagger: {
+            each: 0.2,
+            grid: "auto",
+            from: "start",
+          },
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 80%",
+          },
+        }
+      );
 
       return () => {
         tl.kill();
-        itemAnimation.kill();
       };
     };
 
@@ -90,45 +102,46 @@ function Service() {
     };
   }, []);
 
-  const elements = useMemo(() => {
-    return serviceContent.map((item) => (
-      <div
-        className={`${style.item} ${
-          item.ID === activeItemIndex ? style.active : ""
-        }`}
-        key={item.ID}
-        onMouseEnter={() => handleHover(item.name, item.ID)}
-      >
-        {item.name.toUpperCase()}
-      </div>
-    ));
-  }, [activeItemIndex, handleHover]);
-
   return (
-    <div className={`${style.container}`} ref={containerRef}>
-      <div className={`text-element ${style.headLine}`}>SERVICE</div>
-      <div className={style.leftContent} ref={itemRef}>
-        {elements}
-      </div>
-      <div className={style.RightContent}>
-        <div className={style.contentWrapper}>
-          <div className={style.line}>
-            <div className={style.line2} />
-            <div className={style.content}>{hoveredItem.CONTENT}</div>
-          </div>
-        </div>
-        <div className={style.imagewrapper} ref={imagewrapperRef}>
-          <img
-            src={hoveredItem.image}
-            style={{
-              opacity: hoveredItem ? 1 : 0,
+    <div
+      className={style.container}
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+    >
+    <div className={style.headline}>SERVICE</div>
+      <div className={style.itemWrapper}>
+        {serviceContent.map((item) => (
+          <div
+            className={`${style.item} ${
+              item.ID === activeItemIndex ? style.active : ""
+            }`}
+            key={item.ID}
+            onMouseEnter={(e) => {
+              handleHover(item.name, item.ID);
+              e.stopPropagation();
             }}
-            alt={hoveredItem.name}
-          />
-        </div>
+            onMouseLeave={nothovered}
+          >
+            {item.name.toUpperCase()}
+          </div>
+        ))}
+      </div>
+      <div className={style.imagewrapper} ref={imagewrapperRef}  style={{
+        opacity: hoveredItem ? 1 : 0,
+      }}>
+        <img
+          src={hoveredItem?.image}
+          style={{
+            opacity: hoveredItem ? 1 : 0,
+          }}
+          alt={hoveredItem?.name}
+        />
+        <div className={style.content} style={{
+          opacity: hoveredItem ? 1 : 0,
+        }}>{hoveredItem?.CONTENT}</div>
       </div>
     </div>
   );
-}
+};
 
 export default Service;

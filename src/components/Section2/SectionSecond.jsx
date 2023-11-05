@@ -2,7 +2,7 @@ import { useEffect, useRef, useMemo, useCallback } from "react";
 import style from "./SecSecond.module.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
-import { ThreeContent } from "./ThreeContent";
+import  {ThreeContent}  from "./ThreeContent";
 
 const SectionSecond = () => {
   const rec1 = useRef(null);
@@ -86,7 +86,7 @@ const SectionSecond = () => {
 
   return (
     <div className={`section ${style.container}`} ref={container}>
-      <ThreeContent />
+{/*      <ThreeContent />*/}
       <div className={style.leftContent} ref={leftContent}>
         <div style={{ width: "100%" }} ref={leftTop}>
           {elements}

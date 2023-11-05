@@ -114,7 +114,7 @@ export default function Model(props) {
           style={{ height: "100%" ,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer"}}
           onPointerDown={(e) => e.stopPropagation()}
         >
-          {isHovered?.name==="MAGENTO" && <Service/> }
+          {/*isHovered?.name==="MAGENTO" && <Service/>*/ }
         </div>
       </Html>
      
