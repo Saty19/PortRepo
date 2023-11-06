@@ -2,7 +2,7 @@ import { useEffect, useRef, useMemo, useCallback } from "react";
 import style from "./SecSecond.module.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
-import  {ThreeContent}  from "./ThreeContent";
+import { ThreeContent } from "./ThreeContent";
 
 const SectionSecond = () => {
   const rec1 = useRef(null);
@@ -15,24 +15,26 @@ const SectionSecond = () => {
   const leftTop = useRef(null);
 
   const elements = useMemo(() => {
-    return ["POWERFUL", "BRANDING", "STUNNING", "WEBSITES"].map((text, index) => (
-      <div className={style.parent} key={index}>
-        <div
-          className={style.rectangle}
-          ref={(el) =>
-            index === 0
-              ? (rec1.current = el)
-              : index === 1
-              ? (rec2.current = el)
-              : index === 2
-              ? (rec3.current = el)
-              : (rec4.current = el)
-          }
-        >
-          {text}
+    return ["POWERFUL", "BRANDING", "STUNNING", "WEBSITES"].map(
+      (text, index) => (
+        <div className={style.parent} key={index}>
+          <div
+            className={style.rectangle}
+            ref={(el) =>
+              index === 0
+                ? (rec1.current = el)
+                : index === 1
+                ? (rec2.current = el)
+                : index === 2
+                ? (rec3.current = el)
+                : (rec4.current = el)
+            }
+          >
+            {text}
+          </div>
         </div>
-      </div>
-    ));
+      )
+    );
   }, []);
 
   const setupScrollTrigger = useCallback(() => {
@@ -68,10 +70,13 @@ const SectionSecond = () => {
         scrub: 1,
       },
     });
-    containerColor.fromTo(container.current, {
-      background: "#f0f0f0",
-
-    },{background:"#121212",duration:1});
+    containerColor.fromTo(
+      container.current,
+      {
+        background: "#f0f0f0",
+      },
+      { background: "#121212", duration: 1 }
+    );
   }, [rec1, rec2, rec3, rec4, container, leftContent]);
 
   useEffect(() => {
@@ -86,14 +91,23 @@ const SectionSecond = () => {
 
   return (
     <div className={`section ${style.container}`} ref={container}>
-{/*      <ThreeContent />*/}
+      {/*<ThreeContent />*/}
       <div className={style.leftContent} ref={leftContent}>
         <div style={{ width: "100%" }} ref={leftTop}>
           {elements}
         </div>
       </div>
       <div className={style.rightContent} ref={rightContent}>
-        TEST CONTENT
+        <div className={style.cardWrapper}>
+        <h4>* CONTENT</h4>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="90" height="23" viewBox="0 0 90 23" fill="none">
+          <rect y="10.981" width="15.5295" height="14.9543" transform="rotate(-45 0 10.981)" fill="#D9D9D9"/>
+          <rect x="23.0066" y="10.981" width="15.5295" height="14.9543" transform="rotate(-45 23.0066 10.981)" fill="#D9D9D9"/>
+          <rect x="46.0132" y="11.5562" width="15.5295" height="14.9543" transform="rotate(-45 46.0132 11.5562)" fill="#D9D9D9"/>
+          <rect x="68.4448" y="10.981" width="15.5295" height="14.9543" transform="rotate(-45 68.4448 10.981)" fill="#D9D9D9"/>
+        </svg>
+        </div>
       </div>
       <div className={style.animatedContent}>PORTFOLIO</div>
     </div>
