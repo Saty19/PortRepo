@@ -73,7 +73,6 @@ const TestimonialOrg = () => {
           <div
             className={style['testimonial']}
             key={testimonial.id}
-            style={{ width: `${containerRef.current.offsetWidth}px` }}
           >
             <img
               className="testimonial-image"

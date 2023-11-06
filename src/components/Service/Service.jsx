@@ -65,8 +65,8 @@ function Service() {
       const containerColor = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top center",
-          end: "top center",
+          start: "top 51%",
+          end: "top 51%",
           markers: false,
           scrub: 1,
         },
