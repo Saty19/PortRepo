@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback, useLayoutEffect } from "react";
+import { useRef, useState, useCallback, useLayoutEffect, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import style from "./Service.module.css";
@@ -23,24 +23,28 @@ const Service = () => {
     setHoveredItem(null);
   };
 
+ 
+
   const handleMouseMove = (e) => {
     const rect = containerRef.current.getBoundingClientRect();
-    const offsetX = e.clientX - rect.left + 200;
-  
-    // Calculate the Y offset based on mouse position, and limit it to a certain range
-    const maxOffsetY = 50; // Adjust this value as needed
+    const offsetX = e.clientX - rect.left +  (window.innerWidth < 768 ? 0 :200);
+
+    const maxOffsetY =   window.innerWidth === 768
+    ? 500
+    : window.innerWidth < 1400
+    ? 100
+    : 300;
     const offsetY = Math.min(
       maxOffsetY,
-      Math.max(-maxOffsetY, e.clientY - rect.top - 500)
+      Math.max(-maxOffsetY, e.clientY - rect.top - ( window.innerWidth < 768 ? 0 : 80))
     );
-  
+
     gsap.to(imagewrapperRef.current, {
       x: offsetX,
       y: offsetY,
       duration: 1,
     });
   };
-  
 
   useLayoutEffect(() => {
     const setupScrollTrigger = () => {
@@ -70,7 +74,6 @@ const Service = () => {
         { background: "#121212", duration: 1 }
       );
 
-      // Add stagger animation to each item
       gsap.fromTo(
         containerRef.current.querySelectorAll(`.${style.item}`),
         {
@@ -108,7 +111,7 @@ const Service = () => {
       ref={containerRef}
       onMouseMove={handleMouseMove}
     >
-    <div className={style.headline}>SERVICE</div>
+      <div className={style.headline}>SERVICE</div>
       <div className={style.itemWrapper}>
         {serviceContent.map((item) => (
           <div
@@ -126,9 +129,13 @@ const Service = () => {
           </div>
         ))}
       </div>
-      <div className={style.imagewrapper} ref={imagewrapperRef}  style={{
-        opacity: hoveredItem ? 1 : 0,
-      }}>
+      <div
+        className={style.imagewrapper}
+        ref={imagewrapperRef}
+        style={{
+          opacity: hoveredItem ? 1 : 0,
+        }}
+      >
         <img
           src={hoveredItem?.image}
           style={{
@@ -136,9 +143,14 @@ const Service = () => {
           }}
           alt={hoveredItem?.name}
         />
-        <div className={style.content} style={{
-          opacity: hoveredItem ? 1 : 0,
-        }}>{hoveredItem?.CONTENT}</div>
+        <div
+          className={style.content}
+          style={{
+            opacity: hoveredItem ? 1 : 0,
+          }}
+        >
+          {hoveredItem?.CONTENT}
+        </div>
       </div>
     </div>
   );

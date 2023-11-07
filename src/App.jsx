@@ -3,7 +3,7 @@ import SectionSecond from "./components/Section2/SectionSecond";
 import Service from "./components/Service/Service";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import SmoothScroll from "./components/Scroll/SmoothScroll";
 import Projects from "./components/Projects/Projects";
 import Testimonial from "./components/Testimonials/Testimonial";
@@ -11,9 +11,12 @@ import Navbar from "./components/Navbar/Navbar";
 import { Element } from "react-scroll";
 
 const App = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
+
   useLayoutEffect(() => {
     const handleWheelEvent = (e) => {
       if (e.ctrlKey || e.metaKey) {
@@ -21,15 +24,22 @@ const App = () => {
       }
     };
 
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      window.location.reload(); // Reload the page on resize
+    };
+
     window.addEventListener("wheel", handleWheelEvent, { passive: false });
+    window.addEventListener("resize", handleResize); // Add event listener for resize
 
     return () => {
       window.removeEventListener("wheel", handleWheelEvent);
+      window.removeEventListener("resize", handleResize); // Remove event listener on unmount
     };
   }, []);
 
   // Check if the screen width is less than 768 pixels
-  const isMobile = window.innerWidth <= 840;
+  const isMobile = windowWidth <= 840;
 
   return (
     // Conditionally render SmoothScroll or a regular div
