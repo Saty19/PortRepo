@@ -73,6 +73,10 @@ const TestimonialOrg = () => {
           <div
             className={style['testimonial']}
             key={testimonial.id}
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 18758618796e3c77e8f319b6cf998d75ece40aab
           >
             <img
               className="testimonial-image"

@@ -1,31 +1,8 @@
-import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import "./SmoothScroll.css";
 import Navbar from "../Navbar/Navbar";
 
 const SmoothScroll = ({ children }) => {
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-
-  useLayoutEffect(() => {
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-      
-      // When the window resizes, you should recalculate and set the body height
-      setBodyHeight();
-      
-      // Reload the page to refresh the full content
-      window.location.reload();
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   const scrollingContainerRef = useRef();
   const data = useMemo(() => {
     return {
@@ -53,25 +30,16 @@ const SmoothScroll = ({ children }) => {
     animationFrameId = requestAnimationFrame(smoothScrollingHandler);
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const cleanupScrolling = useCallback(() => {
     cancelAnimationFrame(animationFrameId);
-  });
+  }, [animationFrameId]);
 
   useLayoutEffect(() => {
     setBodyHeight();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     animationFrameId = requestAnimationFrame(smoothScrollingHandler);
 
     return cleanupScrolling;
-  }, []);
-
-  useLayoutEffect(() => {
-    setBodyHeight();
-
-    return cleanupScrolling;
-  }, [cleanupScrolling, windowSize.height]);
+  }, [cleanupScrolling]);
 
   return (
     <div className="parent">

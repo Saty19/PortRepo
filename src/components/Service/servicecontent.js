@@ -3,7 +3,7 @@
    export const  serviceContent = [
     {
       ID: 1,
-      name: "Web App & Design",
+      name: "E-Commerce Website",
       CONTENT:
       "ContentAI is a Magento module that automates the content creation process for your website using OpenAI (Artificial Intelligence).",
       image:
@@ -11,7 +11,7 @@
     },
     {
       ID: 2,
-      name: "Graphic Design",
+      name: "Web App Design & developement",
        CONTENT:
             "graphic.",
       image:
@@ -19,7 +19,7 @@
     },
     {
       ID: 3,
-      name: "Logo & Branding",
+      name: "Brand Identity Redesign",
        CONTENT:
             "ContentAI is a Magento module that automates the content creation process for your website using OpenAI (Artificial Intelligence).",
       image:

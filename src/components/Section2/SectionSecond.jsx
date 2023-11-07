@@ -2,7 +2,7 @@ import { useEffect, useRef, useMemo, useCallback } from "react";
 import style from "./SecSecond.module.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
-import { ThreeContent } from "./ThreeContent";
+import  {ThreeContent}  from "./ThreeContent";
 
 const SectionSecond = () => {
   const rec1 = useRef(null);
@@ -68,10 +68,10 @@ const SectionSecond = () => {
         scrub: 1,
       },
     });
-    containerColor.to(container.current, {
-      background: "#121212",
-      direction: 3,
-    });
+    containerColor.fromTo(container.current, {
+      background: "#f0f0f0",
+
+    },{background:"#121212",duration:1});
   }, [rec1, rec2, rec3, rec4, container, leftContent]);
 
   useEffect(() => {
@@ -86,7 +86,7 @@ const SectionSecond = () => {
 
   return (
     <div className={`section ${style.container}`} ref={container}>
-      <ThreeContent />
+{/*      <ThreeContent />*/}
       <div className={style.leftContent} ref={leftContent}>
         <div style={{ width: "100%" }} ref={leftTop}>
           {elements}

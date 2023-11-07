@@ -24,9 +24,9 @@ const Home = () => {
   }, [card]);
 
   const handleMouseMove = useCallback((e) => {
-    const button = card.current;
+    const cardItem = card.current;
     const xAxis = (window.innerWidth / 2 - e.pageX) / 80;
-    button.style.transform = `translateX(${xAxis}px) translateY(${-100}px) rotate(10deg)`;
+    cardItem.style.transform = `translateX(${xAxis}px) translateY(${-100}px) rotate(10deg)`;
   }, [card]);
 
   useEffect(() => {
