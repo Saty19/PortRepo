@@ -29,7 +29,11 @@ const Service = () => {
     const rect = containerRef.current.getBoundingClientRect();
     const offsetX = e.clientX - rect.left +  (window.innerWidth < 768 ? 0 :200);
 
-    const maxOffsetY =  (window.innerWidth < 768 ? 500 : 300);
+    const maxOffsetY =   window.innerWidth === 768
+    ? 500
+    : window.innerWidth < 1400
+    ? 100
+    : 300;
     const offsetY = Math.min(
       maxOffsetY,
       Math.max(-maxOffsetY, e.clientY - rect.top - ( window.innerWidth < 768 ? 0 : 80))
@@ -55,8 +59,8 @@ const Service = () => {
       const containerColor = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top center",
-          end: "top center",
+          start: "top 51%",
+          end: "top 51%",
           markers: false,
           scrub: 1,
         },

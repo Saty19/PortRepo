@@ -19,7 +19,7 @@
 .list li:hover h1{
     width: 95%; 
     height: 147px; 
-    background: rgb(0, 251, 0);
+    background: rgb(190, 190, 190);
     color: white;
     display: inline-flex;
     justify-content: center;

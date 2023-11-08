@@ -2,7 +2,7 @@ import  { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import style from "./Contact.module.css"
 
-export const ContactUs = () => {
+ export   const  ContactUs = () => {
   const form = useRef();
   const [showPopup, setShowPopup] = useState(false);
   const sendEmail = (e) => {

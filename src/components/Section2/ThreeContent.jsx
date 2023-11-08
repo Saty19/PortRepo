@@ -36,10 +36,9 @@ function Clump({ mat = new THREE.Matrix4(), vec = new THREE.Vector3(), ...props 
   const [ref, api] = useSphere(() => ({ args: [1], mass: 1, angularDamping: 0.1, linearDamping: 0.65, position: [rfs(20), rfs(20), rfs(20)] }))
   useFrame((state) => {
     for (let i = 0; i <30; i++) {
-      // Get current whereabouts of the instanced sphere
+      
       ref.current.getMatrixAt(i, mat)
-      // Normalize the position and multiply by a negative force.
-      // This is enough to drive it towards the center-point.
+     
       api.at(i).applyForce(vec.setFromMatrixPosition(mat).normalize().multiplyScalar(-20).toArray(), [0, 0, 0])
     }
     {/* material-map={texture}*/}

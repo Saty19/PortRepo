@@ -13,6 +13,7 @@ const SectionSecond = () => {
   const rightContent = useRef(null);
   const leftContent = useRef(null);
   const leftTop = useRef(null);
+  const animatedContent= useRef(null);
 
   const elements = useMemo(() => {
     return ["POWERFUL", "BRANDING", "STUNNING", "WEBSITES"].map(
@@ -60,7 +61,7 @@ const SectionSecond = () => {
     tl.to(rec2.current, { y: "100%", direction: 1 }, 1.2);
     tl.to(rec3.current, { y: "100%", direction: 1 }, 1.5);
     tl.to(rec4.current, { y: "100%", direction: 1 }, 1.7);
-
+    tl.to(animatedContent.current,{y:"-100%",duration:5},2)
     const containerColor = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
@@ -109,7 +110,10 @@ const SectionSecond = () => {
         </svg>
         </div>
       </div>
-      <div className={style.animatedContent}>PORTFOLIO</div>
+      <div className={style.pageNameWrapper}>
+         <div className={style.animatedContent} ref={animatedContent} >PORTFOLIO</div>
+      
+      </div>
     </div>
   );
 };
