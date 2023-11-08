@@ -49,7 +49,7 @@
 .rectangle {
   position: absolute;
   z-index: 8;
-  padding-left: 30%;
+ 
   width: 100%;
   height: 100%;
   color: rgb(75, 75, 75);
@@ -60,6 +60,7 @@
 }
 
 .leftContent {
+  padding-left: 10%;
   width: 50%;
   height: 100%;
   opacity: 0;
