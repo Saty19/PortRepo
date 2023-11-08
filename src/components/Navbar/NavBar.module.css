@@ -152,5 +152,7 @@
     .linkNav{
         height: 30vw;
     }
-    
+    .bottomWrapper{
+        font-size: 10vw;
+    }
 }

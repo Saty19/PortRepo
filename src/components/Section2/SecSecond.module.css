@@ -115,7 +115,7 @@ width: 50%;
   font-style: normal;
   line-height: 200%; 
   letter-spacing: 1vw;
-
+  
 }
 
 
@@ -148,23 +148,13 @@ width: 50%;
     width: 100%;
     height: auto;
     z-index: 5;
+    padding-left: 1vw;
   }
   .parent {
     height: 60px;
   }
   .rectangle {
     font-size: 3em;
-  }
-  .Parragraph {
-    font-size: 1em;
-    margin: 0;
-    text-align: right;
-    /* border-radius: 10px; */
-    height: 30%;
-    background-color: rgba(63, 63, 63, 0.548);
-    backdrop-filter: blur(2px);
-    right: 0;
-    opacity: 0;
   }
   .rightContent {
   width: 80%;
@@ -176,7 +166,7 @@ width: 50%;
   .cardWrapper >svg{
     width: 10vw;
   }
-  .animatedContent{
-    right: 2vw;
+  .pageNameWrapper{
+    right: 0;
   }
 }

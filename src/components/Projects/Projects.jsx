@@ -103,7 +103,7 @@ const Projects = () => {
                 <EffectComposer smma>
                   <Bloom intensity={0.1} luminanceThreshold={0.5} />
                   <group rotation={[0, 270, 0]} position={[0, 1, 0]}>
-                  {/*   <ModelLoad Hovered={hoveredItem} Scale={2.5} />*/}
+                  {  <ModelLoad Hovered={hoveredItem} Scale={2.5} />}
                   
                   </group>
                 </EffectComposer>

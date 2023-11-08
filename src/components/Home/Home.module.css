@@ -17,8 +17,17 @@
   justify-content: center;
 }
 
-.cardImage {
+.cardWrapper{
   position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.cardImage {
   overflow: hidden;
   bottom: 0;
   opacity: 0;
@@ -43,6 +52,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
   align-items: center;
 }
 
@@ -94,9 +104,9 @@
 
 /* Media Queries */
 @media screen and (max-width: 840px) {
-  .mainContent {
+  /* .mainContent {
     padding-top: 35vw;
-  }
+  } */
 
   .brandName {
     font-size: 20vw;
@@ -121,9 +131,8 @@
   }
 
   .cardImage {
-    width: 50vw;
-    height: 60vw;
-    bottom: 10vh;
+    width: 60vw;
+    height: 90vw;
   }
 
   .linkTag.show {
@@ -162,11 +171,11 @@
     color: black;
   }
 
-  .cardImage {
+  /* .cardImage {
     width: 60vw;
     height: 80vw;
     bottom: 25vh;
-  }
+  } */
 
   .linkTag.show {
     opacity: 1;

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import styles from "./Testimonial.module.css";
+import { Link } from 'react-router-dom';
 
 const TestimonialCarousel = () => {
   const buttonRef = useRef(null);
@@ -37,11 +38,13 @@ const TestimonialCarousel = () => {
         </div>
       </div>
       <div className={styles.buttonWrapper} ref={buttonWrapper}>
-        <a className={styles.contactButton} ref={buttonRef}>
+      <Link to="/contact">
+        <div className={styles.contactButton} ref={buttonRef}>
           <div className={styles.buttonName} ref={buttonName}>
             LET'S TALK
           </div>
-        </a>
+        </div>
+        </Link>
         <h3>Can't wait to hear from you. Let's try it!</h3>
       </div>
     </div>

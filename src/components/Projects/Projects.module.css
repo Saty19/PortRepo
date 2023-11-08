@@ -140,7 +140,7 @@ width: 50%;
   right: 0;
 }
 .Item:hover{
-  color: #d6d1ce;
+  /* color: #d6d1ce; */
   scale: 1.2;
   transform: translateX(9vw);
 }

@@ -61,7 +61,18 @@ const SectionSecond = () => {
     tl.to(rec2.current, { y: "100%", direction: 1 }, 1.2);
     tl.to(rec3.current, { y: "100%", direction: 1 }, 1.5);
     tl.to(rec4.current, { y: "100%", direction: 1 }, 1.7);
-    tl.to(animatedContent.current,{y:"-100%",duration:5},2)
+    gsap.to(animatedContent.current,{
+      scrollTrigger:{
+        trigger: ".section",
+        markers: false,
+        start: `${isMobile ? "40%" : "top"} 60%`,
+        end: `${isMobile ? "70%" : "90%"} top`,
+        scrub: 1,
+      },
+      y:"-100%",duration:5
+    })
+
+
     const containerColor = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
