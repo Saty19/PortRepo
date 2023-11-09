@@ -9,9 +9,7 @@ import Projects from "./components/Projects/Projects";
 import Testimonial from "./components/Testimonials/Testimonial";
 import Navbar from "./components/Navbar/Navbar";
 import { Element } from "react-scroll";
-import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
-import { Router } from "react-router-dom/cjs/react-router-dom.min";
-import { ContactUs } from "./components/ContactUs/ContactUs";
+
 
 const App = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -111,12 +109,12 @@ const App = () => {
         <Element name="work">{<Projects />}</Element>
         <Element name="contact">
           <Testimonial />
+          
         </Element>
       </div>
     ) : (
    
       <SmoothScroll>
-        <Switch>
           <div>
             <Element name="home">
               <Home />
@@ -132,15 +130,9 @@ const App = () => {
             </Element>
             <Element name="work">{<Projects />}</Element>
             <Element name="contact">
-              <Route exact  path="/" >
               <Testimonial/>
-              </Route>
-              <Route  path="/contact" >
-              <ContactUs/>
-              </Route>
             </Element>
           </div>
-        </Switch>
       </SmoothScroll>
      
     )

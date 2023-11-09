@@ -1,9 +1,13 @@
-import  { useRef, useState } from 'react';
+import  { useEffect, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import style from "./Contact.module.css"
 
- export   const  ContactUs = () => {
+const  ContactUs = () => {
   const form = useRef();
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
   const [showPopup, setShowPopup] = useState(false);
   const sendEmail = (e) => {
     e.preventDefault();
@@ -42,3 +46,4 @@ return (
 </div>
   );
 };
+export default ContactUs;

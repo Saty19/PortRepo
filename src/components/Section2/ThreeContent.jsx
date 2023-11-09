@@ -13,7 +13,6 @@ export const ThreeContent = () => (
   <Canvas shadows gl={{ antialias: false }} dpr={[1, 1.5]} camera={{ position: [0, 0, 20], fov: 35, near: 1, far: 40 }}
   size={{ width: window.innerWidth, height: window.innerHeight }} style={{position:"absolute",zIndex:3,touchAction:"default"}}
   onPointerDown={(e) => e.stopPropagation()}
-  
   >
 
     <ambientLight intensity={0.5} />

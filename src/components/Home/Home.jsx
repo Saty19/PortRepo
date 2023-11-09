@@ -21,7 +21,7 @@ const Home = () => {
     });
 
     return tl;
-  }, [card]);
+  }, [isMobile]);
 
   const handleMouseMove = useCallback(
     (e) => {
@@ -29,7 +29,7 @@ const Home = () => {
       const xAxis = (elementRef.current.clientWidth  / 2 - e.clientX) / 80;
       cardItem.style.transform = `translateX(${xAxis}px) translateY(${isMobile?'30vw':'5vw'}) rotate(10deg)`;
     },
-    [card]
+    [isMobile]
   );
 
   useEffect(() => {
