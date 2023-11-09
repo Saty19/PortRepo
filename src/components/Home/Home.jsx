@@ -46,8 +46,7 @@ const Home = () => {
     };
   }, [handleMouseMove]);
 
-  const demo =
-    "https://cdn.pixabay.com/photo/2023/06/07/20/03/ai-generated-8048160_640.jpg";
+  const demo ="https://cdn.pixabay.com/photo/2023/06/07/20/03/ai-generated-8048160_640.jpg";
 
   return (
     <div ref={elementRef} className={style.container}>

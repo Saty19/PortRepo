@@ -10,10 +10,10 @@ export default function Model(props) {
   const group = useRef()
   const update = (state) => {
     const t = state.clock.getElapsedTime();
-    group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, open ? Math.cos(t / 10) / 7 + 0.25 : 0, 0.1);
+    group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, open ? Math.cos(t / 10) / 8 + 0.35 : 0, 0.1);
     group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, open ? Math.sin(t / 10) / 2 : 0, 0.1);
     group.current.rotation.z = THREE.MathUtils.lerp(group.current.rotation.z, open ? Math.sin(t / 10) / 4 : 0, 0.1);
-    group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, open ? (-2 + Math.sin(t)) / 3 : -7, 0.6);
+    group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, open ? (-2 + Math.sin(t)) / 5 : -7, 0.6);
   };
 
   // Use useFrame with the update function
@@ -87,7 +87,7 @@ export default function Model(props) {
       material={materials["DarkGrey.001"]}
     />
   </group>
-  <group rotation={[-Math.PI, 0, -3.135]}>
+  <group rotation={[Math.PI*0.85, 0, -3.135]}>
       <mesh
       castShadow
       receiveShadow

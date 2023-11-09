@@ -9,125 +9,100 @@
   height: 100vh;
   display: flex;
   overflow: hidden;
-  flex-direction: column;
+  /* flex-direction: column; */
   position: relative;
   background: #121212;
   transition: none;
   color: white;
 }
-.container::before{
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 50%;
-  background: linear-gradient(180deg ,#121212,transparent);
-  z-index: 1;
-}
-
-
-.headLine{
-  width: 100%;
-  position: absolute;
-  font-family: Arial, Helvetica, sans-serif;
-  color:rgba(255, 255, 255, 0.205);
-  top: 20vw;
-  text-align: center;
-  font-style: normal;
-  font-weight: 900;
-  line-height: normal;
-  mix-blend-mode: soft-light;
-  font-size: 288.206px;
-  opacity: 0.8;
-  z-index: 1;
-}
-.CanvaContainer{
-  position: relative;
- 
-  width: 50%;
+.leftContainer{
+  width: 40%;
   height: 100%;
-  float: right;
-  z-index: 3;
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  box-shadow: 10px -10px 20px rgb(0, 0, 0) inset ;
-  border-radius: 10px;
 }
-.CanvaContainer::after{
+.rightContainer{
+  width: 60%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+}
+.itemWrapper{
   position: absolute;
-  content: '';
-  width: 10vw;
-  height: 10vw;
-  z-index: -1;
-  background-color: rgb(148, 148, 148);
-  filter: blur(200px);
-}
-
-canvas{
-  position: relative;
-  cursor: grabbing;  
-  width: 100%;
-}
-
-.listItem{
   display: flex;
   justify-content: center;
-  gap: 2vw;
-  width: 100%;
-  height: 20%;
-  background: #f0f0f034;
-  /* border-radius: 20px; */
-  backdrop-filter: blur(10px);
-  position: relative;
-  align-items: center;
-  z-index: 4;
+  flex-direction: column;
+  height: 80%;
+  width: 90%;
+  right: -2vw;
+  border-radius: 20px;
+  background: url(https://images.unsplash.com/photo-1635002962487-2c1d4d2f63c2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFic3RyYWN0JTIwM2R8ZW58MHx8MHx8fDA%3D);
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  z-index: 0;
 }
 .Item{
   font-size: 3.8vw;
   height: auto;
   color:transparent;
-  -webkit-text-stroke: 1.5px #121212;
+  -webkit-text-stroke: 1.5px #dadada;
   text-align: left;
   transition: all 0.5s;
+  margin-left: 5vw;
 }
 .active{
-  color: #121212;
+  color: #dadada;
   scale: 1.1;
-/* transform: translateX(2vw); */
-}
-.Item:hover{
-  color: #121212;
-  scale: 1.1;
-  -webkit-text-stroke: none;
-  
-  /* transform: translateX(2vw); */
-}
 
-.rightcontent{
-  width: 100%;
+}
+.contentCavasWrapper{
   height: 60%;
-  z-index: 4;
-  flex-direction: row-reverse;
+  width: 90%;
+  background-color: #42424272;
+  backdrop-filter: blur(8px);
+  z-index: 2;
+  border-radius: 20px;
   display: flex;
-  justify-content: end;
 }
-
-.bottomContent{
-  width:50%;
-  color:#d6d1ce;
-  position: relative;
+.description{
+  width: 40%;
+  height: 100%;
   display: flex;
+  margin-left: 2vw;
+  padding-bottom: 2vw;
   flex-direction: column;
-  justify-content: space-around;
-  padding-left: 5vw;
 
+ justify-content: center;
 }
 .bottomFirstContent{
-font-size: 8vw;
-}
+  transition: opacity 1s ease-in;
+  font-size: 3vw;
+} 
 .bottomLastContent{
-width: 50%;
+  padding-top: 1vw;
+  color: #f0f0f0;
 }
+.bottomContent {
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
+.bottomContent.show {
+  opacity: 0.5;
+}
+
+.canvasWrapper{
+  width: 60%;
+  height: 100%;
+  position: relative;
+ 
+}
+canvas{
+  cursor: grabbing;
+}
+
 @media screen and (max-width:820px) {
   .container {
    flex-direction: column;
@@ -178,3 +153,5 @@ width: 50%;
   color: rgb(199, 200, 191);
   }
 }
+
+

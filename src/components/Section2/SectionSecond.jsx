@@ -13,7 +13,7 @@ const SectionSecond = () => {
   const rightContent = useRef(null);
   const leftContent = useRef(null);
   const leftTop = useRef(null);
-  const animatedContent= useRef(null);
+  const animatedContent = useRef(null);
 
   const elements = useMemo(() => {
     return ["POWERFUL", "BRANDING", "STUNNING", "WEBSITES"].map(
@@ -61,17 +61,17 @@ const SectionSecond = () => {
     tl.to(rec2.current, { y: "100%", direction: 1 }, 1.2);
     tl.to(rec3.current, { y: "100%", direction: 1 }, 1.5);
     tl.to(rec4.current, { y: "100%", direction: 1 }, 1.7);
-    gsap.to(animatedContent.current,{
-      scrollTrigger:{
+    gsap.to(animatedContent.current, {
+      scrollTrigger: {
         trigger: ".section",
         markers: false,
         start: `${isMobile ? "40%" : "top"} 60%`,
         end: `${isMobile ? "70%" : "90%"} top`,
         scrub: 1,
       },
-      y:"-100%",duration:5
-    })
-
+      y: "-100%",
+      duration: 5,
+    });
 
     const containerColor = gsap.timeline({
       scrollTrigger: {
@@ -103,7 +103,7 @@ const SectionSecond = () => {
 
   return (
     <div className={`section ${style.container}`} ref={container}>
-      {/*<ThreeContent />*/}
+      {<ThreeContent />}
       <div className={style.leftContent} ref={leftContent}>
         <div style={{ width: "100%" }} ref={leftTop}>
           {elements}
@@ -111,19 +111,53 @@ const SectionSecond = () => {
       </div>
       <div className={style.rightContent} ref={rightContent}>
         <div className={style.cardWrapper}>
-        <h4>* CONTENT</h4>
-
-        <svg xmlns="http://www.w3.org/2000/svg" width="90" height="23" viewBox="0 0 90 23" fill="none">
-          <rect y="10.981" width="15.5295" height="14.9543" transform="rotate(-45 0 10.981)" fill="#D9D9D9"/>
-          <rect x="23.0066" y="10.981" width="15.5295" height="14.9543" transform="rotate(-45 23.0066 10.981)" fill="#D9D9D9"/>
-          <rect x="46.0132" y="11.5562" width="15.5295" height="14.9543" transform="rotate(-45 46.0132 11.5562)" fill="#D9D9D9"/>
-          <rect x="68.4448" y="10.981" width="15.5295" height="14.9543" transform="rotate(-45 68.4448 10.981)" fill="#D9D9D9"/>
-        </svg>
+          <h4>* CONTENT</h4>
+            <h3>TRY DESIGN  </h3>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="90"
+            height="23"
+            viewBox="0 0 90 23"
+            fill="none"
+          >
+            <rect
+              y="10.981"
+              width="15.5295"
+              height="14.9543"
+              transform="rotate(-45 0 10.981)"
+              fill="#D9D9D9"
+            />
+            <rect
+              x="23.0066"
+              y="10.981"
+              width="15.5295"
+              height="14.9543"
+              transform="rotate(-45 23.0066 10.981)"
+              fill="#D9D9D9"
+            />
+            <rect
+              x="46.0132"
+              y="11.5562"
+              width="15.5295"
+              height="14.9543"
+              transform="rotate(-45 46.0132 11.5562)"
+              fill="#D9D9D9"
+            />
+            <rect
+              x="68.4448"
+              y="10.981"
+              width="15.5295"
+              height="14.9543"
+              transform="rotate(-45 68.4448 10.981)"
+              fill="#D9D9D9"
+            />
+          </svg>
         </div>
       </div>
       <div className={style.pageNameWrapper}>
-         <div className={style.animatedContent} ref={animatedContent} >PORTFOLIO</div>
-      
+        <div className={style.animatedContent} ref={animatedContent}>
+          PORTFOLIO
+        </div>
       </div>
     </div>
   );

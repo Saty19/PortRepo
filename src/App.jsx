@@ -15,7 +15,7 @@ const App = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    window.scroll(0, 0);
+    // window.scroll(0, 0);
   }, []);
 
   useLayoutEffect(() => {
@@ -27,7 +27,7 @@ const App = () => {
 
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
-      window.location.reload(); // Reload the page on resize
+      // window.location.reload(); // Reload the page on resize
     };
 
     window.addEventListener("wheel", handleWheelEvent, { passive: false });
