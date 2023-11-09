@@ -6,13 +6,16 @@ const  ContactUs = () => {
   const form = useRef();
   useEffect(() => {
     window.scroll(0, 0);
+
   }, []);
 
   const [showPopup, setShowPopup] = useState(false);
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm('service_hqkcni7', 'template_p928fwo', form.current, 'm82mIDSiTDJ48YBJ2')
+    emailjs.sendForm(import.meta.env.VITE_REACT_APP_EMAIL_SERVICE, 
+      import.meta.env.VITE_REACT_APP_EMAIL_TEMPLATE, form.current,
+      import.meta.env.VITE_REACT_APP_EMAIL_KEY)
     .then((result) => {
       console.log(result.text);
       setShowPopup(true);
