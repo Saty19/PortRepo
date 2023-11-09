@@ -42,14 +42,30 @@
 }
 .CanvaContainer{
   position: relative;
+ 
   width: 50%;
   height: 100%;
   float: right;
   z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 10px -10px 20px rgb(0, 0, 0) inset ;
+  border-radius: 10px;
+}
+.CanvaContainer::after{
+  position: absolute;
+  content: '';
+  width: 10vw;
+  height: 10vw;
+  z-index: -1;
+  background-color: rgb(148, 148, 148);
+  filter: blur(200px);
 }
 
 canvas{
   position: relative;
+  cursor: grabbing;  
   width: 100%;
 }
 
@@ -59,18 +75,12 @@ canvas{
   gap: 2vw;
   width: 100%;
   height: 20%;
-  background: #f0f0f0;
+  background: #f0f0f034;
+  /* border-radius: 20px; */
+  backdrop-filter: blur(10px);
   position: relative;
   align-items: center;
   z-index: 4;
-}
-.listItem::after{
-  position: absolute;
-  content: '';
-  width: 90%;
-  bottom: 0;
-  height: 0.5px;
-  background-color: rgba(255, 255, 255, 0.385) ;
 }
 .Item{
   font-size: 3.8vw;
