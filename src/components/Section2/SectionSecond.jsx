@@ -2,6 +2,7 @@ import { useEffect, useRef, useMemo, useCallback } from "react";
 import style from "./SecSecond.module.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
+import ThreeContent from "./ThreeContent";
 // import  ThreeContent  from "./ThreeContent";
 
 const SectionSecond = () => {
@@ -45,7 +46,7 @@ const SectionSecond = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".section",
-        markers: false,
+
         start: `${isMobile ? "40%" : "top"} 90%`,
         end: `${isMobile ? "70%" : "90%"} 50%`,
         scrub: 1,
@@ -64,7 +65,7 @@ const SectionSecond = () => {
     gsap.to(animatedContent.current, {
       scrollTrigger: {
         trigger: ".section",
-        markers: false,
+
         start: `${isMobile ? "40%" : "top"} 60%`,
         end: `${isMobile ? "70%" : "90%"} top`,
         scrub: 1,
@@ -78,7 +79,7 @@ const SectionSecond = () => {
         trigger: container.current,
         start: "50% top",
         end: "bottom 80%",
-        markers: false,
+
         scrub: 1,
       },
     });
@@ -103,9 +104,7 @@ const SectionSecond = () => {
 
   return (
     <div className={`section ${style.container}`} ref={container}>
-      {
-        /*<ThreeContent />*/
-      }
+   
       <div className={style.leftContent} ref={leftContent}>
         <div style={{ width: "100%" }} ref={leftTop}>
           {elements}
@@ -115,6 +114,9 @@ const SectionSecond = () => {
         <div className={style.cardWrapper}>
           <h4>* CONTENT</h4>
             <h3>TRY DESIGN  </h3>
+            {
+              <ThreeContent />
+            }
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="90"

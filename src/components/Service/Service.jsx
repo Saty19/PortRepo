@@ -61,7 +61,7 @@ const Service = () => {
           trigger: containerRef.current,
           start: "top 51%",
           end: "top 51%",
-          markers: false,
+
           scrub: 1,
         },
       });

@@ -9,7 +9,7 @@ import Projects from "./components/Projects/Projects";
 import Testimonial from "./components/Testimonials/Testimonial";
 import Navbar from "./components/Navbar/Navbar";
 import { Element } from "react-scroll";
-import  ReactGA  from "react-ga";
+
 
 
 const App = () => {
@@ -20,11 +20,6 @@ const App = () => {
   const isMobile = windowWidth <= 840;
 
   useLayoutEffect(() => {
-      //google analytics
-      // ReactGA.initialize("G-JNPTZDGPMP")
-      // ReactGA.pageview(window.location.pathname + window.location.search);
-
-
     const handleWheelEvent = (e) => {
       if (e.ctrlKey || e.metaKey) {
         e.preventDefault();
