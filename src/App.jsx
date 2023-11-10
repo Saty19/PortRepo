@@ -21,8 +21,8 @@ const App = () => {
 
   useLayoutEffect(() => {
       //google analytics
-      ReactGA.initialize("G-JNPTZDGPMP")
-      ReactGA.pageview(window.location.pathname + window.location.search);
+      // ReactGA.initialize("G-JNPTZDGPMP")
+      // ReactGA.pageview(window.location.pathname + window.location.search);
 
 
     const handleWheelEvent = (e) => {
