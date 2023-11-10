@@ -47,7 +47,6 @@ const Projects = () => {
         trigger: container.current,
         start: "top 60%",
         end: "50% 50%",
-        markers:"false",
         scrub: 1,
       },
     });
