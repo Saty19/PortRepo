@@ -1,19 +1,19 @@
-import { lazy, useEffect, useState } from "react";
+import { lazy, useEffect, useState, useRef, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { PresentationControls, PerspectiveCamera } from "@react-three/drei";
 import style from "./Projects.module.css";
-import { Suspense } from "react";
-import { useMemo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { nameComponentMap } from "./Content/content";
-import { useRef } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const Bloom = lazy(() =>
   import("@react-three/postprocessing").then((module) => ({
     default: module.Bloom,
   }))
 );
+
 export const EffectComposer = lazy(() =>
   import("@react-three/postprocessing").then((module) => ({
     default: module.EffectComposer,
@@ -22,18 +22,16 @@ export const EffectComposer = lazy(() =>
 
 const Projects = () => {
   const container = useRef(null);
+  const maskingSquare = useRef(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [activeItemIndex, setActiveItemIndex] = useState(1);
-  const [ShowContent,setShowContent]= useState()
   const [hoveredItem, setHoveredItem] = useState({
     name: "MAGENTO",
     CONTENT:
       "ContentAI is a Magento module that automates the content creation process for your website using OpenAI (Artificial Intelligence).",
   });
 
-  const ModelLoad = useMemo(() => {
-    return lazy(() => import("./Model"));
-  }, []);
+  const ModelLoad = lazy(() => import("./Model"));
 
   const handleHover = (name, index) => {
     const hovered = nameComponentMap.find((item) => item?.name === name);
@@ -41,23 +39,42 @@ const Projects = () => {
     setActiveItemIndex(index);
   };
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
 
+
+  useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
-        start: "top 70%",
+        start: "top 60%",
         end: "50% 50%",
-        scrub: 3,
+        markers:"false",
+        scrub: 1,
       },
     });
+
+    tl.fromTo(
+      ".leftContainer",
+      { opacity: 0, x: -50 },
+      { opacity: 1, x: 0, duration: 1 }
+    );
+
+    tl.fromTo(
+      maskingSquare.current,
+      {
+        opacity: 0,
+        x: 100,
+        css: { 'backdrop-filter': 'blur(5px)' }, 
+      },
+      { opacity: 1, x: 0, duration: 1 }
+    );
+    
 
     function handleResize() {
       setWindowWidth(window.innerWidth);
     }
 
     window.addEventListener("resize", handleResize);
+
     return () => {
       tl.kill();
       window.removeEventListener("resize", handleResize);
@@ -66,15 +83,14 @@ const Projects = () => {
 
   return (
     <div className={style.container} ref={container}>
-      <div className={style.leftContainer}>
+      <div className={`${style.leftContainer} leftContainer`}>
         <div className={style.itemWrapper}>
           {nameComponentMap.map((item) => (
             <div
               key={item?.ID}
               onMouseEnter={() => handleHover(item?.name, item.ID)}
-              onMouseLeave={()=>handleLeave()}
               className={`${style.Item} ${
-                item.ID == activeItemIndex ? style.active : ""
+                item.ID === activeItemIndex ? style.active : ""
               }`}
             >
               {item.name}
@@ -82,18 +98,21 @@ const Projects = () => {
           ))}
         </div>
       </div>
-      <div className={style.rightContainer}>
+      <div className={style.rightContainer } ref={maskingSquare}>
         <div className={style.contentCavasWrapper}>
-        <div className={style.description}>
-        {hoveredItem && (
-          <div className={`${style.bottomContent} `}>
-            <h2 className={style.bottomFirstContent}>{hoveredItem.name}</h2>
-            <p className={style.bottomLastContent}>{hoveredItem.CONTENT}</p>
+          <div className={style.description}>
+            {hoveredItem && (
+              <div className={`${style.bottomContent} `}>
+                <h2 className={style.bottomFirstContent}>{hoveredItem.name}</h2>
+                <p className={style.bottomLastContent}>{hoveredItem.CONTENT}</p>
+              </div>
+            )}
           </div>
-        )}
-      </div>
-      
-          <div className={style.canvasWrapper}>
+
+          <div
+            className={`${style.canvasWrapper} maskingSquare`}
+           
+          >
             <Canvas
               className={style.canvas}
               size={{ width: window.innerWidth, height: window.innerHeight }}
@@ -101,9 +120,9 @@ const Projects = () => {
             >
               <PerspectiveCamera
                 makeDefault
-                fov={55} // Field of view
-                near={0.1} // Near clipping plane
-                far={1000} // Far clipping plane
+                fov={55}
+                near={0.1}
+                far={1000}
                 position={[0, 1, 20]}
               />
               <directionalLight

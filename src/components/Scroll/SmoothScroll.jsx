@@ -1,4 +1,4 @@
-import React, { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import "./SmoothScroll.css";
 import Navbar from "../Navbar/Navbar";
 
@@ -13,6 +13,8 @@ const SmoothScroll = ({ children }) => {
     };
   }, []);
   let animationFrameId;
+
+
 
   const setBodyHeight = () => {
     document.body.style.height = `${

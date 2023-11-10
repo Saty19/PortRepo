@@ -3,22 +3,28 @@ import SectionSecond from "./components/Section2/SectionSecond";
 import Service from "./components/Service/Service";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
-import { useEffect, useLayoutEffect, useState } from "react";
+import {  useEffect, useLayoutEffect, useState } from "react";
 import SmoothScroll from "./components/Scroll/SmoothScroll";
 import Projects from "./components/Projects/Projects";
 import Testimonial from "./components/Testimonials/Testimonial";
 import Navbar from "./components/Navbar/Navbar";
 import { Element } from "react-scroll";
+import  ReactGA  from "react-ga";
 
 
 const App = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  
 
-  useEffect(() => {
-    // window.scroll(0, 0);
-  }, []);
+  // Check if the screen width is less than 768 pixels
+  const isMobile = windowWidth <= 840;
 
   useLayoutEffect(() => {
+      //google analytics
+      ReactGA.initialize("G-FDY1L85ZS3")
+      ReactGA.pageview(window.location.pathname + window.location.search);
+
+
     const handleWheelEvent = (e) => {
       if (e.ctrlKey || e.metaKey) {
         e.preventDefault();
@@ -27,7 +33,7 @@ const App = () => {
 
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
-      // window.location.reload(); // Reload the page on resize
+      isMobile?'': window.location.reload(); // Reload the page on resize
     };
 
     window.addEventListener("wheel", handleWheelEvent, { passive: false });
@@ -37,10 +43,8 @@ const App = () => {
       window.removeEventListener("wheel", handleWheelEvent);
       window.removeEventListener("resize", handleResize); // Remove event listener on unmount
     };
-  }, []);
+  }, [isMobile]);
 
-  // Check if the screen width is less than 768 pixels
-  const isMobile = windowWidth <= 840;
 
   return (
     // Conditionally render SmoothScroll or a regular div
@@ -115,6 +119,7 @@ const App = () => {
     ) : (
    
       <SmoothScroll>
+
           <div>
             <Element name="home">
               <Home />
@@ -128,13 +133,16 @@ const App = () => {
             <Element name="about">
               <About />
             </Element>
-            <Element name="work">{<Projects />}</Element>
+            <Element name="work">
+            <Projects />
+
+            </Element>
             <Element name="contact">
               <Testimonial/>
             </Element>
           </div>
+    
       </SmoothScroll>
-     
     )
   );
 };

@@ -7,6 +7,7 @@ export default function useWindowSize() {
       height: window.innerHeight,
     };
   };
+  
 
   const [windowSize, setWindowSize] = useState({width: window.innerWidth,
     height: window.innerHeight,});
