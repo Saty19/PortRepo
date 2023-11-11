@@ -2,9 +2,13 @@
 import style from "./Model.module.css";
 import  { useEffect, useRef, useState } from "react";
 import { Html, useGLTF } from "@react-three/drei";
-import Service from "../Service/Service";
+// import Service from "../Service/Service";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from 'three'
+import TallComponent from "./LaptopComponent/TallComponent ";
+import TestMagento from "./LaptopComponent/TestMagento";
+
+
 export default function Model(props) {
   const { nodes, materials } = useGLTF("./laptop.glb");
   const group = useRef()
@@ -27,6 +31,15 @@ export default function Model(props) {
     };
   }, []);
 
+  //enum 
+  const views={
+    MAGENTO:TallComponent,
+    REACT:TestMagento,
+    ANGULAR:TallComponent,
+    PHP:TallComponent,
+    LARAVEL:TallComponent,
+  }
+
 
   const scale=props.Scale
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -40,7 +53,7 @@ export default function Model(props) {
 
   },[])
   const isHovered = props?.Hovered;
-
+  const CurrentView=views[isHovered?.name]
   return (
     <group ref={group} {...props} dispose={null} scale={windowWidth<=820?scale:3.2} rotation-x={19} position={[0,-10,0]}>
     <group rotation={[-Math.PI, 0, -3.135]}>
@@ -114,7 +127,10 @@ export default function Model(props) {
           style={{ height: "100%" ,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer"}}
           onPointerDown={(e) => e.stopPropagation()}
         >
-          {/*isHovered?.name==="MAGENTO" && <Service/>*/ }
+          {/*isHovered?.name==="MAGENTO" && <Service/>*/
+          
+        }
+        <CurrentView/>
         </div>
       </Html>
      

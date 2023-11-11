@@ -16,22 +16,11 @@ const App = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   
 
-  // Check if the screen width is less than 768 pixels
+
   const isMobile = windowWidth <= 840;
   useEffect(() => {
-    const scrollToTop = () => {
-      window.scrollTo(0,0);
-    
-    };
-
-    // Add event listener to load
-    window.addEventListener('load', scrollToTop);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener('load', scrollToTop);
-    };
-  }, []);
+    isMobile?'':  window.scrollTo(0,0);
+  }, [isMobile]);
   useLayoutEffect(() => {
 
     const handleWheelEvent = (e) => {
