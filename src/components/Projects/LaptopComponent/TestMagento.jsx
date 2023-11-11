@@ -30,6 +30,7 @@ const TestMagento = () => {
         commodo consequat.
       </p>
       <h1 style={{color:"black"}}>MILAN</h1>
+      <button style={{background:"blue",fontSize:"2vw",color:"white",cursor:"pointer"}}>bhim</button>
       {/* Repeat content or add more elements as needed */}
     </div>
   );

@@ -67,7 +67,7 @@ function Model(props) {
     )
   })
 
-  const { nodes, materials } = useGLTF('/HARMON_CRADON.glb')
+  const { nodes, materials } = useGLTF('./HARMON_CRADON.glb')
 
 
   const existingMaterial = materials['Material.013']
