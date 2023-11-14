@@ -1,3 +1,4 @@
+import React from 'react'
 import "./App.css";
 import SectionSecond from "./components/Section2/SectionSecond";
 import Service from "./components/Service/Service";
@@ -10,7 +11,12 @@ import Testimonial from "./components/Testimonials/Testimonial";
 import Navbar from "./components/Navbar/Navbar";
 import { Element } from "react-scroll";
 
-
+const MemoizedHome = React.memo(Home);
+const MemoizedSectionSecond = React.memo(SectionSecond);
+const MemoizedService = React.memo(Service);
+const MemoizedAbout = React.memo(About);
+const MemoizedProjects = React.memo(Projects);
+const MemoizedTestimonial = React.memo(Testimonial);
 
 const App = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -117,30 +123,27 @@ const App = () => {
     ) : (
    
       <SmoothScroll>
-
-          <div>
-            <Element name="home">
-              <Home />
-            </Element>
-            <Element name="port">
-              <SectionSecond />
-            </Element>
-            <Element name="service">
-              <Service />
-            </Element>
-            <Element name="about">
-              <About />
-            </Element>
-            <Element name="work">
-            <Projects />
-
-            </Element>
-            <Element name="contact">
-              <Testimonial/>
-            </Element>
-          </div>
-    
-      </SmoothScroll>
+      <div>
+        <Element name="home">
+          <MemoizedHome />
+        </Element>
+        <Element name="port">
+          <MemoizedSectionSecond />
+        </Element>
+        <Element name="service">
+          <MemoizedService />
+        </Element>
+        <Element name="about">
+          <MemoizedAbout />
+        </Element>
+        <Element name="work">
+          <MemoizedProjects />
+        </Element>
+        <Element name="contact">
+          <MemoizedTestimonial />
+        </Element>
+      </div>
+    </SmoothScroll>
     )
   );
 };

@@ -47,6 +47,7 @@ const Projects = () => {
         trigger: container.current,
         start: "top 60%",
         end: "50% 50%",
+        toggleActions:"play none restart none",
         scrub: 1,
       },
     });
@@ -127,7 +128,7 @@ const Projects = () => {
               <directionalLight
                 color={"white"}
                 intensity={1}
-                position={[2, 5, 4]}
+                position={[2, 10, 4]}
               />
 
               {windowWidth <= 820 ? (

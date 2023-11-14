@@ -2,36 +2,33 @@ import React from 'react';
 
 const TestMagento = () => {
   const containerStyle = {
-    height: '900px',
-    backgroundColor: '#f0f0f0',
-    padding: '20px',
+    width: '668px',
+    height: '432px',
+    padding: '10px',
+    transform: 'scale(0.5)',
+    transformOrigin: 'top left',
+    backgroundColor: '#121212',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
     textAlign: 'center',
   };
 
-  const imageStyle = {
-    maxWidth: '100%',
-    maxHeight: '400px',
-    margin: '20px 0',
-    borderRadius: '8px',
+  const headingStyle = {
+    color: '#333',
+    fontSize: '24px',
+    marginBottom: '15px',
+  };
+
+  const contentStyle = {
+    color: '#666',
+    fontSize: '16px',
   };
 
   return (
     <div style={containerStyle}>
-      <h1>Tall Component</h1>
-      <img
-        src="https://via.placeholder.com/800x400"
-        alt="Placeholder Image"
-        style={imageStyle}
-      />
-      <p style={{color:"black"}}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
+      <h2 style={headingStyle}>Simple Component</h2>
+      <p style={contentStyle}>
+        This is a simple React component with inline styles.
       </p>
-      <h1 style={{color:"black"}}>MILAN</h1>
-      <button style={{background:"blue",fontSize:"2vw",color:"white",cursor:"pointer"}}>bhim</button>
-      {/* Repeat content or add more elements as needed */}
     </div>
   );
 };
