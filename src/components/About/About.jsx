@@ -9,32 +9,32 @@ const About = () => {
 
   useEffect(() => {
 
-    gsap.registerPlugin(ScrollTrigger);
+    // gsap.registerPlugin(ScrollTrigger);
 
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top center",
-        end: "bottom top",
-        toggleActions:"play none none none",
-        scrub: false,
-      },
-    });
+    // const tl = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: containerRef.current,
+    //     start: "top center",
+    //     end: "bottom top",
+    //     toggleActions:"play none none none",
+    //     scrub: true,
+    //   },
+    // });
 
   
-    tl.fromTo(
-      ".textelement",
-      { rotationX: 90,opacity:0 }, 
-      { rotationX: 0, opacity:1, duration: 3 ,transition:"none"} 
-    );
+    // tl.fromTo(
+    //   ".textelement",
+    //   { rotationX: 90,opacity:0 }, 
+    //   { rotationX: 0, opacity:1, duration: 3 ,transition:"none"} 
+    // );
 
   
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => {
-        trigger.kill();
-      });
-      tl.kill();
+      // ScrollTrigger.getAll().forEach((trigger) => {
+      //   trigger.kill();
+      // });
+      // tl.kill();
     //  containerAnimation.kill();
     };
   }, []);

@@ -79,7 +79,6 @@ const SectionSecond = () => {
         trigger: container.current,
         start: "50% top",
         end: "bottom 80%",
-
         scrub: 1,
       },
     });
@@ -96,9 +95,9 @@ const SectionSecond = () => {
     setupScrollTrigger();
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => {
-        trigger.kill();
-      });
+      // ScrollTrigger.getAll().forEach((trigger) => {
+      //   trigger.kill();
+      // });
     };
   }, [setupScrollTrigger]);
 
@@ -112,11 +111,16 @@ const SectionSecond = () => {
       </div>
       <div className={style.rightContent} ref={rightContent}>
         <div className={style.cardWrapper}>
-          <h4>* CONTENT</h4>
-            <h3>TRY DESIGN  </h3>
+            <div className={style.cardHead}>
+         
+              CONTENT
+      
+            </div>
+            <div className={style.BackThreeContent}>ENIGMA</div>
             {
               <ThreeContent />
             }
+            <div className={style.FrontThreeContent}>TRUN YOUR PRODUCT TO 3D</div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="90"

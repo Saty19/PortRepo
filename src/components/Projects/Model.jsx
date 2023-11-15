@@ -2,11 +2,15 @@
 import style from "./Model.module.css";
 import  { useEffect, useRef, useState } from "react";
 import { Html, useGLTF } from "@react-three/drei";
-import Service from "../Service/Service";
+// import Service from "../Service/Service";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from 'three'
+import TallComponent from "./LaptopComponent/TallComponent ";
+import TestMagento from "./LaptopComponent/TestMagento";
+
+
 export default function Model(props) {
-  const { nodes, materials } = useGLTF("./laptop.glb");
+  const { nodes, materials } = useGLTF("/mac-draco.glb");
   const group = useRef()
   const update = (state) => {
     const t = state.clock.getElapsedTime();
@@ -27,6 +31,15 @@ export default function Model(props) {
     };
   }, []);
 
+  //enum 
+  const views={
+    MAGENTO:TallComponent,
+    REACT:TestMagento,
+    ANGULAR:TallComponent,
+    PHP:TallComponent,
+    LARAVEL:TallComponent,
+  }
+
 
   const scale=props.Scale
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -40,133 +53,33 @@ export default function Model(props) {
 
   },[])
   const isHovered = props?.Hovered;
-
+  const CurrentView=views[isHovered?.name]
   return (
-    <group ref={group} {...props} dispose={null} scale={windowWidth<=820?scale:3.2} rotation-x={19} position={[0,-10,0]}>
-    <group rotation={[-Math.PI, 0, -3.135]}>
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.macBook_BottomPart_Cube001.geometry}
-      material={materials["Black.001"]}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.macBook_BottomPart_Cube001_1.geometry}
-      material={materials["Main.001"]}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.macBook_BottomPart_Cube001_2.geometry}
-      material={materials["Second.001"]}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.macBook_BottomPart_Cube001_3.geometry}
-      material={materials["KeysMain.001"]}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.macBook_BottomPart_Cube001_4.geometry}
-      material={materials["KeysBottom.001"]}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.macBook_BottomPart_Cube001_5.geometry}
-      material={materials["TopLine.001"]}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.macBook_BottomPart_Cube001_6.geometry}
-      material={materials["DarkGrey.001"]}
-    />
-  </group>
-  <group rotation={[Math.PI*0.85, 0, -3.135]}>
-      <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.macBook_TopPart_Cube001.geometry}
-      material={materials["Outline.001"]}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.macBook_TopPart_Cube001_1.geometry}
-
-    >
-   
-    <Html
-        className={style.htmlMain}
-        position={[-0.05, 1.35, -0.001]} transform occlude 
-        rotation-y={91.11} 
-        rotation-x={94.33}
-        scale={[0.070,0.088,0.07]}
-        center
-        style={{ width: "96vw", height: "125vh"}}
-      >
-        <div
-          style={{ height: "100%" ,display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer"}}
-          onPointerDown={(e) => e.stopPropagation()}
-        >
-          {/*isHovered?.name==="MAGENTO" && <Service/>*/ }
-        </div>
-      </Html>
-     
-    </mesh>
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.macBook_TopPart_Cube001_2.geometry}
-      material={materials["Emission.001"]}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.macBook_TopPart_Cube001_3.geometry}
-      material={materials["Logo.001"]}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.macBook_TopPart_Cube001_4.geometry}
-      material={materials["Main.001"]}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.macBook_TopPart_Cube001_5.geometry}
-      material={materials["Text.001"]}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.macBook_TopPart_Cube001_6.geometry}
-      material={materials["Camera.001"]}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.macBook_TopPart_Cube001_7.geometry}
-      material={materials["Camera1.001"]}
-    />
-    <mesh
-      castShadow
-      receiveShadow
-      geometry={nodes.macBook_TopPart_Cube001_8.geometry}
-      material={materials["CameraGreen.001"]}
-    />
-  </group>
+    <group ref={group} {...props} dispose={null}>
+    <group rotation-x={-0.425} position={[0, -0.04, 0.41]}>
+      <group position={[0, 2.96, -0.13]} rotation={[Math.PI / 2, 0, 0]}>
+        <mesh material={materials.aluminium} geometry={nodes['Cube008'].geometry} />
+        <mesh material={materials['matte.001']} geometry={nodes['Cube008_1'].geometry} />
+        <mesh geometry={nodes['Cube008_2'].geometry}>
+          <Html className={style.content}s rotation-x={-Math.PI / 2} position={[0.4,0.25,-0.01]} transform occlude>
+            <div className={style.wrapper} onPointerDown={(e) => e.stopPropagation()}>
+            {isHovered?.name=='MAGENTO' && <TestMagento/>}
+            </div>
+          </Html>
+        </mesh>
+      </group>
     </group>
+    <mesh material={materials.keys} geometry={nodes.keyboard.geometry} position={[1.79, 0, 3.45]} />
+    <group position={[0, -0.1, 3.39]}>
+      <mesh material={materials.aluminium} geometry={nodes['Cube002'].geometry} />
+      <mesh material={materials.trackpad} geometry={nodes['Cube002_1'].geometry} />
+    </group>
+    <mesh material={materials.touchbar} geometry={nodes.touchbar.geometry} position={[0, -0.03, 1.2]} />
+  </group>
   );
 }
 
-useGLTF.preload("./laptop.glb");
+useGLTF.preload("/mac-draco.glb");
 
 
 

@@ -47,7 +47,7 @@ const Projects = () => {
         trigger: container.current,
         start: "top 60%",
         end: "50% 50%",
-        markers:"false",
+        toggleActions:"play none restart none",
         scrub: 1,
       },
     });
@@ -76,7 +76,7 @@ const Projects = () => {
     window.addEventListener("resize", handleResize);
 
     return () => {
-      tl.kill();
+      // tl.kill(); 
       window.removeEventListener("resize", handleResize);
     };
   }, []);
@@ -128,7 +128,7 @@ const Projects = () => {
               <directionalLight
                 color={"white"}
                 intensity={1}
-                position={[2, 5, 4]}
+                position={[2, 10, 4]}
               />
 
               {windowWidth <= 820 ? (

@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react'
 import "./App.css";
 import SectionSecond from "./components/Section2/SectionSecond";
 import Service from "./components/Service/Service";
@@ -10,14 +11,24 @@ import Testimonial from "./components/Testimonials/Testimonial";
 import Navbar from "./components/Navbar/Navbar";
 import { Element } from "react-scroll";
 
-
+const MemoizedHome = React.memo(Home);
+const MemoizedSectionSecond = React.memo(SectionSecond);
+const MemoizedService = React.memo(Service);
+const MemoizedAbout = React.memo(About);
+const MemoizedProjects = React.memo(Projects);
+const MemoizedTestimonial = React.memo(Testimonial);
 
 const App = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  // Check if the screen width is less than 768 pixels
-  const isMobile = windowWidth <= 840;
+  
 
+
+  const isMobile = windowWidth <= 840;
+  useEffect(() => {
+    isMobile?'':  window.scrollTo(0,0);
+  }, [isMobile]);
   useLayoutEffect(() => {
+
     const handleWheelEvent = (e) => {
       if (e.ctrlKey || e.metaKey) {
         e.preventDefault();
@@ -37,7 +48,18 @@ const App = () => {
       window.removeEventListener("resize", handleResize); // Remove event listener on unmount
     };
   }, [isMobile]);
+  useEffect(() => {
+    const handlePopState = () => {
+      // Trigger a re-render when the back button is pressed
+      window.location.reload();
+    };
 
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
 
   return (
     // Conditionally render SmoothScroll or a regular div
@@ -112,30 +134,27 @@ const App = () => {
     ) : (
    
       <SmoothScroll>
-
-          <div>
-            <Element name="home">
-              <Home />
-            </Element>
-            <Element name="port">
-              <SectionSecond />
-            </Element>
-            <Element name="service">
-              <Service />
-            </Element>
-            <Element name="about">
-              <About />
-            </Element>
-            <Element name="work">
-            <Projects />
-
-            </Element>
-            <Element name="contact">
-              <Testimonial/>
-            </Element>
-          </div>
-    
-      </SmoothScroll>
+      <div>
+        <Element name="home">
+          <MemoizedHome />
+        </Element>
+        <Element name="port">
+          <MemoizedSectionSecond />
+        </Element>
+        <Element name="service">
+          <MemoizedService />
+        </Element>
+        <Element name="about">
+          <MemoizedAbout />
+        </Element>
+        <Element name="work">
+          <MemoizedProjects />
+        </Element>
+        <Element name="contact">
+          <MemoizedTestimonial />
+        </Element>
+      </div>
+    </SmoothScroll>
     )
   );
 };
