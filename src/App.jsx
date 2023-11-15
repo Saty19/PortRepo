@@ -3,7 +3,7 @@ import SectionSecond from "./components/Section2/SectionSecond";
 import Service from "./components/Service/Service";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
-import {  useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import SmoothScroll from "./components/Scroll/SmoothScroll";
 import Projects from "./components/Projects/Projects";
 import Testimonial from "./components/Testimonials/Testimonial";
@@ -14,8 +14,6 @@ import { Element } from "react-scroll";
 
 const App = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  
-
   // Check if the screen width is less than 768 pixels
   const isMobile = windowWidth <= 840;
 
