@@ -4,7 +4,7 @@ import styles from "./NavBar.module.css";
 import NavList from "./NavList";
 import { scroller } from "react-scroll";
 
-const Navbar = () => {
+const Navbar = ({ IsButtonToggled }) => {
   const toggleNav = useRef(null);
   const bottomWrapper = useRef(null);
   const [isToggled, setIsToggled] = useState(false);
@@ -18,6 +18,7 @@ const Navbar = () => {
 
   const toggle = () => {
     setIsToggled(!isToggled);
+    IsButtonToggled(!isToggled);
   };
 
   useEffect(() => {

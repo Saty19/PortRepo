@@ -61,6 +61,7 @@
 }
 .contentCavasWrapper{
   height: 60%;
+  position: relative;
   width: 90%;
   background-color: #42424272;
   backdrop-filter: blur(8px);
@@ -121,6 +122,9 @@
   justify-content: start;
   align-items: flex-start;
 }
+.itemWrapper{
+  position: relative;
+}
 .Item{
   font-size: 8vw;
   right: 0;
@@ -134,10 +138,29 @@
   width: 100%;
   height: 70%;
 }
+.canvasWrapper{
+  width: 100%;
+}
+.description{
+  width: 100%;
+}
 
+.leftContainer{
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.rightContainer{
+  width: 90%;
+  margin: 0 auto;
+  justify-content: center;
+}
+.contentCavasWrapper{
+  flex-direction: column-reverse;
 
-.rightcontent{
-  flex-direction: column;
 }
 .bottomContent{
   width:80%;

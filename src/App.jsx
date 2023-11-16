@@ -20,7 +20,7 @@ const MemoizedTestimonial = React.memo(Testimonial);
 
 const App = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  
+  const [isToggled, setIsToggled] = useState(false);
 
 
   const isMobile = windowWidth <= 840;
@@ -72,6 +72,7 @@ const App = () => {
             top: "30px",
             zIndex: 1000,
             mixBlendMode: "difference",
+            display: isToggled ? "none" : "block", 
           }}
         >
           <svg
@@ -112,7 +113,7 @@ const App = () => {
             <path d="M1 9H9" stroke="white" strokeLinecap="round" />
           </svg>
         </div>
-        <Navbar />
+        <Navbar IsButtonToggled={setIsToggled} />
         <Element name="home">
           <Home />
         </Element>

@@ -1,4 +1,4 @@
-import { lazy, useEffect, useState, useRef, Suspense } from "react";
+import { lazy, useEffect, useState, useRef, Suspense, useLayoutEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { PresentationControls, PerspectiveCamera } from "@react-three/drei";
 import style from "./Projects.module.css";
@@ -41,7 +41,7 @@ const Projects = () => {
 
 
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,

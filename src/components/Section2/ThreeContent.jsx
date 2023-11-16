@@ -1,9 +1,11 @@
-import { useRef } from 'react'
-import { Canvas, extend, useFrame } from '@react-three/fiber'
-import { ContactShadows, PerspectiveCamera, useGLTF } from '@react-three/drei'
-import { easing, geometry } from 'maath'
-import * as THREE from 'three'
-extend(geometry)
+import { useRef, useLayoutEffect } from 'react';
+import { Canvas, extend, useFrame } from '@react-three/fiber';
+import { ContactShadows, PerspectiveCamera, useGLTF } from '@react-three/drei';
+import { easing, geometry } from 'maath';
+import * as THREE from 'three';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+extend(geometry);
 
 export default function ThreeContent() {
   return (
@@ -15,69 +17,75 @@ export default function ThreeContent() {
         far={1000}
         position={[0, 1, 20]}
       />
-      <directionalLight color={"white"} intensity={10} position={[2, 5, 4]} />
-      <ContactShadows resolution={512} position={[0, -0, 0]} opacity={1} scale={2} blur={2} far={0.8} />
+      <directionalLight color={'white'} intensity={10} position={[2, 5, 4]} />
+      <ContactShadows
+        resolution={512}
+        position={[0, -0, 0]}
+        opacity={1}
+        scale={2}
+        blur={2}
+        far={0.8}
+      />
       <Model />
     </Canvas>
-  )
+  );
 }
 
 function Model(props) {
-  const group = useRef()
+  const group = useRef();
 
   useFrame((state, delta) => {
-    const t = state.clock.getElapsedTime()
-    group.current.rotation.x = THREE.MathUtils.lerp(
-      group.current.rotation.x,
-      Math.cos(t / 0.5) / 20 + 0.27,
-      0.2
-    )
-    group.current.rotation.y = THREE.MathUtils.lerp(
-      group.current.rotation.y,
-      Math.sin(t / 2) / 20,
-      0.1
-    )
-    group.current.rotation.z = THREE.MathUtils.lerp(
-      group.current.rotation.z,
-      Math.sin(t / 8) / 20,
-      0.1
-    )
+    const t = state.clock.getElapsedTime();
+    if (window.innerWidth > 768) {
+      group.current.rotation.x = THREE.MathUtils.lerp(
+        group.current.rotation.x,
+        Math.cos(t / 0.5) / 20 + 0.27,
+        0.2
+      );
+      group.current.rotation.y = THREE.MathUtils.lerp(
+        group.current.rotation.y,
+        Math.sin(t / 2) / 20,
+        0.1
+      );
+      group.current.rotation.z = THREE.MathUtils.lerp(
+        group.current.rotation.z,
+        Math.sin(t / 8) / 20,
+        0.1
+      );
+    }
     group.current.position.y = THREE.MathUtils.lerp(
       group.current.position.y,
       (-8 + Math.sin(t / 2)) / 2,
       0.1
-    )
+    );
     easing.dampE(
       group.current.rotation,
       [0, -state.pointer.x * (Math.PI / 2), 0],
       0.5,
       delta
-    )
+    );
     easing.dampE(
       group.current.rotation,
       [0, -state.pointer.y * (Math.PI / 2), 0],
       0.5,
       delta
-    )
+    );
     easing.damp3(
       group.current.position,
       [0, -4, 1 - Math.abs(state.pointer.x)],
       1,
       delta
-    )
-  })
+    );
+  });
 
-  const { nodes, materials } = useGLTF('./HARMON_CRADON.glb')
+  const { nodes, materials } = useGLTF('./HARMON_CRADON.glb');
 
-
-  const existingMaterial = materials['Material.013']
+  const existingMaterial = materials['Material.013'];
 
   if (existingMaterial) {
-    existingMaterial.transparent = true
-    existingMaterial.opacity = 0.3
-    
+    existingMaterial.transparent = true;
+    existingMaterial.opacity = 0.3;
   }
-
   return (
     <group ref={group} {...props} dispose={null} scale={1.2} position={[1, -2, 1]}>
       <group name="Scene">
