@@ -50,7 +50,7 @@ const About = () => {
         <div className={`${style.textelement} ${style.forthRightContent}`}>DESIGNER</div>
       </div>
       <div className={style.imageWrapper}>
-        <img src={demoImg} alt="Satya" className={style.saty} />
+        <img src={satyImage} alt="Satya" className={style.saty} />
         <div className={style.sideBlack}></div>
         <div className={style.sideBlackRight}></div>
         <div className={style.bottomBlack}></div>
