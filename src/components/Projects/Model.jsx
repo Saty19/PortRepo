@@ -10,7 +10,7 @@ import TestMagento from "./LaptopComponent/TestMagento";
 
 
 export default function Model(props) {
-  const { nodes, materials } = useGLTF("/mac-draco.glb");
+  const { nodes, materials } = useGLTF("./mac-draco.glb");
   const group = useRef()
   const update = (state) => {
     const t = state.clock.getElapsedTime();
@@ -79,7 +79,7 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/mac-draco.glb");
+useGLTF.preload("./mac-draco.glb");
 
 
 
