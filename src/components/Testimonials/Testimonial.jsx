@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import styles from "./Testimonial.module.css";
 import { NavLink } from "react-router-dom";
 
@@ -7,10 +7,12 @@ const TestimonialCarousel = () => {
   const buttonRef = useRef(null);
   const buttonWrapper = useRef(null);
   const buttonName = useRef(null);
-
-  useEffect(() => {
+  const handleNavLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
+  useLayoutEffect(() => {
     const button = buttonRef.current;
-
+  
     const handleMouseMove = (e) => {
       let xAxis = -(window.innerWidth / 2 - e.pageX) / 80;
       let yAxis = (window.innerHeight / 2 - e.pageY) / 1500;
@@ -39,7 +41,7 @@ const TestimonialCarousel = () => {
         </div>
       </div>
       <div className={styles.buttonWrapper} ref={buttonWrapper}>
-        <NavLink to='/PortRepo/contact' className={styles.contactButton} ref={buttonRef}>
+        <NavLink to='/PortRepo/contact' className={styles.contactButton} ref={buttonRef} onClick={handleNavLinkClick}>
           <div className={styles.buttonName} ref={buttonName}>
             LET'S TALK
           </div>

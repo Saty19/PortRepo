@@ -10,6 +10,7 @@ import Projects from "./components/Projects/Projects";
 import Testimonial from "./components/Testimonials/Testimonial";
 import Navbar from "./components/Navbar/Navbar";
 import { Element } from "react-scroll";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const MemoizedHome = React.memo(Home);
 const MemoizedSectionSecond = React.memo(SectionSecond);
@@ -60,7 +61,10 @@ const App = () => {
       window.removeEventListener('popstate', handlePopState);
     };
   }, []);
-
+  useEffect(() => {
+    // Refresh ScrollTrigger on component updates
+    ScrollTrigger.refresh();
+  }, []);
   return (
     // Conditionally render SmoothScroll or a regular div
     isMobile ? (

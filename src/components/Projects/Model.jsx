@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import style from "./Model.module.css";
-import  { useEffect, useRef, useState } from "react";
+import  { useLayoutEffect, useRef, useState } from "react";
 import { Html, useGLTF } from "@react-three/drei";
 // import Service from "../Service/Service";
 import { useFrame } from "@react-three/fiber";
@@ -24,7 +24,7 @@ export default function Model(props) {
   useFrame(update);
 
   // Clean up when the component unmounts
-  useEffect(() => {
+  useLayoutEffect(() => {
     return () => {
       // Unsubscribe from the animation here
       // useFrame.unsubscribe(update);
@@ -43,7 +43,7 @@ export default function Model(props) {
 
   const scale=props.Scale
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  useEffect(()=>{
+  useLayoutEffect(()=>{
     function handleResize() {
       setWindowWidth(window.innerWidth);
     }

@@ -1,24 +1,12 @@
-import { lazy, useEffect, useState, useRef, Suspense, useLayoutEffect } from "react";
+import { lazy, useState, useRef, useEffect, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { PresentationControls, PerspectiveCamera } from "@react-three/drei";
-import style from "./Projects.module.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { nameComponentMap } from "./Content/content";
+import style from "./Projects.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
-
-export const Bloom = lazy(() =>
-  import("@react-three/postprocessing").then((module) => ({
-    default: module.Bloom,
-  }))
-);
-
-export const EffectComposer = lazy(() =>
-  import("@react-three/postprocessing").then((module) => ({
-    default: module.EffectComposer,
-  }))
-);
 
 const Projects = () => {
   const container = useRef(null);
@@ -39,47 +27,43 @@ const Projects = () => {
     setActiveItemIndex(index);
   };
 
+  useEffect(() => {
+    // Refresh ScrollTrigger on component updates
+    ScrollTrigger.refresh();
+  }, [/* add relevant dependencies */]);
 
-
-  useLayoutEffect(() => {
+  useEffect(() => {
+    // Set up animations with ScrollTrigger
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
         start: "top 60%",
         end: "50% 50%",
-        toggleActions:"play none restart none",
         scrub: 1,
+        markers: false, 
       },
     });
 
+    // Animation for the leftContainer
     tl.fromTo(
       ".leftContainer",
       { opacity: 0, x: -50 },
       { opacity: 1, x: 0, duration: 1 }
     );
 
+    // Animation for the maskingSquare
     tl.fromTo(
       maskingSquare.current,
-      {
-        opacity: 0,
-        x: 100,
-        css: { 'backdrop-filter': 'blur(5px)' }, 
-      },
-      { opacity: 1, x: 0, duration: 1 }
+      { opacity: 0, x: 100 },
+      { opacity: 1, x: 0, duration: 1 },
+      "<"
     );
-    
-
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-
-    window.addEventListener("resize", handleResize);
 
     return () => {
-      // tl.kill(); 
-      window.removeEventListener("resize", handleResize);
+      // Clean up the animation timeline on component unmount
+      tl.kill();
     };
-  }, []);
+  }, [container, maskingSquare]);
 
   return (
     <div className={style.container} ref={container}>
@@ -98,7 +82,7 @@ const Projects = () => {
           ))}
         </div>
       </div>
-      <div className={style.rightContainer } ref={maskingSquare}>
+      <div className={style.rightContainer} ref={maskingSquare}>
         <div className={style.contentCavasWrapper}>
           <div className={style.description}>
             {hoveredItem && (
@@ -109,10 +93,7 @@ const Projects = () => {
             )}
           </div>
 
-          <div
-            className={`${style.canvasWrapper} maskingSquare`}
-           
-          >
+          <div className={`${style.canvasWrapper}`}>
             <Canvas
               className={style.canvas}
               size={{ width: window.innerWidth, height: window.innerHeight }}
@@ -125,20 +106,13 @@ const Projects = () => {
                 far={1000}
                 position={[0, 1, 20]}
               />
-              <directionalLight
-                color={"white"}
-                intensity={1}
-                position={[2, 10, 4]}
-              />
+              <directionalLight color={"white"} intensity={1} position={[2, 10, 4]} />
 
               {windowWidth <= 820 ? (
                 <Suspense fallback={null}>
-                  <EffectComposer smma>
-                    <Bloom intensity={0.1} luminanceThreshold={0.5} />
-                    <group rotation={[0, 280, 0]} position={[0, 1, 0]}>
-                      {<ModelLoad Hovered={hoveredItem} Scale={2.5} />}
-                    </group>
-                  </EffectComposer>
+                  <group rotation={[0, 280, 0]} position={[0, 1, 0]}>
+                    {<ModelLoad Hovered={hoveredItem} Scale={2.5} />}
+                  </group>
                 </Suspense>
               ) : (
                 <PresentationControls
@@ -149,12 +123,9 @@ const Projects = () => {
                   azimuth={[-Math.PI / 5, Math.PI / 5]}
                 >
                   <Suspense fallback={null}>
-                    <EffectComposer smma>
-                      <Bloom intensity={0.1} luminanceThreshold={0.5} />
-                      <group rotation={[0, 270, 0]} position={[0, 1, 0]}>
-                        <ModelLoad Hovered={hoveredItem} />
-                      </group>
-                    </EffectComposer>
+                    <group rotation={[0, 270, 0]} position={[0, 1, 0]}>
+                      <ModelLoad Hovered={hoveredItem} />
+                    </group>
                   </Suspense>
                 </PresentationControls>
               )}
