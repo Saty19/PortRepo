@@ -61,10 +61,10 @@ const App = () => {
       window.removeEventListener('popstate', handlePopState);
     };
   }, []);
-  useEffect(() => {
-    // Refresh ScrollTrigger on component updates
-    ScrollTrigger.refresh();
-  }, []);
+  // useEffect(() => {
+  //   // Refresh ScrollTrigger on component updates
+  //   ScrollTrigger.refresh();
+  // }, []);
   return (
     // Conditionally render SmoothScroll or a regular div
     isMobile ? (
