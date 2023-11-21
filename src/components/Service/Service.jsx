@@ -32,8 +32,8 @@ const Service = () => {
       window.innerWidth === 768
         ? 500
         : window.innerWidth < 1400
-        ? 100
-        : 300;
+          ? 100
+          : 300;
 
     const offsetY = Math.min(
       maxOffsetY,
@@ -48,6 +48,16 @@ const Service = () => {
       y: offsetY,
       duration: 1,
     });
+    // console.log(isMobile)
+    // if (isMobile) {
+    //   gsap.to(imagewrapperRef.current, {
+    //     scrollTrigger: {
+    //       trigger: containerRef.current,
+    //       scrub: 1, // Controls the speed of the scroll
+    //     },
+    //     y: window.innerHeight / 1.5, // Adjust this value as needed
+    //   });
+    // }
   };
 
   useLayoutEffect(() => {
@@ -77,17 +87,8 @@ const Service = () => {
         { background: "#121212", duration: 1 }
       );
 
-        if(isMobile)
-        {
-        gsap.to(imagewrapperRef.current, {
-          scrollTrigger: {
-            trigger: containerRef.current,
-            scrub: 1, // Controls the speed of the scroll
-          },
-          y: window.innerHeight / 1.5, // Adjust this value as needed
-        });
-      }
-      
+
+
       // gsap.fromTo(
       //   containerRef.current.querySelectorAll(`.${style.item}`),
       //   {
@@ -139,9 +140,8 @@ const Service = () => {
       <div className={style.itemWrapper}>
         {serviceContent.map((item) => (
           <div
-            className={`itemService ${style.item} ${
-              item.ID === activeItemIndex ? style.active : ""
-            }`}
+            className={`itemService ${style.item} ${item.ID === activeItemIndex ? style.active : ""
+              }`}
             key={item.ID}
             onMouseEnter={(e) => {
               handleHover(item.name, item.ID);

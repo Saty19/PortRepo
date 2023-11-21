@@ -48,18 +48,18 @@ const App = () => {
       window.removeEventListener("resize", handleResize); // Remove event listener on unmount
     };
   }, [isMobile]);
-  useEffect(() => {
-    const handlePopState = () => {
-      // Trigger a re-render when the back button is pressed
-      window.location.reload();
-    };
+  // useEffect(() => {
+  //   const handlePopState = () => {
+  //     // Trigger a re-render when the back button is pressed
+  //     window.location.reload();
+  //   };
 
-    window.addEventListener('popstate', handlePopState);
+  //   window.addEventListener('popstate', handlePopState);
 
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('popstate', handlePopState);
+  //   };
+  // }, []);
 
   return (
     // Conditionally render SmoothScroll or a regular div
