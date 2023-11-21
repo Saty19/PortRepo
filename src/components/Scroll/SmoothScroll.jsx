@@ -7,7 +7,7 @@ const SmoothScroll = ({ children }) => {
   const scrollingContainerRef = useRef();
   const data = useMemo(() => {
     return {
-      ease: 0.25,
+      ease: 0.35,
       current: 0,
       previous: 0,
       rounded: 0,

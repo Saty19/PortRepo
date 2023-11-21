@@ -1,16 +1,14 @@
-import React, { useEffect } from 'react'
-import "./App.css";
-import SectionSecond from "./components/Section2/SectionSecond";
-import Service from "./components/Service/Service";
-import Home from "./components/Home/Home";
-import About from "./components/About/About";
-import { useLayoutEffect, useState } from "react";
-import SmoothScroll from "./components/Scroll/SmoothScroll";
-import Projects from "./components/Projects/Projects";
-import Testimonial from "./components/Testimonials/Testimonial";
-import Navbar from "./components/Navbar/Navbar";
-import { Element } from "react-scroll";
-
+import React, { useEffect, useState, useLayoutEffect, useRef } from 'react';
+import { Element } from 'react-scroll';
+import Navbar from './components/Navbar/Navbar';
+import SectionSecond from './components/Section2/SectionSecond';
+import Service from './components/Service/Service';
+import Home from './components/Home/Home';
+import About from './components/About/About';
+import SmoothScroll from './components/Scroll/SmoothScroll';
+import Projects from './components/Projects/Projects';
+import Testimonial from './components/Testimonials/Testimonial';
+import './App.css';
 
 const MemoizedHome = React.memo(Home);
 const MemoizedSectionSecond = React.memo(SectionSecond);
@@ -24,11 +22,13 @@ const App = () => {
   const [isToggled, setIsToggled] = useState(false);
 
   const isMobile = windowWidth <= 840;
-  useEffect(() => {
-    isMobile?'':  window.scrollTo(0,0);
-  }, [isMobile]);
-  useLayoutEffect(() => {
+  const containerRef = useRef(null);
 
+  useEffect(() => {
+    isMobile ? '' : window.scrollTo(0, 0);
+  }, [isMobile]);
+
+  useLayoutEffect(() => {
     const handleWheelEvent = (e) => {
       if (e.ctrlKey || e.metaKey) {
         e.preventDefault();
@@ -37,30 +37,30 @@ const App = () => {
 
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
-      isMobile?'': window.location.reload(); // Reload the page on resize
+      isMobile ? '' : window.location.reload(); // Reload the page on resize
     };
 
-    window.addEventListener("wheel", handleWheelEvent, { passive: false });
-    window.addEventListener("resize", handleResize); // Add event listener for resize
+    window.addEventListener('wheel', handleWheelEvent, { passive: false });
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("wheel", handleWheelEvent);
-      window.removeEventListener("resize", handleResize); // Remove event listener on unmount
+      window.removeEventListener('wheel', handleWheelEvent);
+      window.removeEventListener('resize', handleResize);
     };
   }, [isMobile]);
-  // useEffect(() => {
-  //   const handlePopState = () => {
-  //     // Trigger a re-render when the back button is pressed
-  //     window.location.reload();
-  //   };
 
-  //   window.addEventListener('popstate', handlePopState);
+  useEffect(() => {
+    const handlePopState = () => {
+      // Trigger a re-render when the back button is pressed
+      window.location.reload();
+    };
 
-  //   return () => {
-  //     window.removeEventListener('popstate', handlePopState);
-  //   };
-  // }, []);
+    window.addEventListener('popstate', handlePopState);
 
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
   return (
     // Conditionally render SmoothScroll or a regular div
     isMobile ? (

@@ -9,7 +9,7 @@ import style from "./Projects.module.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
-  const container = useRef(null);
+  const containerPrjt = useRef(null);
   const maskingSquare = useRef(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [activeItemIndex, setActiveItemIndex] = useState(1);
@@ -27,18 +27,16 @@ const Projects = () => {
     setActiveItemIndex(index);
   };
 
-  useEffect(() => {
-    // Refresh ScrollTrigger on component updates
-    ScrollTrigger.refresh();
-  }, [/* add relevant dependencies */]);
+
 
   useEffect(() => {
     // Set up animations with ScrollTrigger
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: container.current,
+        trigger: containerPrjt.current,
         start: "top 60%",
         end: "50% 50%",
+        toggleActions:"play restart none none",
         scrub: 1,
         markers: false, 
       },
@@ -63,10 +61,10 @@ const Projects = () => {
       // Clean up the animation timeline on component unmount
       tl.kill();
     };
-  }, [container, maskingSquare]);
+  }, [containerPrjt, maskingSquare]);
 
   return (
-    <div className={style.container} ref={container}>
+    <div className={style.container} ref={containerPrjt}>
       <div className={`${style.leftContainer} leftContainer`}>
         <div className={style.itemWrapper}>
           {nameComponentMap.map((item) => (

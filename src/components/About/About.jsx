@@ -1,45 +1,43 @@
-import { Fragment, useLayoutEffect, useMemo, useRef } from "react";
+import { Fragment, useEffect, useMemo, useRef } from "react";
 import style from "./About.module.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import saty from "/satya3.png"; 
+import saty from "/satya3.png";
 
 const About = () => {
   const containerAboutRef = useRef(null);
 
-  useLayoutEffect(() => {
-
+  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerAboutRef.current,
         start: "top center",
         end: "bottom top",
-        toggleActions:"play none none none",
+        toggleActions:"play restart none none",
         scrub: true,
       },
     });
 
-  
     tl.fromTo(
       ".textelement",
-      { rotationX: 90,opacity:0 }, 
-      { rotationX: 0, opacity:1, duration: 3 ,transition:"none"} 
+      { rotationX: 90, opacity: 0 },
+      { rotationX: 0, opacity: 1, duration: 3, ease: "power3.inOut" }
     );
 
-  
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => {
-        trigger.kill();
-      });
-      tl.kill();
-    };
+    // You don't need to kill the tl here, as it is automatically killed when the component unmounts.
+    // return () => {
+    //   ScrollTrigger.getAll().forEach((trigger) => {
+    //     trigger.kill();
+    //   });
+    //   tl.kill();
+    // };
   }, []);
+
   const elements = useMemo(() => (
-        <Fragment>
-        <div className={style.firstContentWrapper}>
+    <Fragment>
+      <div className={style.firstContentWrapper}>
         <div className={`textelement ${style.firstLeftContent}`}>SATYADAR</div>
         <div className={`textelement ${style.firstRightContent}`}>SAN</div>
       </div>
@@ -52,14 +50,17 @@ const About = () => {
         <div className={`textelement ${style.forthLeftContent}`}>&</div>
         <div className={`textelement ${style.forthRightContent}`}>DESIGNER</div>
       </div>
-        </Fragment>
-    ), []);
-  const demoImg="https://assets.website-files.com/62cfb3313a1a61a7d399c600/62cfba001eea8f0afa9f0d48_man_hero_cropped-min-p-800.png"
+    </Fragment>
+  ), []);
+
+  const demoImg =
+    "https://assets.website-files.com/62cfb3313a1a61a7d399c600/62cfba001eea8f0afa9f0d48_man_hero_cropped-min-p-800.png";
+
   return (
     <div className={style.container} ref={containerAboutRef}>
       {elements}
       <div className={style.imageWrapper}>
-        <img src={demoImg} className={style.saty} />
+        <img src={demoImg} alt="saty" className={style.saty} />
         <div className={style.sideBlack}></div>
         <div className={style.sideBlackRight}></div>
         <div className={style.bottomBlack}></div>
