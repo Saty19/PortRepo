@@ -2,9 +2,10 @@ import React from 'react';
 
 const TallComponent = () => {
   const containerStyle = {
-    height: '100px',
+    height: '100vh',
+    width:'190%',
     backgroundColor: '#f0f0f0',
-    padding: '20px',
+    // padding: '20px',
     textAlign: 'center',
   };
 

@@ -38,7 +38,6 @@ const Home = () => {
       tl.kill();
     };
   }, [setupScrollTrigger]);
-
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
     return () => {

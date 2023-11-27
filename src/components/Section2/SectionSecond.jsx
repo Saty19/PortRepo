@@ -91,13 +91,8 @@ const SectionSecond = () => {
     gsap.registerPlugin(ScrollTrigger);
     setupScrollTrigger();
 
-    return () => {
-      // ScrollTrigger.getAll().forEach((trigger) => {
-      //   trigger.kill();
-      // });
-    };
-  }, [setupScrollTrigger]);
 
+  }, [setupScrollTrigger]);
   return (
     <div className={`section ${style.container}`} ref={containerSec}>
       <div className={style.leftContent} ref={leftContent}>

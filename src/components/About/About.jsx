@@ -13,8 +13,9 @@ const About = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerAboutRef.current,
-        start: "top center",
-        end: "bottom top",
+        markers:false,
+        start: "-10% center",
+        end: "30% top",
         toggleActions:"play restart none none",
         scrub: true,
       },
@@ -26,13 +27,7 @@ const About = () => {
       { rotationX: 0, opacity: 1, duration: 3, ease: "power3.inOut" }
     );
 
-    // You don't need to kill the tl here, as it is automatically killed when the component unmounts.
-    // return () => {
-    //   ScrollTrigger.getAll().forEach((trigger) => {
-    //     trigger.kill();
-    //   });
-    //   tl.kill();
-    // };
+  
   }, []);
 
   const elements = useMemo(() => (
@@ -53,14 +48,12 @@ const About = () => {
     </Fragment>
   ), []);
 
-  const demoImg =
-    "https://assets.website-files.com/62cfb3313a1a61a7d399c600/62cfba001eea8f0afa9f0d48_man_hero_cropped-min-p-800.png";
-
+  const demoImg ="https://assets.website-files.com/62cfb3313a1a61a7d399c600/62cfba001eea8f0afa9f0d48_man_hero_cropped-min-p-800.png";
   return (
     <div className={style.container} ref={containerAboutRef}>
       {elements}
       <div className={style.imageWrapper}>
-        <img src={demoImg} alt="Satya" className={style.saty} />
+        <img src={saty} alt="Satya" className={style.saty} />
         <div className={style.sideBlack}></div>
         <div className={style.sideBlackRight}></div>
         <div className={style.bottomBlack}></div>

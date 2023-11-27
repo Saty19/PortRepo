@@ -107,6 +107,7 @@
 @media screen and (max-width:820px) {
   .container {
    flex-direction: column;
+   position: relative;
   }
   .headLine{
     writing-mode: vertical-lr;
@@ -140,6 +141,19 @@
 .canvasWrapper{
   width: 100%;
 }
+.container::after{
+  content: '';
+  width: 100px;
+  height: 100px;
+  background-color: rgb(0, 255, 247);
+  border-radius: 50%;
+  filter: blur(90px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  transform: translate(-50%,-50%);
+}
 .description{
   width: 100%;
 }
@@ -150,15 +164,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  z-index: 3;
 }
 .rightContainer{
   width: 90%;
   margin: 0 auto;
   justify-content: center;
+  z-index: 5;
+  
 }
 .contentCavasWrapper{
   flex-direction: column-reverse;
+  
 
 }
 .bottomContent{

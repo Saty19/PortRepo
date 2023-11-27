@@ -137,6 +137,10 @@
 
 
 @media screen and (max-width: 600px) {
+    .navMenuOpen{
+        width: 70px;
+        height: 70px;
+    }
     .navMenu {
         width: 80px;
         height: 80px;

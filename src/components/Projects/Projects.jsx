@@ -57,10 +57,6 @@ const Projects = () => {
       "<"
     );
 
-    return () => {
-      // Clean up the animation timeline on component unmount
-      tl.kill();
-    };
   }, [containerPrjt, maskingSquare]);
 
   return (
@@ -90,25 +86,19 @@ const Projects = () => {
               </div>
             )}
           </div>
-
           <div className={`${style.canvasWrapper}`}>
             <Canvas
               className={style.canvas}
               size={{ width: window.innerWidth, height: window.innerHeight }}
               background="rgba(0, 0, 0, 0)"
+              camera={{ position: [0, 1, 20], fov: 55 }}
             >
-              <PerspectiveCamera
-                makeDefault
-                fov={55}
-                near={0.1}
-                far={1000}
-                position={[0, 1, 20]}
-              />
+          
               <directionalLight color={"white"} intensity={1} position={[2, 10, 4]} />
 
               {windowWidth <= 820 ? (
                 <Suspense fallback={null}>
-                  <group rotation={[0, 280, 0]} position={[0, 1, 0]}>
+                  <group rotation={[0, 270, 0]} position={[0, 1, 7]}>
                     {<ModelLoad Hovered={hoveredItem} Scale={2.5} />}
                   </group>
                 </Suspense>
@@ -121,7 +111,7 @@ const Projects = () => {
                   azimuth={[-Math.PI / 5, Math.PI / 5]}
                 >
                   <Suspense fallback={null}>
-                    <group rotation={[0, 270, 0]} position={[0, 1, 0]}>
+                    <group rotation={[0, 270, 0]}position={[0, 1, 0]}>
                       <ModelLoad Hovered={hoveredItem} />
                     </group>
                   </Suspense>

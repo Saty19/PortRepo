@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useLayoutEffect, useRef } from "react";
+import  { useState, useCallback, useLayoutEffect, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import style from "./Service.module.css";
@@ -25,15 +25,14 @@ const Service = () => {
 
   const handleMouseMove = (e) => {
     const rect = containerRef.current.getBoundingClientRect();
-    const offsetX =
-      e.clientX - rect.left + (window.innerWidth < 768 ? 0 : 200);
+    const offsetX = e.clientX - rect.left + (window.innerWidth < 768 ? 0 : 200);
 
     const maxOffsetY =
       window.innerWidth === 768
         ? 500
         : window.innerWidth < 1400
-          ? 100
-          : 300;
+        ? 100
+        : 300;
 
     const offsetY = Math.min(
       maxOffsetY,
@@ -43,91 +42,64 @@ const Service = () => {
       )
     );
 
-    gsap.to(imagewrapperRef.current, {
-      x: offsetX,
-      y: offsetY,
-      duration: 1,
-    });
-    // console.log(isMobile)
-    // if (isMobile) {
-    //   gsap.to(imagewrapperRef.current, {
-    //     scrollTrigger: {
-    //       trigger: containerRef.current,
-    //       scrub: 1, // Controls the speed of the scroll
-    //     },
-    //     y: window.innerHeight / 1.5, // Adjust this value as needed
-    //   });
-    // }
+    if (!isMobile) {
+      gsap.to(imagewrapperRef.current, {
+        x: offsetX,
+        y: offsetY,
+        duration: 1,
+      });
+    }
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const setupScrollTrigger = () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          toggleActions: "play none none restart",
-          start: "top center",
-        },
-      });
+      if (isMobile) {
+        gsap.to(imagewrapperRef.current, {
+          scrollTrigger: {
+            trigger: containerRef.current,
+            scrub: true,
+          },
+          y: window.innerHeight/1.5, // Adjust this value as needed
+        });
+      
 
-      const containerColor = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 51%",
-          end: "top 51%",
-          scrub: 1,
-        },
-      });
-
-      containerColor.fromTo(
-        containerRef.current,
-        {
-          background: "#f0f0f0",
-        },
-        { background: "#121212", duration: 1 }
-      );
-
-
-
-      // gsap.fromTo(
-      //   containerRef.current.querySelectorAll(`.${style.item}`),
-      //   {
-      //     rotateX: 90,
-      //   },
-      //   {
-      //     rotateX: 0,
-      //     stagger: {
-      //       each: 0.2,
-      //       grid: "auto",
-      //       from: "start",
-      //     },
-      //     scrollTrigger: {
-      //       trigger: containerRef.current,
-      //       start: "top 80%",
-      //     },
-      //   }
-      // );
-
-      gsap.utils.toArray(`itemService`).forEach((item, index) => {
+      gsap.utils.toArray(`.${style.item}`).forEach((item, index) => {
         ScrollTrigger.create({
           trigger: item,
-          start: 'top center', // Adjust the start position as needed
-          end: 'bottom center', // Adjust the end position as needed
+          start: "top center",
+          end: "bottom center",
           onEnter: () => handleHover(serviceContent[index].name, index + 1),
           onLeaveBack: () => nothovered(),
         });
-      });
 
-      return () => {
-        tl.kill();
-      };
+        // Add scrollTrigger for the hover effect
+        ScrollTrigger.create({
+          trigger: item,
+          start: "top center",
+          end: "bottom center",
+          onEnter: () => {
+            gsap.to(item, {
+              backgroundColor: "#f0f0f0",
+              color: "#121212",
+            });
+          },
+          onLeaveBack: () => {
+            gsap.to(item, {
+              backgroundColor: "#f0f0f0",
+              color: "#121212",
+            });
+          },
+          onLeave: () => {
+            gsap.to(item, {
+              backgroundColor: "#121212",
+              color: "#ffffff",
+            });
+          },
+        });
+      });}
     };
 
     setupScrollTrigger();
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
   }, [handleHover, isMobile, nothovered]);
 
   return (
@@ -140,8 +112,7 @@ const Service = () => {
       <div className={style.itemWrapper}>
         {serviceContent.map((item) => (
           <div
-            className={`itemService ${style.item} ${item.ID === activeItemIndex ? style.active : ""
-              }`}
+            className={`itemService ${style.item} ${item.ID === activeItemIndex ? style.active : ""}`}
             key={item.ID}
             onMouseEnter={(e) => {
               handleHover(item.name, item.ID);
