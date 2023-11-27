@@ -1,12 +1,13 @@
-import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import "./SmoothScroll.css";
 import Navbar from "../Navbar/Navbar";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const SmoothScroll = ({ children }) => {
   const scrollingContainerRef = useRef();
   const data = useMemo(() => {
     return {
-      ease: 0.25,
+      ease: 0.35,
       current: 0,
       previous: 0,
       rounded: 0,
@@ -42,7 +43,6 @@ const SmoothScroll = ({ children }) => {
 
     return cleanupScrolling;
   }, [cleanupScrolling]);
-
   return (
     <div className="parent">
       <div

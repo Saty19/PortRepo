@@ -1,16 +1,15 @@
-import { useEffect, useRef, useMemo, useCallback } from "react";
+import React, { useRef, useMemo, useCallback, useEffect } from "react";
 import style from "./SecSecond.module.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import ThreeContent from "./ThreeContent";
-// import  ThreeContent  from "./ThreeContent";
 
 const SectionSecond = () => {
   const rec1 = useRef(null);
   const rec2 = useRef(null);
   const rec3 = useRef(null);
   const rec4 = useRef(null);
-  const container = useRef(null);
+  const containerSec = useRef(null);
   const rightContent = useRef(null);
   const leftContent = useRef(null);
   const leftTop = useRef(null);
@@ -40,13 +39,10 @@ const SectionSecond = () => {
   }, []);
 
   const setupScrollTrigger = useCallback(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
     const isMobile = window.matchMedia("(max-width: 820px)").matches;
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".section",
-
+        trigger: containerSec.current,
         start: `${isMobile ? "40%" : "top"} 90%`,
         end: `${isMobile ? "70%" : "90%"} 50%`,
         scrub: 1,
@@ -64,8 +60,7 @@ const SectionSecond = () => {
     tl.to(rec4.current, { y: "100%", direction: 1 }, 1.7);
     gsap.to(animatedContent.current, {
       scrollTrigger: {
-        trigger: ".section",
-
+        trigger: containerSec.current,
         start: `${isMobile ? "40%" : "top"} 60%`,
         end: `${isMobile ? "70%" : "90%"} top`,
         scrub: 1,
@@ -76,22 +71,24 @@ const SectionSecond = () => {
 
     const containerColor = gsap.timeline({
       scrollTrigger: {
-        trigger: container.current,
+        trigger: containerSec.current,
+        toggleActions:"play restart none none",
         start: "50% top",
         end: "bottom 80%",
         scrub: 1,
       },
     });
     containerColor.fromTo(
-      container.current,
+      containerSec.current,
       {
         background: "#f0f0f0",
       },
       { background: "#121212", duration: 1 }
     );
-  }, [rec1, rec2, rec3, rec4, container, leftContent]);
+  }, []);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     setupScrollTrigger();
 
     return () => {
@@ -102,8 +99,7 @@ const SectionSecond = () => {
   }, [setupScrollTrigger]);
 
   return (
-    <div className={`section ${style.container}`} ref={container}>
-   
+    <div className={`section ${style.container}`} ref={containerSec}>
       <div className={style.leftContent} ref={leftContent}>
         <div style={{ width: "100%" }} ref={leftTop}>
           {elements}
@@ -111,16 +107,10 @@ const SectionSecond = () => {
       </div>
       <div className={style.rightContent} ref={rightContent}>
         <div className={style.cardWrapper}>
-            <div className={style.cardHead}>
-         
-              CONTENT
-      
-            </div>
-            <div className={style.BackThreeContent}>ENIGMA</div>
-            {
-              <ThreeContent />
-            }
-            <div className={style.FrontThreeContent}>TRUN YOUR PRODUCT TO 3D</div>
+          <div className={style.cardHead}>CONTENT</div>
+          <div className={style.BackThreeContent}>ENIGMA</div>
+          <ThreeContent />
+          <div className={style.FrontThreeContent}>TURN YOUR PRODUCT TO 3D</div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="90"

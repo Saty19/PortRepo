@@ -1,6 +1,7 @@
 import  { useEffect, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import style from "./Contact.module.css"
+import SmoothScroll from '../Scroll/SmoothScroll';
 
 const  ContactUs = () => {
   const form = useRef();
@@ -30,6 +31,7 @@ const  ContactUs = () => {
 };
 
 return (
+  <SmoothScroll>
 <div className={style.container}>
   <form ref={form} onSubmit={sendEmail}>
     <label>Name</label>
@@ -47,6 +49,7 @@ return (
     </div>
   )}
 </div>
+</SmoothScroll>
   );
 };
 export default ContactUs;
