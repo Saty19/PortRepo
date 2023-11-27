@@ -1,4 +1,4 @@
-import { lazy, useState, useRef, useEffect, Suspense } from "react";
+import { lazy, useState, useRef, Suspense, useLayoutEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { PresentationControls, PerspectiveCamera } from "@react-three/drei";
 import gsap from "gsap";
@@ -29,7 +29,7 @@ const Projects = () => {
 
 
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Set up animations with ScrollTrigger
     const tl = gsap.timeline({
       scrollTrigger: {

@@ -1,4 +1,4 @@
-import { useRef, useEffect, useMemo, useCallback } from "react";
+import { useRef, useMemo, useCallback, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import style from "./Home.module.css";
@@ -32,13 +32,13 @@ const Home = () => {
     [isMobile]
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const tl = setupScrollTrigger();
     return () => {
       tl.kill();
     };
   }, [setupScrollTrigger]);
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);

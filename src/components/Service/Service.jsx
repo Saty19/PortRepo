@@ -1,4 +1,4 @@
-import  { useState, useCallback, useLayoutEffect, useRef, useEffect } from "react";
+import  { useState, useCallback, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import style from "./Service.module.css";
@@ -51,53 +51,75 @@ const Service = () => {
     }
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const setupScrollTrigger = () => {
+      const yValues = [100, 200, 300,400,500]; // Add more values as needed
+    
       if (isMobile) {
-        gsap.to(imagewrapperRef.current, {
-          scrollTrigger: {
-            trigger: containerRef.current,
-            scrub: true,
-          },
-          y: window.innerHeight/1.5, // Adjust this value as needed
+        const reversedYValues = [...yValues].reverse();
+        gsap.utils.toArray(`.${style.item}`).forEach((item, index) => {
+          ScrollTrigger.create({
+            trigger: item,
+            start: "top center",
+            end: "bottom center",
+            onEnter: () => handleHover(serviceContent[index].name, index + 1),
+            onLeaveBack: () => nothovered(),
+          });
+    
+          // Add scrollTrigger for the hover effect
+          ScrollTrigger.create({
+            trigger: item,
+            start: "top center",
+            end: "bottom center",
+            onEnter: () => {
+              gsap.to(item, {
+                backgroundColor: "#f0f0f0",
+                color: "#121212",
+              });
+            },
+            onLeaveBack: () => {
+              gsap.to(item, {
+                backgroundColor: "#121212",
+                color: "#ffffff",
+              });
+            },
+            onLeave: () => {
+              gsap.to(item, {
+                backgroundColor: "#f0f0f0",
+                color: "#121212",
+              });
+            },
+          });
+    
+          gsap.to(imagewrapperRef.current, {
+            scrollTrigger: {
+              trigger: containerRef.current,
+              scrub: 1,
+            },
+            y: yValues[index],
+            duration: 0.8, 
+            transition:"0.8s",
+          });
+          
+          gsap.to(imagewrapperRef.current, {
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top center",
+              end: "bottom center",
+              scrub: 1,
+              onEnterBack: () => {
+                gsap.to(imagewrapperRef.current, {
+                  y: -reversedYValues[index],
+                  transition:"0.8s", // Adjust the duration as needed
+                
+                });
+              },
+            },
+          });
         });
-      
-
-      gsap.utils.toArray(`.${style.item}`).forEach((item, index) => {
-        ScrollTrigger.create({
-          trigger: item,
-          start: "top center",
-          end: "bottom center",
-          onEnter: () => handleHover(serviceContent[index].name, index + 1),
-          onLeaveBack: () => nothovered(),
-        });
-
-        // Add scrollTrigger for the hover effect
-        ScrollTrigger.create({
-          trigger: item,
-          start: "top center",
-          end: "bottom center",
-          onEnter: () => {
-            gsap.to(item, {
-              backgroundColor: "#f0f0f0",
-              color: "#121212",
-            });
-          },
-          onLeaveBack: () => {
-            gsap.to(item, {
-              backgroundColor: "#f0f0f0",
-              color: "#121212",
-            });
-          },
-          onLeave: () => {
-            gsap.to(item, {
-              backgroundColor: "#121212",
-              color: "#ffffff",
-            });
-          },
-        });
-      });}
+      }
     };
+    
 
     setupScrollTrigger();
   }, [handleHover, isMobile, nothovered]);
