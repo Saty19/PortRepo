@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useCallback, useEffect } from "react";
+import React, { useRef, useMemo, useCallback, useLayoutEffect } from "react";
 import style from "./SecSecond.module.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
@@ -87,17 +87,12 @@ const SectionSecond = () => {
     );
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     setupScrollTrigger();
 
-    return () => {
-   
-      //   trigger.kill();
-   
-    };
-  }, [setupScrollTrigger]);
 
+  }, [setupScrollTrigger]);
   return (
     <div className={`section ${style.container}`} ref={containerSec}>
       <div className={style.leftContent} ref={leftContent}>

@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import "./SmoothScroll.css";
 import Navbar from "../Navbar/Navbar";
-
+import { useLocation } from 'react-router-dom';
 
 const SmoothScroll = ({ children }) => {
+  const location = useLocation();
   const scrollingContainerRef = useRef();
   const data = useMemo(() => {
     return {
@@ -16,7 +17,7 @@ const SmoothScroll = ({ children }) => {
   let animationFrameId;
 
 
-
+console.log(location.pathname)
   const setBodyHeight = () => {
     document.body.style.height = `${
       scrollingContainerRef.current.getBoundingClientRect().height
@@ -93,7 +94,9 @@ const SmoothScroll = ({ children }) => {
         </svg>
       </div>
 
-      <Navbar />
+      {
+        location.pathname=="/PortRepo/contact"? '':<Navbar />   
+      }
       <div ref={scrollingContainerRef}>
         <div >{children}</div>
       </div>

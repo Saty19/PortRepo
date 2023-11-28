@@ -2,8 +2,8 @@ import React from 'react';
 
 const TestMagento = () => {
   const containerStyle = {
-    width: '668px',
-    height: '432px',
+    height: '100vh',
+    width:'190%',
     padding: '10px',
     transform: 'scale(0.5)',
     transformOrigin: 'top left',

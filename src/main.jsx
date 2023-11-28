@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
 import App from './App';
 import './index.css';
 import { RouterProvider, createBrowserRouter, Route } from 'react-router-dom';
 import ContactUs from './components/ContactUs/ContactUs';
-import NotFound from './components/404Notfound/NotFound';
+import NotFound from './components/NotFound/NotFound';
 
 
 const router = createBrowserRouter([

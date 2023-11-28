@@ -1,24 +1,24 @@
 .not-found-container {
     text-align: center;
-    height: 100vh;
     padding: 50px;
     font-family: 'Arial', sans-serif;
     color: #ffffff;
+    height: 100vh;
     background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
   }
   
-  .not-found-container>h2 {
+  .not-found-container> h2 {
     font-size: 36px;
     margin-bottom: 20px;
   }
   
-  .not-found-container>p {
+  .not-found-container> p {
     font-size: 18px;
     margin-bottom: 30px;
   }
   
   .emoji-gif {
-    width: 50vh; /* Adjust the size as needed */
+    width: 150px; /* Adjust the size as needed */
     height: auto;
     display: block;
     margin: 0 auto;

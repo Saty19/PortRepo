@@ -58,7 +58,7 @@
   }
   .MainContent{
     width: 100%;
-    height: 20vw;
+    height: 100vh;
     display: flex;
     font-size: 5vw;
     justify-content: center;
@@ -91,7 +91,7 @@
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   margin-right: 10px;
-  user-drag: none;
+
   cursor: grab;
 }
 
@@ -138,7 +138,9 @@
       height: 20vw;
 
     }
-    
+    .SubContent{
+      font-size: 3vw;
+    }
     .contactContent{
       font-size: 9vw;
     }
