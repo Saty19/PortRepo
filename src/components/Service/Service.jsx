@@ -49,15 +49,15 @@ const Service = () => {
       duration: 1,
     });
     // console.log(isMobile)
-    // if (isMobile) {
-    //   gsap.to(imagewrapperRef.current, {
-    //     scrollTrigger: {
-    //       trigger: containerRef.current,
-    //       scrub: 1, // Controls the speed of the scroll
-    //     },
-    //     y: window.innerHeight / 1.5, // Adjust this value as needed
-    //   });
-    // }
+    if (isMobile) {
+      gsap.to(imagewrapperRef.current, {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          scrub: 1, // Controls the speed of the scroll
+        },
+        y: window.innerHeight / 1.5, // Adjust this value as needed
+      });
+    }
   };
 
   useLayoutEffect(() => {

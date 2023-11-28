@@ -28,9 +28,9 @@ const About = () => {
 
     // You don't need to kill the tl here, as it is automatically killed when the component unmounts.
     // return () => {
-    //   ScrollTrigger.getAll().forEach((trigger) => {
+    //  
     //     trigger.kill();
-    //   });
+    //  
     //   tl.kill();
     // };
   }, []);

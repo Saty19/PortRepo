@@ -92,9 +92,9 @@ const SectionSecond = () => {
     setupScrollTrigger();
 
     return () => {
-      // ScrollTrigger.getAll().forEach((trigger) => {
+   
       //   trigger.kill();
-      // });
+   
     };
   }, [setupScrollTrigger]);
 

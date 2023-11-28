@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import "./SmoothScroll.css";
 import Navbar from "../Navbar/Navbar";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 
 const SmoothScroll = ({ children }) => {
   const scrollingContainerRef = useRef();
@@ -9,7 +9,7 @@ const SmoothScroll = ({ children }) => {
     return {
       ease: 0.35,
       current: 0,
-      previous: 0,
+      previous: -1,
       rounded: 0,
     };
   }, []);

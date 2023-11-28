@@ -58,7 +58,7 @@ const Projects = () => {
     );
 
     return () => {
-      // Clean up the animation timeline on component unmount
+      
       tl.kill();
     };
   }, [containerPrjt, maskingSquare]);

@@ -22,7 +22,6 @@ const App = () => {
   const [isToggled, setIsToggled] = useState(false);
 
   const isMobile = windowWidth <= 840;
-  const containerRef = useRef(null);
 
   useEffect(() => {
     isMobile ? '' : window.scrollTo(0, 0);
