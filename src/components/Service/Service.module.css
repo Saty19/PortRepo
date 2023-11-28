@@ -51,6 +51,7 @@
   transition: all 0.5s ease-in-out;
   position: relative;
   overflow: hidden;
+  /* background: #f0f0f0; */
 }
 
 .item:hover {

@@ -104,6 +104,7 @@ const SectionSecond = () => {
         <div className={style.cardWrapper}>
           <div className={style.cardHead}>CONTENT</div>
           <div className={style.BackThreeContent}>ENIGMA</div>
+          <div className={style.FrontfillThreeContent}>TURN YOUR PRODUCT TO 3D</div>
           <ThreeContent />
           <div className={style.FrontThreeContent}>TURN YOUR PRODUCT TO 3D</div>
           <svg

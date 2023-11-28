@@ -111,11 +111,12 @@ z-index: 0;
   bottom:1vw;
   text-align: center;
   width: 90%;
-  font-size: 2vw;
+  font-size: 3vw;
   font-family: Audiowide;
   color: transparent;
-  -webkit-text-stroke: 0.5px black;
-
+  font-weight: 900;
+  -webkit-text-stroke: 0.5px rgb(75, 75, 75);
+  font-weight: 900;
   
 }
 .cardWrapper > svg{
@@ -147,7 +148,16 @@ z-index: 0;
   letter-spacing: 1vw;
   
 }
-
+.FrontfillThreeContent{
+  position: absolute;
+  z-index: 0;
+  bottom:1vw;
+  text-align: center;
+  width: 90%;
+  font-size: 3vw;
+  font-family: Audiowide;
+  color: rgb(75, 75, 75);
+}
 
 @media screen and (max-width: 820px) {
   .container {

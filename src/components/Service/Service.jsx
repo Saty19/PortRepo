@@ -66,7 +66,6 @@ const Service = () => {
             onLeaveBack: () => nothovered(),
           });
     
-          // Add scrollTrigger for the hover effect
           ScrollTrigger.create({
             trigger: item,
             start: "top center",
@@ -119,6 +118,21 @@ const Service = () => {
         });
       }
     };
+    const containerColor = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top center",
+        end: "5% center",
+        scrub: 1,
+      },
+    });
+    containerColor.fromTo(
+      containerRef.current,
+      {
+        background: "#f0f0f0",
+      },
+      { background: "#121212", duration: 1 }
+    );
     
 
     setupScrollTrigger();
