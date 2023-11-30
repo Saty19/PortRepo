@@ -53,7 +53,7 @@ const About = () => {
     <div className={style.container} ref={containerAboutRef}>
       {elements}
       <div className={style.imageWrapper}>
-        <img src={saty} alt="Satya" className={style.saty} />
+        <img src={demoImg} alt="Satya" className={style.saty} />
         <div className={style.sideBlack}></div>
         <div className={style.sideBlackRight}></div>
         <div className={style.bottomBlack}></div>
