@@ -1,0 +1,49 @@
+
+
+.footer {
+    background-color: #121212; /* Dark background color */
+    margin: 0 auto;
+    width: 99%;
+    color: #fff; /* Text color */
+    padding: 50px 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+
+    padding: 0 20px;
+  }
+  
+  .footerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .footerLogo img {
+    width: 100px; /* Adjust the size based on your design */
+  }
+  
+  .footerInfo {
+    flex-grow: 1;
+    max-width: 400px;
+  }
+  
+  .footerInfo p {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .footerSocial a {
+    color: #fff;
+    margin-right: 15px;
+    font-size: 24px;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .footerSocial a:hover {
+    color: #00ffcc; /* Hover color - adjust as needed */
+  }
+  
+  /* Add futuristic styles, animations, and any additional elements based on your design */
+  

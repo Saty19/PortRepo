@@ -2,6 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import "./SmoothScroll.css";
 import Navbar from "../Navbar/Navbar";
 import { useLocation } from 'react-router-dom';
+import Footer from "../Footer/Footer";
 
 const SmoothScroll = ({ children }) => {
   const location = useLocation();
@@ -99,6 +100,7 @@ console.log(location.pathname)
       }
       <div ref={scrollingContainerRef}>
         <div >{children}</div>
+        <Footer/>
       </div>
     </div>
   );
