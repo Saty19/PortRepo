@@ -6,31 +6,31 @@
           ID: 1,
           name: "MAGENTO",
           CONTENT:
-          "ContentAI is a Magento module that automates the content creation process for your website using OpenAI (Artificial Intelligence).",
+          "Powerful e-commerce with Magento. Elevate your online store with robust features and seamless performance. Unleash the potential of your business.",
         },
         {
           ID: 2,
           name: "REACT",
           CONTENT:
-            "A React component that subscribes to context changes. Using this component lets you subscribe to a context within a function component. Requires a function",
+            "Elevate your web experience with our React project. Modern, responsive, and dynamic – we bring your ideas to life with cutting-edge technology.",
         },
         {
           ID: 3,
           name: "ANGULAR",
           CONTENT:
-            "Content projection is a pattern in which you insert, or project, the content you want to use inside another component. For example, you could have a Card ...",
+            "Transforming visions into reality with our Angular project. Embrace a dynamic, robust, and user-friendly web experience tailored to your needs.",
         },
         {
           ID: 4,
           name: "PHP",
           CONTENT:
-            "PHP files can contain text, HTML, CSS, JavaScript, and PHP code.PHP code is executed on the server, and the result is returned to the browser as plain HTML.",
+            "Empower your digital journey with our PHP project. Tailored solutions, seamless functionality, and unparalleled performance for your online success.",
         },
         {
           ID: 5,
-          name: "LARAVEL",
+          name: "WORDPRESS",
           CONTENT:
-            "Laravel is a PHP web application framework with expressive, elegant syntax. We've already laid the foundation — freeing you to create without sweating the ...",
+            "Empower your online presence with WordPress. Effortless content management, stunning design, and scalable solutions to elevate your website experience.",
         },
       ];
 

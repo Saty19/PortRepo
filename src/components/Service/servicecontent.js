@@ -5,33 +5,33 @@
       ID: 1,
       name: "E-Commerce Website",
       CONTENT:
-      "ContentAI is a Magento module that automates the content creation process for your website using OpenAI (Artificial Intelligence).",
+      "Unlock e-commerce success with our tailored solutions. Seamlessly showcase and sell your products online with our expertly crafted e-commerce website.",
       image:
-        "https://cdn.pixabay.com/photo/2020/11/07/01/28/abstract-5719221_640.jpg",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8RSUyMENvbW1lcmNlJTIwV2Vic2l0ZXxlbnwwfHwwfHx8MA%3D%3D",
     },
     {
       ID: 2,
       name: "Web App Design & developement",
        CONTENT:
-            "graphic.",
+            "Revolutionize with us! Expert web app design and development for a seamless digital experience. Your vision, our creation.",
       image:
-        "https://images.unsplash.com/photo-1682685797088-283404e24b9d?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8",
+        "https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHVpJTIwdXh8ZW58MHx8MHx8fDA%3D",
     },
     {
       ID: 3,
       name: "Brand Identity Redesign",
        CONTENT:
-            "ContentAI is a Magento module that automates the content creation process for your website using OpenAI (Artificial Intelligence).",
+            "Revitalize your brand. Elevate your identity with our expert Brand Redesign services.",
       image:
-        "https://images.unsplash.com/photo-1696626282231-7a80bd57c114?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHx8",
+        "https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8QnJhbmQlMjBJZGVudGl0eSUyMFJlZGVzaWdufGVufDB8fDB8fHww",
     },
     {
       ID: 4,
       name: "UI/UX Design",
        CONTENT:
-            "ContentAI is a Magento module that automates the content creation process for your website using OpenAI (Artificial Intelligence).",
+            "Elevate user experiences with our sleek UI/UX design. We blend aesthetics and functionality for a seamless digital journey. Craft a lasting impression with our user-centric approach.",
       image:
-        "https://images.unsplash.com/photo-1697300021651-67a5ea26d7db?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1M3x8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1618788372246-79faff0c3742?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8VVglMjBEZXNpZ258ZW58MHx8MHx8fDA%3D",
     },
  
   ];
