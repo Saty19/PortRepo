@@ -9,6 +9,7 @@ import SmoothScroll from './components/Scroll/SmoothScroll';
 import Projects from './components/Projects/Projects';
 import Testimonial from './components/Testimonials/Testimonial';
 import './App.css';
+import Footer from './components/Footer/Footer';
 
 const MemoizedHome = React.memo(Home);
 const MemoizedSectionSecond = React.memo(SectionSecond);
@@ -130,6 +131,7 @@ const App = () => {
           <Testimonial />
           
         </Element>
+        <Footer/>
       </div>
     ) : (
    

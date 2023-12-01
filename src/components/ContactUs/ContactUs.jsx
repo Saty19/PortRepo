@@ -3,10 +3,19 @@ import emailjs from '@emailjs/browser';
 import style from './Contact.module.css';
 import SmoothScroll from '../Scroll/SmoothScroll';
 import { gsap } from 'gsap';
+import { useNavigate } from 'react-router-dom';
+import { IoChevronBackOutline } from "react-icons/io5";
 
 const ContactUs = () => {
   const form = useRef();
   const containerRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    // Navigate to the base URL
+    navigate('/PortRepo/');
+  };
+
 
   useEffect(() => {
     gsap.fromTo(
@@ -47,6 +56,9 @@ const ContactUs = () => {
   return (
     <SmoothScroll>
       <div ref={containerRef} className={style.container}>
+      <button className={style.backbutton} onClick={handleButtonClick}>
+      <IoChevronBackOutline color='white' size={20} />
+    </button>
         <div className={style.indiaSvg}>
           {/* Include your India SVG here */}
           {/* <img src="/path/to/india.svg" alt="India SVG" className={style.indiaSvg} /> */}

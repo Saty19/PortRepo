@@ -1,7 +1,6 @@
 .container {
   width: 99%;
   height: 100vh;
-  border-radius: 10px;
   position: relative;
   display: flex;
   align-items: center;
@@ -126,7 +125,20 @@ input[type="submit"]:hover {
   z-index: 1;
   animation: popupFade 1s ease-in-out; /* Apply a fade-in animation */
 }
-
+.backbutton{
+  position: absolute;
+  top: 2vh;
+  left: 1vh;
+  background-color: gray;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @keyframes popupFade {
   from {
     opacity: 0;

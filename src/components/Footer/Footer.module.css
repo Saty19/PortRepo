@@ -1,49 +1,105 @@
-
-
 .footer {
-    background-color: #121212; /* Dark background color */
-    margin: 0 auto;
-    width: 99%;
-    color: #fff; /* Text color */
-    padding: 50px 0;
-  }
-  
-  .container {
-    max-width: 1200px;
+  background-color: #121212; /* Dark background color */
+  margin: -1.5px auto;
+  width: 99%;
+  color: #5e5d5d; /* Text color */
+  padding: 50px 0;
+  border-top: 1px solid #444; /* Add a border on top */
+}
 
-    padding: 0 20px;
-  }
-  
+.container {
+  display: flex;
+  width: 100%;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footerContent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px; /* Adjust as needed */
+}
+
+.footerLogo img {
+  max-width: 150px; /* Adjust the maximum width of the logo */
+  height: auto;
+}
+
+.footerInfo {
+  margin-top: 20px;
+  text-align: center;
+}
+/* Add these styles to your existing CSS */
+
+.footerInfo p a {
+  color: #5e5d5d; /* Set the color to white */
+  text-decoration: none; /* Remove underline */
+  margin-right: 10px; /* Add some spacing between the links */
+}
+
+.footerInfo p a:hover {
+  text-decoration: underline; /* Add underline on hover if needed */
+}
+
+.footerSocial {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.footerSocial a {
+  color: #5e5d5d; /* Adjust the color of social media icons */
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.reactIcon {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
   .footerContent {
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
   }
-  
-  .footerLogo img {
-    width: 100px; /* Adjust the size based on your design */
-  }
-  
+
   .footerInfo {
-    flex-grow: 1;
-    max-width: 400px;
+    margin-top: 10px;
   }
-  
+
+  .footerSocial {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .footer {
+    padding: 30px 0;
+  }
+
   .footerInfo p {
-    margin: 0;
-    font-size: 16px;
+    font-size: 12px;
   }
-  
-  .footerSocial a {
-    color: #fff;
-    margin-right: 15px;
+
+  .footerSocial a i {
     font-size: 24px;
-    transition: color 0.3s ease-in-out;
   }
-  
-  .footerSocial a:hover {
-    color: #00ffcc; /* Hover color - adjust as needed */
+
+  .copyright p {
+    font-size: 12px;
   }
-  
-  /* Add futuristic styles, animations, and any additional elements based on your design */
-  
+
+  .reactIcon {
+    font-size: 24px;
+  }
+}
