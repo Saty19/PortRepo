@@ -1,6 +1,3 @@
-
-
-  
    export const  nameComponentMap = [
         {
           ID: 1,

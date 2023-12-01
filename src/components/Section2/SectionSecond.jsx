@@ -16,26 +16,24 @@ const SectionSecond = () => {
   const animatedContent = useRef(null);
 
   const elements = useMemo(() => {
-    return ["POWERFUL", "BRANDING", "STUNNING", "WEBSITES"].map(
-      (text, index) => (
-        <div className={style.parent} key={index}>
-          <div
-            className={style.rectangle}
-            ref={(el) =>
-              index === 0
-                ? (rec1.current = el)
-                : index === 1
-                ? (rec2.current = el)
-                : index === 2
-                ? (rec3.current = el)
-                : (rec4.current = el)
-            }
-          >
-            {text}
-          </div>
+    return ["POWERFUL", "BRANDING", "STUNNING", "WEBSITES"].map((text, index) => (
+      <div className={style.parent} key={index}>
+        <div
+          className={style.rectangle}
+          ref={(el) =>
+            index === 0
+              ? (rec1.current = el)
+              : index === 1
+              ? (rec2.current = el)
+              : index === 2
+              ? (rec3.current = el)
+              : (rec4.current = el)
+          }
+        >
+          {text}
         </div>
-      )
-    );
+      </div>
+    ));
   }, []);
 
   const setupScrollTrigger = useCallback(() => {
@@ -72,7 +70,7 @@ const SectionSecond = () => {
     const containerColor = gsap.timeline({
       scrollTrigger: {
         trigger: containerSec.current,
-        toggleActions:"play restart none none",
+        toggleActions: "play restart none none",
         start: "50% top",
         end: "bottom 80%",
         scrub: 1,
@@ -90,10 +88,10 @@ const SectionSecond = () => {
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     setupScrollTrigger();
-
-
   }, [setupScrollTrigger]);
+
   return (
+    
     <div className={`section ${style.container}`} ref={containerSec}>
       <div className={style.leftContent} ref={leftContent}>
         <div style={{ width: "100%" }} ref={leftTop}>
