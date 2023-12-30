@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import styles from "./NavBar.module.css";
 import NavList from "./NavList";
 import { scroller } from "react-scroll";
-  
+
 
 const Navbar = ({ IsButtonToggled }) => {
   const toggleNav = useRef(null);
@@ -74,6 +74,15 @@ const Navbar = ({ IsButtonToggled }) => {
               <div className={styles.linkNav}>
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                   *FACEBOOK
+                </a>
+                <a href="http://www.linkedin.com/in/satyadarsan-senapati-a103701b3" target="_blank" rel="noopener noreferrer">
+                  *LINKDIN
+                </a>
+                <a href="https://github.com/Saty19/" target="_blank" rel="noopener noreferrer">
+                  *GITHUB
+                </a>
+                <a href="https://www.instagram.com/satya_senapati07?igsh=amh0b2Q0OHNwNWY3" target="_blank" rel="noopener noreferrer">
+                  *INSTAGRAM
                 </a>
               </div>
 

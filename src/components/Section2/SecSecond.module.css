@@ -209,7 +209,7 @@ z-index: 0;
   .FrontfillThreeContent{
     position: absolute;
     z-index: 0;
-
+    -webkit-text-stroke: 1px rgb(75, 75, 75);
     text-align: center;
     width: 100%;
     font-size: 8vw;

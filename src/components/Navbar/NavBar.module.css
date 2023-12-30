@@ -62,9 +62,16 @@
 .linkNav{
     height: 10vw;
     display: flex;
+    justify-content: space-around;
     align-items: center;
     position: relative;
     width: 100%;
+}
+.linkNav>a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    font-weight: 900;
 }
 .linkNav::before{
     content: '';
