@@ -5,6 +5,7 @@ import './index.css';
 import { RouterProvider, createBrowserRouter, Route } from 'react-router-dom';
 import ContactUs from './components/ContactUs/ContactUs';
 import NotFound from './components/NotFound/NotFound';
+import AboutMe from './components/AboutMe/AboutMe';
 
 
 const router = createBrowserRouter([
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: '/PortRepo/contact',
     element: <ContactUs />,
+  },
+  {
+    path: '/PortRepo/aboutme',
+    element: <AboutMe />,
   },
   {
     path: '*', // Wildcard route for unmatched paths

@@ -122,7 +122,7 @@ const Service = () => {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top center",
-        end: "5% center",
+        end: "3% center",
         scrub: 1,
       },
     });

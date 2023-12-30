@@ -19,3 +19,18 @@
   transform: scale(0.5);
   transform-origin: top left;
 }
+.drag{
+  width: 7vw;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #121212;
+  height: 2vw;
+  background: gray;
+  border-radius: 20px;
+  transition:all 0.5s;
+}
+.drag:hover{
+  background: #121212;
+  color: gray;
+}

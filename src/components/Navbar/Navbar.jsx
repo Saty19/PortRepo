@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 
-import styles from "./NavBar.module.css"; 
+import styles from "./NavBar.module.css";
 import NavList from "./NavList";
 import { scroller } from "react-scroll";
+  
 
 const Navbar = ({ IsButtonToggled }) => {
   const toggleNav = useRef(null);
@@ -66,11 +67,16 @@ const Navbar = ({ IsButtonToggled }) => {
                 <div className={styles.exploreContent}>EXPLORE</div>
 
                 <div className={styles.navListWrapper}>
-                  <NavList scrollToSection={scrollToSection} toggle={toggle}/>
+                  <NavList scrollToSection={scrollToSection} toggle={toggle} />
                 </div>
               </div>
 
-              <div className={styles.linkNav}>*FACEBOOK</div>
+              <div className={styles.linkNav}>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                  *FACEBOOK
+                </a>
+              </div>
+
             </div>
           ) : (
             ""

@@ -51,6 +51,13 @@ export default function Model(props) {
 
   return (
     <group ref={group} {...props} dispose={null}>
+     {window.innerWidth >= 810 && (
+        <Html distanceFactor={10} position={[5,0,5]}>
+          <div className={style.drag}>
+            DRAG HERE
+          </div>
+        </Html>
+      )}
       <group rotation-x={-0.425} position={[0, -0.04, 0.41]}>
         <group position={[0, 2.96, -0.13]} rotation={[Math.PI / 2, 0, 0]}>
           <mesh material={materials.aluminium} geometry={nodes['Cube008'].geometry} />

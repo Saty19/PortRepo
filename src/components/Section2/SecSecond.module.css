@@ -196,7 +196,7 @@ z-index: 0;
   }
   .FrontThreeContent{
     font-size: 8vw;
-    bottom: 10vw;
+    bottom: 20vw;
     color: #575757;
     -webkit-text-stroke:transparent;
     mix-blend-mode: difference;
@@ -205,5 +205,16 @@ z-index: 0;
   }
   .BackThreeContent{
     font-size: 20vw;
+  }
+  .FrontfillThreeContent{
+    position: absolute;
+    z-index: 0;
+
+    text-align: center;
+    width: 100%;
+    font-size: 8vw;
+    bottom: 20vw;
+  
+    color: #575757;
   }
 }

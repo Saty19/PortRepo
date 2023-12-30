@@ -1,0 +1,42 @@
+.container {
+    width: 99%;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+
+    transition: none;
+  
+  }
+.leftContent{
+    width: 60%;
+    height: 100vh;
+    background-color: red;
+}
+.rightContent{
+    width: 50%;
+    height: 100%;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.imageWrapper{
+    width: 60%;
+    height: 80%;
+    background-color: gray;
+    border-radius: 20px;
+    position: relative;
+}
+.imageWrapper::after{
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 20%;
+    background-color: blue;
+    bottom: 10%;
+    left: -10%;
+}
